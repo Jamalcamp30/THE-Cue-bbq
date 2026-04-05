@@ -792,32 +792,130 @@
   </section>
 
   <!-- ═══════════════════════════════════════
-       FLAVOR MAP — Interactive Discovery
+       THE FLAVOR ENGINE — Guided Experience
        ═══════════════════════════════════════ -->
-  <section class="section section--smoke flavor-map">
+  <section class="section section--smoke flavor-engine" id="flavor-engine">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-header__eyebrow">Find Your Flavor</span>
-        <h2 class="section-header__title">The Flavor Map</h2>
+        <span class="section-header__eyebrow">Your Order, Perfected</span>
+        <h2 class="section-header__title">The Flavor Engine</h2>
         <hr class="section-header__rule">
-        <p class="section-header__desc">Tell us what you crave and we'll tell you what to order.</p>
+        <p class="section-header__desc">Three steps between you and the best meal of your life.</p>
       </div>
 
-      <div class="flavor-wheel reveal">
-        <button class="flavor-tag" data-flavor="smoky">🔥 Smoky</button>
-        <button class="flavor-tag" data-flavor="sweet">🍯 Sweet</button>
-        <button class="flavor-tag" data-flavor="tangy">🍋 Tangy</button>
-        <button class="flavor-tag" data-flavor="spicy">🌶️ Spicy</button>
-        <button class="flavor-tag" data-flavor="rich">🧈 Rich</button>
-        <button class="flavor-tag" data-flavor="crispy">🍟 Crispy</button>
-        <button class="flavor-tag" data-flavor="creamy">🍦 Creamy</button>
-        <button class="flavor-tag" data-flavor="savory">🥩 Savory</button>
-        <button class="flavor-tag" data-flavor="shareable">🤝 Shareable</button>
+      <!-- Step Indicator -->
+      <div class="fe-steps reveal">
+        <div class="fe-step active" data-step="1">
+          <span class="fe-step__number">1</span>
+          <span class="fe-step__label">Your Vibe</span>
+        </div>
+        <div class="fe-step__line"></div>
+        <div class="fe-step" data-step="2">
+          <span class="fe-step__number">2</span>
+          <span class="fe-step__label">Your Flavors</span>
+        </div>
+        <div class="fe-step__line"></div>
+        <div class="fe-step" data-step="3">
+          <span class="fe-step__number">3</span>
+          <span class="fe-step__label">Your Plate</span>
+        </div>
       </div>
 
-      <div class="flavor-results">
-        <p style="text-align:center; color:var(--text-muted); grid-column:1/-1;">Select flavor profiles above to discover your perfect dish</p>
+      <!-- STEP 1: Mood Selector -->
+      <div class="fe-panel fe-panel--mood active reveal" data-fe-step="1">
+        <h3 class="fe-panel__title">What's your vibe tonight?</h3>
+        <div class="fe-mood-grid">
+          <button class="fe-mood-card" data-mood="comfort">
+            <span class="fe-mood-card__ember"></span>
+            <span class="fe-mood-card__icon">🪵</span>
+            <span class="fe-mood-card__name">Low &amp; Slow</span>
+            <span class="fe-mood-card__desc">Comfort classics. Rich, familiar, soul-warming.</span>
+          </button>
+          <button class="fe-mood-card" data-mood="bold">
+            <span class="fe-mood-card__ember"></span>
+            <span class="fe-mood-card__icon">🔥</span>
+            <span class="fe-mood-card__name">Turn Up the Heat</span>
+            <span class="fe-mood-card__desc">Bold, smoky, unapologetic flavor.</span>
+          </button>
+          <button class="fe-mood-card" data-mood="light">
+            <span class="fe-mood-card__ember"></span>
+            <span class="fe-mood-card__icon">🌿</span>
+            <span class="fe-mood-card__name">Keep It Light</span>
+            <span class="fe-mood-card__desc">Fresh picks and lighter sides without the heavy.</span>
+          </button>
+          <button class="fe-mood-card" data-mood="adventurous">
+            <span class="fe-mood-card__ember"></span>
+            <span class="fe-mood-card__icon">🎲</span>
+            <span class="fe-mood-card__name">Surprise Me</span>
+            <span class="fe-mood-card__desc">The Pitmaster picks. Trust the smoke.</span>
+          </button>
+        </div>
       </div>
+
+      <!-- STEP 2: Flavor Dialer + Radar -->
+      <div class="fe-panel fe-panel--flavors" data-fe-step="2">
+        <h3 class="fe-panel__title">Now dial in your cravings</h3>
+        <div class="fe-flavor-layout">
+          <div class="fe-flavor-tags">
+            <button class="flavor-tag" data-flavor="smoky">🔥 Smoky</button>
+            <button class="flavor-tag" data-flavor="sweet">🍯 Sweet</button>
+            <button class="flavor-tag" data-flavor="tangy">🍋 Tangy</button>
+            <button class="flavor-tag" data-flavor="spicy">🌶️ Spicy</button>
+            <button class="flavor-tag" data-flavor="rich">🧈 Rich</button>
+            <button class="flavor-tag" data-flavor="crispy">🍟 Crispy</button>
+            <button class="flavor-tag" data-flavor="creamy">🍦 Creamy</button>
+            <button class="flavor-tag" data-flavor="savory">🥩 Savory</button>
+          </div>
+          <!-- SVG Flavor Radar -->
+          <div class="fe-radar-wrap">
+            <svg class="fe-radar" viewBox="0 0 300 300" aria-label="Flavor profile radar chart">
+              <!-- Radar grid rings -->
+              <polygon class="fe-radar__ring" points="150,50 237,100 237,200 150,250 63,200 63,100" />
+              <polygon class="fe-radar__ring fe-radar__ring--inner" points="150,83 210,117 210,183 150,217 90,183 90,117" />
+              <polygon class="fe-radar__ring fe-radar__ring--core" points="150,117 183,133 183,167 150,183 117,167 117,133" />
+              <!-- Axis lines -->
+              <line class="fe-radar__axis" x1="150" y1="150" x2="150" y2="50" />
+              <line class="fe-radar__axis" x1="150" y1="150" x2="237" y2="100" />
+              <line class="fe-radar__axis" x1="150" y1="150" x2="237" y2="200" />
+              <line class="fe-radar__axis" x1="150" y1="150" x2="150" y2="250" />
+              <line class="fe-radar__axis" x1="150" y1="150" x2="63" y2="200" />
+              <line class="fe-radar__axis" x1="150" y1="150" x2="63" y2="100" />
+              <!-- Radar labels -->
+              <text class="fe-radar__label" x="150" y="40" text-anchor="middle">Smoky</text>
+              <text class="fe-radar__label" x="245" y="96" text-anchor="start">Sweet</text>
+              <text class="fe-radar__label" x="245" y="210" text-anchor="start">Spicy</text>
+              <text class="fe-radar__label" x="150" y="270" text-anchor="middle">Crispy</text>
+              <text class="fe-radar__label" x="55" y="210" text-anchor="end">Rich</text>
+              <text class="fe-radar__label" x="55" y="96" text-anchor="end">Tangy</text>
+              <!-- Dynamic shape (filled by JS) -->
+              <polygon class="fe-radar__shape" points="150,150 150,150 150,150 150,150 150,150 150,150" />
+            </svg>
+            <div class="fe-radar-caption">Your flavor profile</div>
+          </div>
+        </div>
+        <button class="btn btn--ember fe-next-btn" data-goto="3" disabled>Show Me My Plate →</button>
+      </div>
+
+      <!-- STEP 3: Smart Results -->
+      <div class="fe-panel fe-panel--results" data-fe-step="3">
+        <div class="fe-results-header">
+          <h3 class="fe-panel__title">Your Perfect Order</h3>
+          <button class="fe-restart-btn" aria-label="Start over">↺ Start Over</button>
+        </div>
+
+        <!-- Pitmaster Says Block -->
+        <div class="fe-pitmaster">
+          <div class="fe-pitmaster__avatar">🔥</div>
+          <div class="fe-pitmaster__content">
+            <span class="fe-pitmaster__label">The Pitmaster Says</span>
+            <p class="fe-pitmaster__quote"></p>
+          </div>
+        </div>
+
+        <!-- Results Grid -->
+        <div class="fe-results-grid"></div>
+      </div>
+
     </div>
   </section>
 
