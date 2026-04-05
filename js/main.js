@@ -138,10 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // ═══════════════════════════════════════════
 
   // ═══════════════════════════════════════════
-  // MENU TABS
+  // MENU TABS — Sticky + Scroll Spy + Category Filtering
   // ═══════════════════════════════════════════
   const menuTabs = document.querySelectorAll('.menu-tab');
   const menuPanels = document.querySelectorAll('.menu-panel');
+  const menuTabsWrap = document.getElementById('menu-tabs-sticky');
+
+  // Sticky tabs on scroll
+  // Sticky tabs on scroll (rootMargin offsets by nav bar height ~70px + 1px)
+  if (menuTabsWrap) {
+    const stickyObserver = new IntersectionObserver(([e]) => {
+      menuTabsWrap.classList.toggle('is-stuck', e.intersectionRatio < 1);
+    }, { threshold: [1], rootMargin: '-71px 0px 0px 0px' });
+    stickyObserver.observe(menuTabsWrap);
+  }
 
   menuTabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -158,6 +168,67 @@ document.addEventListener('DOMContentLoaded', () => {
           panel.style.display = 'none';
         }
       });
+    });
+  });
+
+  // ═══════════════════════════════════════════
+  // LOCATION PICKER
+  // ═══════════════════════════════════════════
+  const locationBtns = document.querySelectorAll('.menu-location-btn');
+  locationBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      locationBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // ═══════════════════════════════════════════
+  // ADD TO ORDER — Item-Level CTA + Mobile Bar
+  // ═══════════════════════════════════════════
+  let cartCount = 0;
+  const mobileBar = document.getElementById('menu-mobile-bar');
+  const mobileCartCount = document.getElementById('mobile-cart-count');
+
+  function updateMobileBar() {
+    if (!mobileBar) return;
+    if (cartCount > 0) {
+      mobileBar.classList.add('is-visible');
+    } else {
+      mobileBar.classList.remove('is-visible');
+    }
+    if (mobileCartCount) mobileCartCount.textContent = cartCount;
+  }
+
+  // Item-level add buttons
+  document.querySelectorAll('.menu-item__add, .menu-pick-card__add, .menu-bundle__order').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cartCount++;
+      updateMobileBar();
+
+      // Visual feedback
+      const original = btn.textContent;
+      btn.textContent = '✓ Added';
+      btn.classList.add('added');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove('added');
+      }, 1200);
+    });
+  });
+
+  // Pick card click → also acts as add
+  document.querySelectorAll('.menu-pick-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const addBtn = card.querySelector('.menu-pick-card__add');
+      if (addBtn) addBtn.click();
+    });
+  });
+
+  // Upsell item toggle
+  document.querySelectorAll('.fe-upsell__item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('selected');
     });
   });
 
@@ -323,6 +394,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return { score: total, percent: Math.round((total / maxPossible) * 100) };
     }
 
+    // Upsell pairing data by mood
+    const upsellPairings = {
+      comfort: { side: 'Macaroni Slammer', sidePrice: '+$6', sideEmoji: '🧈', drink: 'Sweet Tea', drinkPrice: '+$3', drinkEmoji: '🧊', dessert: 'Banana Pudding', dessertPrice: '+$7', dessertEmoji: '🍌' },
+      bold: { side: 'Bacon Baked Beans', sidePrice: '+$5', sideEmoji: '🫘', drink: 'Local Craft Draft', drinkPrice: '+$7', drinkEmoji: '🍺', dessert: 'Bananas Doster', dessertPrice: '+$9', dessertEmoji: '🍨' },
+      light: { side: 'Grilled Pineapple', sidePrice: '+$5', sideEmoji: '🍍', drink: 'House Wine', drinkPrice: '+$9', drinkEmoji: '🍷', dessert: 'Seasonal Cobbler', dessertPrice: '+$8', dessertEmoji: '🥧' },
+      adventurous: { side: 'Collard Greens', sidePrice: '+$5', sideEmoji: '🥬', drink: 'Local Craft Draft', drinkPrice: '+$7', drinkEmoji: '🍺', dessert: 'Bananas Doster', dessertPrice: '+$9', dessertEmoji: '🍨' }
+    };
+
     // Render results
     function renderResults() {
       if (!resultsGrid) return;
@@ -378,6 +457,31 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
       }).join('');
+
+      // Update upsell section based on mood
+      const pairing = upsellPairings[feMood] || upsellPairings['comfort'];
+      const upsellSide = document.getElementById('fe-upsell-side');
+      const upsellDrink = document.getElementById('fe-upsell-drink');
+      const upsellDessert = document.getElementById('fe-upsell-dessert');
+      const upsellSidePrice = document.getElementById('fe-upsell-side-price');
+      const upsellDrinkPrice = document.getElementById('fe-upsell-drink-price');
+      const upsellDessertPrice = document.getElementById('fe-upsell-dessert-price');
+      const upsellItems = feSection.querySelectorAll('.fe-upsell__item');
+      const upsellEmojis = feSection.querySelectorAll('.fe-upsell__emoji');
+
+      if (upsellSide) upsellSide.textContent = pairing.side;
+      if (upsellDrink) upsellDrink.textContent = pairing.drink;
+      if (upsellDessert) upsellDessert.textContent = pairing.dessert;
+      if (upsellSidePrice) upsellSidePrice.textContent = pairing.sidePrice;
+      if (upsellDrinkPrice) upsellDrinkPrice.textContent = pairing.drinkPrice;
+      if (upsellDessertPrice) upsellDessertPrice.textContent = pairing.dessertPrice;
+      if (upsellEmojis.length >= 3) {
+        upsellEmojis[0].textContent = pairing.sideEmoji;
+        upsellEmojis[1].textContent = pairing.drinkEmoji;
+        upsellEmojis[2].textContent = pairing.dessertEmoji;
+      }
+      // Reset selected state
+      upsellItems.forEach(item => item.classList.remove('selected'));
     }
 
     // Initialize
