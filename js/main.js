@@ -162,67 +162,226 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ═══════════════════════════════════════════
-  // FLAVOR MAP
+  // THE FLAVOR ENGINE — Guided Experience
   // ═══════════════════════════════════════════
-  const flavorTags = document.querySelectorAll('.flavor-tag');
-  const flavorResults = document.querySelector('.flavor-results');
-  let activeFilters = new Set();
+  const feSection = document.querySelector('.flavor-engine');
+  if (feSection) {
+    const feSteps = feSection.querySelectorAll('.fe-step');
+    const feStepLines = feSection.querySelectorAll('.fe-step__line');
+    const fePanels = feSection.querySelectorAll('.fe-panel');
+    const flavorTags = feSection.querySelectorAll('.flavor-tag');
+    const radarShape = feSection.querySelector('.fe-radar__shape');
+    const nextBtn = feSection.querySelector('.fe-next-btn');
+    const restartBtn = feSection.querySelector('.fe-restart-btn');
+    const resultsGrid = feSection.querySelector('.fe-results-grid');
+    const pitmasterQuote = feSection.querySelector('.fe-pitmaster__quote');
 
-  const flavorData = [
-    { name: 'Smoked Jumbo Wings', icon: '🍗', desc: 'Brined, smoked, and fried crispy', flavors: ['smoky', 'crispy', 'shareable'] },
-    { name: 'BBQ Nachos', icon: '🧀', desc: 'Pulled pork, cheese, jalapeños, house sauce', flavors: ['smoky', 'rich', 'shareable', 'spicy'] },
-    { name: 'Brisket Platter', icon: '🥩', desc: 'Slow-smoked 14-hour brisket, hand-sliced', flavors: ['smoky', 'rich', 'savory'] },
-    { name: 'St. Louis Ribs', icon: '🍖', desc: 'Full rack with our signature glaze', flavors: ['smoky', 'sweet', 'rich'] },
-    { name: 'Macaroni Slammer', icon: '🧈', desc: 'Five-cheese baked mac & cheese', flavors: ['rich', 'creamy', 'savory'] },
-    { name: 'Bacon Baked Beans', icon: '🫘', desc: 'Slow-cooked with smoked bacon and molasses', flavors: ['smoky', 'sweet', 'savory'] },
-    { name: 'Grilled Pineapple', icon: '🍍', desc: 'Caramelized with cinnamon butter', flavors: ['sweet', 'tangy', 'crispy'] },
-    { name: 'Banana Pudding', icon: '🍌', desc: 'Scratch-made Southern classic', flavors: ['sweet', 'creamy'] },
-    { name: 'Hot Links', icon: '🌶️', desc: 'House-smoked sausage with kick', flavors: ['smoky', 'spicy', 'savory'] },
-    { name: 'Pulled Pork Sandwich', icon: '🥪', desc: 'Hand-pulled, house sauce, pickles', flavors: ['smoky', 'tangy', 'savory'] },
-    { name: 'Fried Okra', icon: '🫒', desc: 'Cornmeal-crusted, served with ranch', flavors: ['crispy', 'savory'] },
-    { name: 'Collard Greens', icon: '🥬', desc: 'Slow-braised with smoked ham hocks', flavors: ['smoky', 'savory', 'rich'] },
-  ];
+    let feMood = '';
+    let activeFilters = new Set();
+    let feCurrentStep = 1;
 
-  flavorTags.forEach(tag => {
-    tag.addEventListener('click', () => {
-      const flavor = tag.dataset.flavor;
-      tag.classList.toggle('active');
+    // Flavor data with mood biases and pairing suggestions
+    const flavorData = [
+      { name: 'Smoked Jumbo Wings', icon: '🍗', desc: 'Brined, smoked, and fried crispy', flavors: ['smoky', 'crispy', 'savory'], moods: ['bold', 'adventurous'], pairing: 'Bacon Baked Beans', pick: false },
+      { name: 'BBQ Nachos', icon: '🧀', desc: 'Pulled pork, cheese, jalapeños, house sauce', flavors: ['smoky', 'rich', 'spicy'], moods: ['bold', 'adventurous', 'comfort'], pairing: 'Sweet Tea', pick: true },
+      { name: 'Brisket Platter', icon: '🥩', desc: 'Slow-smoked 14-hour brisket, hand-sliced', flavors: ['smoky', 'rich', 'savory'], moods: ['comfort', 'bold'], pairing: 'Macaroni Slammer', pick: true },
+      { name: 'St. Louis Ribs', icon: '🍖', desc: 'Full rack with our signature glaze', flavors: ['smoky', 'sweet', 'rich'], moods: ['comfort', 'bold'], pairing: 'Collard Greens', pick: true },
+      { name: 'Macaroni Slammer', icon: '🧈', desc: 'Five-cheese baked mac & cheese', flavors: ['rich', 'creamy', 'savory'], moods: ['comfort', 'light'], pairing: 'Brisket Platter', pick: false },
+      { name: 'Bacon Baked Beans', icon: '🫘', desc: 'Slow-cooked with smoked bacon and molasses', flavors: ['smoky', 'sweet', 'savory'], moods: ['comfort'], pairing: 'St. Louis Ribs', pick: false },
+      { name: 'Grilled Pineapple', icon: '🍍', desc: 'Caramelized with cinnamon butter', flavors: ['sweet', 'tangy', 'crispy'], moods: ['light', 'adventurous'], pairing: 'Hot Links', pick: false },
+      { name: 'Banana Pudding', icon: '🍌', desc: 'Scratch-made Southern classic', flavors: ['sweet', 'creamy'], moods: ['comfort', 'light'], pairing: 'Sweet Tea', pick: false },
+      { name: 'Hot Links', icon: '🌶️', desc: 'House-smoked sausage with kick', flavors: ['smoky', 'spicy', 'savory'], moods: ['bold', 'adventurous'], pairing: 'Coleslaw', pick: false },
+      { name: 'Pulled Pork Sandwich', icon: '🥪', desc: 'Hand-pulled, house sauce, pickles', flavors: ['smoky', 'tangy', 'savory'], moods: ['comfort', 'light'], pairing: 'Hand-Cut Fries', pick: false },
+      { name: 'Fried Okra', icon: '🫒', desc: 'Cornmeal-crusted, served with ranch', flavors: ['crispy', 'savory'], moods: ['light', 'comfort'], pairing: 'Pulled Pork Sandwich', pick: false },
+      { name: 'Collard Greens', icon: '🥬', desc: 'Slow-braised with smoked ham hocks', flavors: ['smoky', 'savory', 'rich'], moods: ['comfort', 'bold'], pairing: 'Brisket Platter', pick: false },
+      { name: 'Pitmaster Combo', icon: '🔥', desc: 'Choose any three meats with two sides', flavors: ['smoky', 'rich', 'savory', 'spicy'], moods: ['bold', 'adventurous'], pairing: 'Banana Pudding', pick: true },
+      { name: 'Pimento Cheese Dip', icon: '🧀', desc: 'House-made with cracklin chips and pickled veg', flavors: ['creamy', 'tangy', 'savory'], moods: ['light', 'comfort'], pairing: 'Fried Pickles', pick: false },
+      { name: 'Fried Pickles', icon: '🥒', desc: 'Hand-breaded dill pickle chips with ranch', flavors: ['crispy', 'tangy'], moods: ['light', 'adventurous'], pairing: 'BBQ Nachos', pick: false },
+    ];
 
-      if (activeFilters.has(flavor)) {
-        activeFilters.delete(flavor);
-      } else {
-        activeFilters.add(flavor);
-      }
+    // Pitmaster quotes by mood
+    const pitmasterQuotes = {
+      comfort: [
+        'You came for comfort and that is exactly what we do best. This plate is a warm hug from the smokehouse.',
+        'Low and slow is not just how we cook — it is how we want you to feel tonight. Take your time with this one.'
+      ],
+      bold: [
+        'You want flavor that hits? These picks have smoke, heat, and soul. The kind of meal you brag about.',
+        'Bold choice. This is the plate people remember a week later. Every bite earns its place.'
+      ],
+      light: [
+        'Light does not mean boring — not at Cue. These picks are clean, bright, and built to surprise.',
+        'Sometimes the best meal is the one that does not weigh you down. Smart picks, all of them.'
+      ],
+      adventurous: [
+        'You said surprise me, and the pitmaster does not bluff. This plate is a ride — trust the smoke.',
+        'The adventurous eater gets rewarded here. These are the dishes our regulars come back for.'
+      ]
+    };
 
-      updateFlavorResults();
-    });
-  });
+    // Radar axis mapping (6 axes for the hexagonal radar)
+    const radarAxes = ['smoky', 'sweet', 'spicy', 'crispy', 'rich', 'tangy'];
+    const radarCenter = { x: 150, y: 150 };
+    const radarRadius = 100;
 
-  function updateFlavorResults() {
-    if (!flavorResults) return;
-
-    if (activeFilters.size === 0) {
-      flavorResults.innerHTML = '<p style="text-align:center; color:var(--text-muted); grid-column:1/-1;">Select flavor profiles above to discover your perfect dish</p>';
-      return;
+    function getRadarPoint(axisIndex, value) {
+      const angle = (Math.PI * 2 / 6) * axisIndex - Math.PI / 2;
+      const r = radarRadius * value;
+      return {
+        x: radarCenter.x + r * Math.cos(angle),
+        y: radarCenter.y + r * Math.sin(angle)
+      };
     }
 
-    const matches = flavorData.filter(item =>
-      [...activeFilters].some(f => item.flavors.includes(f))
-    ).sort((a, b) => {
-      const aMatch = [...activeFilters].filter(f => a.flavors.includes(f)).length;
-      const bMatch = [...activeFilters].filter(f => b.flavors.includes(f)).length;
-      return bMatch - aMatch;
+    function updateRadar() {
+      if (!radarShape) return;
+      const points = radarAxes.map((axis, i) => {
+        const val = activeFilters.has(axis) ? 1 : 0.08;
+        return getRadarPoint(i, val);
+      });
+      radarShape.setAttribute('points', points.map(p => `${p.x},${p.y}`).join(' '));
+    }
+
+    // Step navigation
+    function goToStep(step) {
+      feCurrentStep = step;
+
+      feSteps.forEach((s, i) => {
+        const stepNum = i + 1;
+        s.classList.remove('active', 'completed');
+        if (stepNum === step) s.classList.add('active');
+        else if (stepNum < step) s.classList.add('completed');
+      });
+
+      feStepLines.forEach((line, i) => {
+        line.classList.toggle('completed', i + 1 < step);
+      });
+
+      fePanels.forEach(p => {
+        p.classList.toggle('active', parseInt(p.dataset.feStep, 10) === step);
+      });
+    }
+
+    // STEP 1: Mood selection
+    feSection.querySelectorAll('.fe-mood-card').forEach(card => {
+      card.addEventListener('click', () => {
+        feMood = card.dataset.mood;
+        feSection.querySelectorAll('.fe-mood-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+
+        // Auto-advance to step 2 after brief pause
+        setTimeout(() => goToStep(2), 400);
+      });
     });
 
-    flavorResults.innerHTML = matches.map(item => `
-      <div class="flavor-result">
-        <span class="flavor-result__icon">${item.icon}</span>
-        <div>
-          <div class="flavor-result__name">${item.name}</div>
-          <div class="flavor-result__desc">${item.desc}</div>
-        </div>
-      </div>
-    `).join('');
+    // STEP 2: Flavor tag selection
+    flavorTags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const flavor = tag.dataset.flavor;
+        tag.classList.toggle('active');
+
+        if (activeFilters.has(flavor)) {
+          activeFilters.delete(flavor);
+        } else {
+          activeFilters.add(flavor);
+        }
+
+        updateRadar();
+        if (nextBtn) nextBtn.disabled = activeFilters.size === 0;
+      });
+    });
+
+    // Next button → Step 3
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (activeFilters.size === 0) return;
+        goToStep(3);
+        renderResults();
+      });
+    }
+
+    // Restart
+    if (restartBtn) {
+      restartBtn.addEventListener('click', () => {
+        feMood = '';
+        activeFilters.clear();
+        flavorTags.forEach(t => t.classList.remove('active'));
+        feSection.querySelectorAll('.fe-mood-card').forEach(c => c.classList.remove('selected'));
+        if (nextBtn) nextBtn.disabled = true;
+        updateRadar();
+        goToStep(1);
+      });
+    }
+
+    // Compute match score
+    function getMatchScore(item) {
+      const filterArr = [...activeFilters];
+      const flavorMatch = filterArr.filter(f => item.flavors.includes(f)).length;
+      const moodBonus = feMood && item.moods.includes(feMood) ? 1 : 0;
+      const total = flavorMatch + moodBonus;
+      const maxPossible = filterArr.length + 1;
+      return { score: total, percent: Math.round((total / maxPossible) * 100) };
+    }
+
+    // Render results
+    function renderResults() {
+      if (!resultsGrid) return;
+
+      const scored = flavorData.map(item => ({
+        ...item,
+        ...getMatchScore(item)
+      })).filter(item => item.score > 0).sort((a, b) => b.score - a.score);
+
+      const topResults = scored.slice(0, 6);
+      const bestScore = topResults.length > 0 ? topResults[0].score : 0;
+
+      // Set pitmaster quote
+      if (pitmasterQuote) {
+        const quotes = pitmasterQuotes[feMood] || pitmasterQuotes['comfort'];
+        pitmasterQuote.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+      }
+
+      // Circumference for smoke ring (circle radius=16, C=2πr≈100.5)
+      const circumference = 100.5;
+
+      resultsGrid.innerHTML = topResults.map((item, i) => {
+        const isPick = item.pick && item.score === bestScore;
+        const dashOffset = circumference - (circumference * item.percent / 100);
+        const filterArr = [...activeFilters];
+
+        return `
+          <div class="fe-result-card${isPick ? ' fe-result-card--pick' : ''}">
+            ${isPick ? '<span class="fe-pick-badge">🔥 Pitmaster\'s Pick</span>' : ''}
+            <div class="fe-result-card__top">
+              <span class="fe-result-card__icon">${item.icon}</span>
+              <div>
+                <div class="fe-result-card__name">${item.name}</div>
+                <div class="fe-result-card__desc">${item.desc}</div>
+              </div>
+              <div class="fe-smoke-ring">
+                <svg viewBox="0 0 36 36">
+                  <circle class="fe-smoke-ring__bg" cx="18" cy="18" r="16" />
+                  <circle class="fe-smoke-ring__fill" cx="18" cy="18" r="16"
+                    style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${dashOffset};" />
+                </svg>
+                <span class="fe-smoke-ring__text">${item.percent}%</span>
+              </div>
+            </div>
+            <div class="fe-flavor-dots">
+              ${item.flavors.map(f =>
+                `<span class="fe-flavor-dot ${filterArr.includes(f) ? 'fe-flavor-dot--match' : 'fe-flavor-dot--extra'}">${f}</span>`
+              ).join('')}
+            </div>
+            <div class="fe-pairing">
+              <span class="fe-pairing__label">Perfect with:</span> ${item.pairing}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Initialize
+    updateRadar();
   }
 
   // ═══════════════════════════════════════════

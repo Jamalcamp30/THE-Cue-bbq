@@ -952,7 +952,345 @@
     }
 
     // ═══════════════════════════════════════════
-    // 10. TABLE-LEVEL FOOD VISUALIZATION
+    // 10. AI EVENT CONCIERGE
+    // ═══════════════════════════════════════════
+    const conciergeInput = document.getElementById('hr-concierge-input');
+    const conciergeSubmit = document.getElementById('hr-concierge-submit');
+    const conciergeResponse = document.getElementById('hr-concierge-response');
+    const conciergeExamples = document.querySelectorAll('.hr-concierge__example');
+
+    if (conciergeInput && conciergeSubmit && conciergeResponse) {
+
+      // Keyword-based NLP matching engine
+      const keywords = {
+        eventType: {
+          birthday: ['birthday', 'bday', 'turning', 'celebration', 'party'],
+          rehearsal: ['rehearsal', 'wedding', 'bride', 'groom', 'engaged', 'engagement'],
+          corporate: ['corporate', 'company', 'business', 'team', 'office', 'meeting', 'professional', 'client'],
+          graduation: ['graduation', 'grad', 'graduate', 'diploma', 'degree'],
+          holiday: ['holiday', 'christmas', 'thanksgiving', 'new year', 'festive', 'seasonal'],
+          teambuilding: ['team building', 'team-building', 'teambuilding', 'retreat', 'bonding', 'offsite']
+        },
+        mood: {
+          intimate: ['intimate', 'quiet', 'romantic', 'candlelight', 'cozy', 'small', 'private', 'close'],
+          southern: ['southern', 'bbq', 'barbecue', 'country', 'soul', 'family', 'casual', 'relaxed'],
+          executive: ['executive', 'professional', 'formal', 'elegant', 'upscale', 'refined', 'classy', 'sophisticated'],
+          livemusic: ['music', 'live', 'band', 'dj', 'dancing', 'dance', 'social', 'lively', 'energetic', 'fun'],
+          holiday: ['holiday', 'festive', 'seasonal', 'warm', 'tradition']
+        },
+        food: {
+          family: ['family', 'shared', 'family-style', 'platters', 'communal'],
+          plated: ['plated', 'seated', 'courses', 'formal', 'wine pairing', 'elegant'],
+          buffet: ['buffet', 'self-serve', 'spread', 'all-you-can'],
+          stations: ['stations', 'interactive', 'carving', 'build-your-own', 'live'],
+          passed: ['passed', 'appetizers', 'cocktail', 'hors d\'oeuvres', 'mingling', 'cocktail hour']
+        },
+        size: {
+          small: ['small', 'intimate', 'few', '15', '20', '25'],
+          medium: ['30', '35', '40', '45', '50'],
+          large: ['60', '65', '70', '75', '80', 'large', 'big']
+        }
+      };
+
+      function parsePrompt(text) {
+        const lower = text.toLowerCase();
+        const result = { eventType: null, mood: null, food: null, size: null, guests: null };
+
+        // Extract guest count if explicit number
+        const guestMatch = lower.match(/(\d{2,3})\s*[-–]?\s*(?:person|people|guests?|ppl)?/);
+        if (guestMatch) {
+          result.guests = Math.min(80, Math.max(20, parseInt(guestMatch[1], 10)));
+          result.size = result.guests <= 30 ? 'small' : result.guests <= 55 ? 'medium' : 'large';
+        }
+
+        // Match each category
+        for (const [category, patterns] of Object.entries(keywords)) {
+          if (category === 'size' && result.size) continue;
+          for (const [key, words] of Object.entries(patterns)) {
+            if (words.some(w => lower.includes(w))) {
+              result[category] = key;
+              break;
+            }
+          }
+        }
+
+        // Defaults
+        if (!result.eventType) result.eventType = 'birthday';
+        if (!result.mood) result.mood = 'southern';
+        if (!result.food) result.food = 'family';
+        if (!result.guests) result.guests = result.size === 'large' ? 65 : result.size === 'small' ? 25 : 40;
+        if (!result.size) result.size = 'medium';
+
+        return result;
+      }
+
+      // Recommendation templates
+      const conciergeRecs = {
+        birthday: {
+          layout: (g) => g > 50 ? 'Round tables with open dance floor and DJ area' : 'Scattered rounds with a gift table and cake station',
+          package: 'The Hickory Package — shared platters, dedicated staff, custom cake display',
+          timeline: '6 PM Arrival → 6:30 PM Dinner → 7:30 PM Toast & Cake → 8:30 PM Dancing → 10 PM Close',
+          tip: 'We can set up a custom photo wall with your birthday theme. Just ask.'
+        },
+        rehearsal: {
+          layout: (g) => g > 40 ? 'Long family-style tables with head table elevated' : 'One grand table with candle runners and florals',
+          package: 'The Pitmaster\'s Table — plated multi-course with wine pairing',
+          timeline: '6:30 PM Cocktails → 7 PM Seated → 7:15 PM First Course → 8:15 PM Toasts → 9 PM Dessert → 10 PM Close',
+          tip: 'Our rehearsal dinner hosts love the warm amber uplighting with draped fabric — it photographs beautifully.'
+        },
+        corporate: {
+          layout: (g) => g > 50 ? 'Classroom rounds with front presentation area and AV' : 'Boardroom-style long tables with screen access',
+          package: 'The Hickory Package — buffet stations with executive platter',
+          timeline: '11:30 AM Setup → 12 PM Welcome → 12:30 PM Working Lunch → 2 PM Breakout → 3 PM Close',
+          tip: 'We provide full AV support including projection, microphones, and podium setup.'
+        },
+        graduation: {
+          layout: (g) => g > 50 ? 'Mixed casual with buffet line and open mingling zones' : 'Round tables with memory board display and dessert bar',
+          package: 'The Hickory Package — full BBQ buffet with build-your-own stations',
+          timeline: '5 PM Doors → 5:30 PM Buffet → 6:30 PM Speeches → 7 PM Dessert & Music → 9 PM Close',
+          tip: 'We can feature school colors in the accent lighting and set up a memory wall.'
+        },
+        holiday: {
+          layout: (g) => g > 50 ? 'Long banquet tables with garland centerpieces' : 'Intimate rounds with seasonal greenery and taper candles',
+          package: 'The Pitmaster\'s Table — family-style feast with seasonal specials',
+          timeline: '6 PM Welcome Cocktails → 6:30 PM Seated Dinner → 7:30 PM Toasts → 8 PM Dessert → 9:30 PM Close',
+          tip: 'Our holiday events include complimentary seasonal décor and a curated holiday playlist.'
+        },
+        teambuilding: {
+          layout: (g) => g > 40 ? 'Team pods of 6–8 with central activity zone' : 'Activity clusters with icebreaker stations',
+          package: 'The Ember Package — shared platters and BBQ tastings',
+          timeline: '2 PM Arrival → 2:30 PM Icebreakers → 3 PM Team Challenge → 4 PM BBQ Tasting → 5 PM Awards → 5:30 PM Close',
+          tip: 'We can coordinate team activities including BBQ trivia and smokehouse challenges.'
+        }
+      };
+
+      const moodNames = {
+        intimate: 'Warm & Intimate',
+        southern: 'Southern Celebration',
+        executive: 'Executive',
+        livemusic: 'Live-Music Social',
+        holiday: 'Holiday Glow'
+      };
+
+      const foodNames = {
+        family: 'Family-Style Platters',
+        plated: 'Plated Service',
+        buffet: 'BBQ Buffet',
+        stations: 'Interactive Stations',
+        passed: 'Passed Appetizers'
+      };
+
+      function generateResponse(parsed) {
+        const rec = conciergeRecs[parsed.eventType] || conciergeRecs['birthday'];
+        const eventLabel = roomConfig[parsed.eventType] ? roomConfig[parsed.eventType].label : 'Special Event';
+
+        return `
+          <div class="hr-ai-card">
+            <div class="hr-ai-card__header">
+              <span class="hr-ai-card__spark">✦</span>
+              <span class="hr-ai-card__title">Your Personalized Recommendation</span>
+            </div>
+            <div class="hr-ai-grid">
+              <div class="hr-ai-item">
+                <div class="hr-ai-item__label">Event Type</div>
+                <div class="hr-ai-item__value">${eventLabel}</div>
+              </div>
+              <div class="hr-ai-item">
+                <div class="hr-ai-item__label">Guest Count</div>
+                <div class="hr-ai-item__value">${parsed.guests} guests</div>
+              </div>
+              <div class="hr-ai-item">
+                <div class="hr-ai-item__label">Mood</div>
+                <div class="hr-ai-item__value">${moodNames[parsed.mood] || 'Southern Celebration'}</div>
+              </div>
+              <div class="hr-ai-item">
+                <div class="hr-ai-item__label">Food Style</div>
+                <div class="hr-ai-item__value">${foodNames[parsed.food] || 'Family-Style Platters'}</div>
+              </div>
+              <div class="hr-ai-item">
+                <div class="hr-ai-item__label">Recommended Layout</div>
+                <div class="hr-ai-item__value">${rec.layout(parsed.guests)}</div>
+              </div>
+              <div class="hr-ai-item">
+                <div class="hr-ai-item__label">Package</div>
+                <div class="hr-ai-item__value">${rec.package}</div>
+              </div>
+            </div>
+            <div class="hr-ai-item" style="margin-bottom: var(--space-md);">
+              <div class="hr-ai-item__label">Suggested Timeline</div>
+              <div class="hr-ai-item__value">${rec.timeline}</div>
+            </div>
+            <div class="hr-ai-quote">"${rec.tip}"</div>
+            <div class="hr-ai-cta">
+              <a href="#hickory-inquiry" class="btn btn--primary">Book This Experience</a>
+            </div>
+          </div>
+        `;
+      }
+
+      function submitConcierge() {
+        const text = conciergeInput.value.trim();
+        if (!text) return;
+
+        // Show typing indicator
+        conciergeResponse.innerHTML = '<div class="hr-concierge__typing"><span></span><span></span><span></span></div>';
+
+        // Simulate AI processing delay
+        setTimeout(() => {
+          const parsed = parsePrompt(text);
+          conciergeResponse.innerHTML = generateResponse(parsed);
+        }, 1200);
+      }
+
+      conciergeSubmit.addEventListener('click', submitConcierge);
+      conciergeInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          submitConcierge();
+        }
+      });
+
+      // Example prompts
+      conciergeExamples.forEach(ex => {
+        ex.addEventListener('click', () => {
+          conciergeInput.value = ex.dataset.prompt;
+          submitConcierge();
+        });
+      });
+    }
+
+    // ═══════════════════════════════════════════
+    // 11. AMBIENT SOUNDSCAPE — Web Audio API
+    // ═══════════════════════════════════════════
+    const soundBtns = document.querySelectorAll('.hr-sound-btn');
+    if (soundBtns.length) {
+      let audioCtx = null;
+      let currentSource = null;
+      let currentGain = null;
+      let currentBtn = null;
+
+      // Sound configurations using Web Audio oscillators
+      const soundScapes = {
+        warmjazz: {
+          notes: [261.63, 329.63, 392.00, 440.00, 523.25],
+          tempo: 0.8,
+          type: 'sine',
+          filterFreq: 800,
+          volume: 0.08
+        },
+        southern: {
+          notes: [220.00, 277.18, 329.63, 369.99, 440.00],
+          tempo: 0.6,
+          type: 'triangle',
+          filterFreq: 1200,
+          volume: 0.07
+        },
+        cocktail: {
+          notes: [293.66, 349.23, 440.00, 523.25, 587.33],
+          tempo: 1.0,
+          type: 'sine',
+          filterFreq: 1000,
+          volume: 0.06
+        },
+        liveband: {
+          notes: [196.00, 246.94, 293.66, 349.23, 392.00],
+          tempo: 0.5,
+          type: 'sawtooth',
+          filterFreq: 600,
+          volume: 0.04
+        }
+      };
+
+      function stopCurrentSound() {
+        if (currentGain) {
+          currentGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+          setTimeout(() => {
+            if (currentSource) {
+              try { currentSource.stop(); } catch(e) { /* already stopped */ }
+            }
+          }, 600);
+        }
+        if (currentBtn) {
+          currentBtn.classList.remove('playing');
+        }
+        currentSource = null;
+        currentGain = null;
+        currentBtn = null;
+      }
+
+      function playSoundscape(soundId, btn) {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        // If same button, toggle off
+        if (currentBtn === btn) {
+          stopCurrentSound();
+          return;
+        }
+
+        stopCurrentSound();
+
+        const config = soundScapes[soundId];
+        if (!config) return;
+
+        // Create a warm ambient pad using layered oscillators
+        const gainNode = audioCtx.createGain();
+        gainNode.gain.setValueAtTime(0.001, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(config.volume, audioCtx.currentTime + 1);
+
+        // Low-pass filter for warmth
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(config.filterFreq, audioCtx.currentTime);
+        filter.Q.setValueAtTime(1, audioCtx.currentTime);
+
+        filter.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        // Create evolving pad with detuned oscillators
+        const oscs = [];
+        config.notes.forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          osc.type = config.type;
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          // Slow LFO-like frequency modulation for organic feel
+          osc.frequency.linearRampToValueAtTime(freq * 1.005, audioCtx.currentTime + 2);
+          osc.frequency.linearRampToValueAtTime(freq * 0.995, audioCtx.currentTime + 4);
+          osc.frequency.linearRampToValueAtTime(freq, audioCtx.currentTime + 6);
+
+          const oscGain = audioCtx.createGain();
+          oscGain.gain.setValueAtTime(0.15 / config.notes.length, audioCtx.currentTime);
+
+          osc.connect(oscGain);
+          oscGain.connect(filter);
+          osc.start(audioCtx.currentTime + i * config.tempo * 0.3);
+          oscs.push(osc);
+        });
+
+        // Store for cleanup
+        currentGain = gainNode;
+        currentSource = { stop: () => oscs.forEach(o => { try { o.stop(); } catch(e) {} }) };
+        currentBtn = btn;
+        btn.classList.add('playing');
+
+        // Auto-stop after 12 seconds for preview
+        setTimeout(() => {
+          if (currentBtn === btn) {
+            stopCurrentSound();
+          }
+        }, 12000);
+      }
+
+      soundBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          playSoundscape(btn.dataset.sound, btn);
+        });
+      });
+    }
+
+    // ═══════════════════════════════════════════
+    // 12. TABLE-LEVEL FOOD VISUALIZATION
     // ═══════════════════════════════════════════
     const foodBtns = document.querySelectorAll('.hr-food-btn');
     const foodPreview = document.querySelector('.hr-food-preview');
