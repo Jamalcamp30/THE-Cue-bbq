@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/intro.css">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
@@ -27,7 +28,31 @@
 <body>
 
   <!-- ═══════════════════════════════════════
-       SITE LOADER — Glowing Coals
+       CINEMATIC BRISKET INTRO — 'cue Logo Reveal
+       ═══════════════════════════════════════ -->
+  <div class="cue-intro" aria-hidden="true">
+    <canvas class="cue-intro__canvas"></canvas>
+    <div class="cue-intro__smoke"></div>
+    <div class="cue-intro__ember-glow"></div>
+    <div class="cue-intro__brisket"></div>
+    <div class="cue-intro__knife-flash"></div>
+    <div class="cue-intro__slash cue-intro__slash--1"></div>
+    <div class="cue-intro__slash cue-intro__slash--2"></div>
+    <div class="cue-intro__slash cue-intro__slash--3"></div>
+    <div class="cue-intro__pulse"></div>
+    <div class="cue-intro__word">
+      <span class="cue-intro__apostrophe">&rsquo;</span>
+      <span class="cue-intro__letter cue-intro__letter--c">c</span>
+      <span class="cue-intro__letter cue-intro__letter--u">u</span>
+      <span class="cue-intro__letter cue-intro__letter--e">e</span>
+    </div>
+    <div class="cue-intro__brand">Barbecue</div>
+    <div class="cue-intro__tagline">Crafted by Fire. Cut with Purpose.</div>
+    <button class="cue-intro__skip" type="button">Skip Intro</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SITE LOADER — Glowing Coals (fallback)
        ═══════════════════════════════════════ -->
   <div class="site-loader" aria-hidden="true">
     <div class="loader-grate">
@@ -2449,6 +2474,7 @@
   <a href="#order" class="order-orb" aria-label="Order Now">🔥</a>
 
   <!-- Scripts -->
+  <script src="js/intro.js"></script>
   <script src="js/particles.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
