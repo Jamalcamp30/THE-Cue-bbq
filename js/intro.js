@@ -58,6 +58,7 @@
   function createEmber() {
     var cx = canvas.width * 0.5;
     var spread = canvas.width * 0.3;
+    var life = Math.random() * 180 + 80;
     return {
       type: 'ember',
       x: cx + (Math.random() - 0.5) * spread,
@@ -65,8 +66,8 @@
       size: Math.random() * 2.5 + 0.8,
       speedY: -(Math.random() * 0.8 + 0.2),
       speedX: (Math.random() - 0.5) * 0.5,
-      life: Math.random() * 180 + 80,
-      maxLife: 0,
+      life: life,
+      maxLife: life,
       wobble: Math.random() * Math.PI * 2,
       hue: Math.random() * 25 + 15,
       brightness: Math.random() * 25 + 65
@@ -76,6 +77,7 @@
   function createSmoke() {
     var cx = canvas.width * 0.5;
     var spread = canvas.width * 0.2;
+    var life = Math.random() * 200 + 100;
     return {
       type: 'smoke',
       x: cx + (Math.random() - 0.5) * spread,
@@ -83,8 +85,8 @@
       size: Math.random() * 30 + 15,
       speedY: -(Math.random() * 0.3 + 0.1),
       speedX: (Math.random() - 0.5) * 0.3,
-      life: Math.random() * 200 + 100,
-      maxLife: 0,
+      life: life,
+      maxLife: life,
       alpha: 0
     };
   }
@@ -94,14 +96,10 @@
     var smokes = particles.filter(function (p) { return p.type === 'smoke'; });
 
     if (embers.length < CONFIG.maxEmbers && Math.random() < CONFIG.emberSpawnRate) {
-      var e = createEmber();
-      e.maxLife = e.life;
-      particles.push(e);
+      particles.push(createEmber());
     }
     if (smokes.length < CONFIG.maxSmoke && Math.random() < CONFIG.smokeSpawnRate) {
-      var s = createSmoke();
-      s.maxLife = s.life;
-      particles.push(s);
+      particles.push(createSmoke());
     }
   }
 
@@ -217,7 +215,6 @@
     /* Burst extra embers on hit */
     for (var i = 0; i < 8; i++) {
       var e = createEmber();
-      e.maxLife = e.life;
       e.speedY = -(Math.random() * 2 + 1);
       e.size = Math.random() * 3 + 1.5;
       particles.push(e);
@@ -304,10 +301,9 @@
     schedule(function () {
       if (isSkipped) return;
       apostrophe.classList.add('letter--revealed');
-      /* Small ember burst for the accent */
+      /* Small ember burst at apostrophe position (offset left of center to match glyph) */
       for (var i = 0; i < 5; i++) {
         var e = createEmber();
-        e.maxLife = e.life;
         e.x = canvas.width * 0.5 - canvas.width * 0.12;
         e.y = canvas.height * 0.42;
         e.speedY = -(Math.random() * 1.5 + 0.5);
