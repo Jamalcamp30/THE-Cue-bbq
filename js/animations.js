@@ -366,6 +366,7 @@
     if (dishesScroll && !isMobile()) {
       let scrollVelocity = 0;
       let lastScrollLeft = dishesScroll.scrollLeft;
+      let scrollTimer;
 
       dishesScroll.addEventListener('scroll', () => {
         scrollVelocity = dishesScroll.scrollLeft - lastScrollLeft;
@@ -376,11 +377,8 @@
           const skew = clamp(scrollVelocity * 0.15, -3, 3);
           card.style.transform = `skewX(${skew}deg)`;
         });
-      });
 
-      // Reset skew when scroll stops
-      let scrollTimer;
-      dishesScroll.addEventListener('scroll', () => {
+        // Reset skew when scroll stops
         clearTimeout(scrollTimer);
         scrollTimer = setTimeout(() => {
           dishesScroll.querySelectorAll('.dish-card').forEach(card => {
@@ -467,7 +465,7 @@
 
     const heroAccent = document.querySelector('.hero__title-cycle');
     if (heroAccent) {
-      const words = ['Homemade Everything', 'Smoke & Soul', 'Southern Craft', 'Live-Fire Luxury'];
+      const words = (heroAccent.dataset.cycleWords || 'Homemade Everything').split(',');
       let currentIndex = 0;
 
       setInterval(() => {
@@ -530,7 +528,7 @@
           menuPanels.forEach(panel => {
             if (panel.dataset.panel === target || target === 'all') {
               panel.style.display = 'grid';
-              // Trigger reflow
+              // Force reflow to ensure CSS transitions fire after display change
               void panel.offsetHeight;
               panel.style.opacity = '1';
               panel.style.transform = 'translateY(0)';
@@ -628,14 +626,15 @@
         }
 
         function createParticle() {
+          const life = Math.random() * 300 + 200;
           return {
             x: Math.random() * canvas.width,
             y: canvas.height + 5,
             size: Math.random() * 2 + 0.5,
             speedY: -(Math.random() * 0.3 + 0.1),
             speedX: (Math.random() - 0.5) * 0.2,
-            life: Math.random() * 300 + 200,
-            maxLife: 0,
+            life: life,
+            maxLife: life,
             hue: Math.random() * 25 + 15,
             wobble: Math.random() * Math.PI * 2,
           };
@@ -646,7 +645,6 @@
 
           if (particles.length < 15 && Math.random() > 0.95) {
             const p = createParticle();
-            p.maxLife = p.life;
             particles.push(p);
           }
 

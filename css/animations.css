@@ -100,7 +100,7 @@
 }
 
 .reveal-diamond.revealed {
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 /* Rotate-in reveal */
@@ -819,12 +819,13 @@ body {
 
 /* ═══════════════════════════════════════════
    STORY SECTION — Image Float
+   Only applied when depth parallax is NOT active
    ═══════════════════════════════════════════ */
-.story__image-main {
+.story__image-main:not([data-depth]) {
   animation: imageFloat 8s ease-in-out infinite;
 }
 
-.story__image-accent {
+.story__image-accent:not([data-depth]) {
   animation: imageFloat 10s ease-in-out infinite reverse;
 }
 
