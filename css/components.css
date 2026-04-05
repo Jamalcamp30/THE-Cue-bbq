@@ -2502,7 +2502,7 @@
 
 .hr-ai-item__label {
   font-family: var(--font-heading);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-muted);
@@ -2634,7 +2634,7 @@
 
 .hr-sound-btn__label {
   font-family: var(--font-heading);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -3732,7 +3732,7 @@
   align-items: center;
   gap: 0.3em;
   font-family: var(--font-heading);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--accent-primary);
@@ -3829,7 +3829,7 @@
 }
 
 .fe-flavor-dot {
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   padding: 0.15em 0.45em;
   border-radius: 3px;
   font-family: var(--font-heading);

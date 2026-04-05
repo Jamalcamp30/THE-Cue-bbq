@@ -1082,7 +1082,11 @@
 
       function generateResponse(parsed) {
         const rec = conciergeRecs[parsed.eventType] || conciergeRecs['birthday'];
-        const eventLabel = roomConfig[parsed.eventType] ? roomConfig[parsed.eventType].label : 'Special Event';
+        const eventLabels = {
+          birthday: 'Birthday Party', rehearsal: 'Rehearsal Dinner', corporate: 'Corporate Event',
+          graduation: 'Graduation Party', holiday: 'Holiday Celebration', teambuilding: 'Team Building'
+        };
+        const eventLabel = eventLabels[parsed.eventType] || 'Special Event';
 
         return `
           <div class="hr-ai-card">
@@ -1270,7 +1274,7 @@
 
         // Store for cleanup
         currentGain = gainNode;
-        currentSource = { stop: () => oscs.forEach(o => { try { o.stop(); } catch(e) {} }) };
+        currentSource = { stop: () => oscs.forEach(o => { try { o.stop(); } catch(e) { /* oscillator already stopped */ } }) };
         currentBtn = btn;
         btn.classList.add('playing');
 
