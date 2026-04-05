@@ -203,7 +203,7 @@ button {
   background: var(--accent-glow);
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 0 40px rgba(212,98,43,0.5);
+  box-shadow: 0 0 40px rgba(153,51,34,0.5);
 }
 
 .btn--secondary {

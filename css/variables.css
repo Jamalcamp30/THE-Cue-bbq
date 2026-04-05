@@ -4,21 +4,21 @@
    ============================================ */
 
 :root {
-  /* ── Core Palette ── */
-  --cue-charcoal:       #1a1714;
-  --cue-smoke:          #2a2520;
-  --cue-ash:            #3d3630;
-  --cue-ember:          #d4622b;
-  --cue-ember-glow:     #f0853a;
-  --cue-flame:          #e8442a;
-  --cue-brass:          #c5a55a;
-  --cue-copper:         #b87333;
-  --cue-bone:           #f5efe6;
-  --cue-parchment:      #ece4d4;
-  --cue-cream:          #faf7f2;
-  --cue-warm-white:     #fff8ef;
-  --cue-gold:           #d4a84b;
-  --cue-deep-red:       #8b2500;
+  /* ── Core Palette — Black / White / Brick-Red Brand Identity ── */
+  --cue-charcoal:       #0d0d0d;
+  --cue-smoke:          #1a1a1a;
+  --cue-ash:            #2a2a2a;
+  --cue-ember:          #993322;
+  --cue-ember-glow:     #b53d2e;
+  --cue-flame:          #cc4433;
+  --cue-brass:          #8b7355;
+  --cue-copper:         #a0845c;
+  --cue-bone:           #ffffff;
+  --cue-parchment:      #f0ece8;
+  --cue-cream:          #f8f6f4;
+  --cue-warm-white:     #fdfcfb;
+  --cue-gold:           #a0845c;
+  --cue-deep-red:       #6b1a0d;
   --cue-forest:         #2d4a2e;
 
   /* ── Semantic Colors ── */
@@ -29,7 +29,7 @@
   --bg-warm:            var(--cue-warm-white);
   --text-primary:       var(--cue-bone);
   --text-secondary:     var(--cue-parchment);
-  --text-muted:         #9a8e80;
+  --text-muted:         #9a9490;
   --text-dark:          var(--cue-charcoal);
   --accent-primary:     var(--cue-ember);
   --accent-secondary:   var(--cue-brass);
@@ -91,9 +91,9 @@
   --shadow-md:          0 4px 12px rgba(0,0,0,0.4);
   --shadow-lg:          0 8px 30px rgba(0,0,0,0.5);
   --shadow-xl:          0 16px 50px rgba(0,0,0,0.6);
-  --shadow-glow:        0 0 30px rgba(212,98,43,0.3);
-  --shadow-ember:       0 0 60px rgba(212,98,43,0.15);
-  --shadow-inner-glow:  inset 0 0 40px rgba(212,98,43,0.08);
+  --shadow-glow:        0 0 30px rgba(153,51,34,0.3);
+  --shadow-ember:       0 0 60px rgba(153,51,34,0.15);
+  --shadow-inner-glow:  inset 0 0 40px rgba(153,51,34,0.08);
 
   /* ── Z-Index ── */
   --z-base:             1;
@@ -104,15 +104,15 @@
   --z-toast:            1500;
 
   /* ── Night Mode Overrides (toggled via .night-mode class) ── */
-  --night-bg:           #0d0b09;
-  --night-accent:       #f0853a;
-  --night-text:         #e8dfd2;
+  --night-bg:           #050505;
+  --night-accent:       #b53d2e;
+  --night-text:         #f0f0f0;
 }
 
 /* ── Night Mode ── */
 .night-mode {
   --bg-primary:       var(--night-bg);
-  --bg-secondary:     #151210;
+  --bg-secondary:     #111111;
   --accent-primary:   var(--night-accent);
   --text-primary:     var(--night-text);
 }
