@@ -22,10 +22,10 @@
     transitionDelay:  7400,
 
     /* Particle system */
-    maxEmbers:     40,
-    maxSmoke:      15,
-    emberSpawnRate: 0.06,
-    smokeSpawnRate: 0.02,
+    maxEmbers:     50,
+    maxSmoke:      18,
+    emberSpawnRate: 0.08,
+    smokeSpawnRate: 0.025,
 
     /* Skip intro shown after (ms) */
     skipShowDelay: 1500
@@ -271,6 +271,7 @@
     /* Phase 4: Slice 1 — 'c' */
     schedule(function () {
       if (isSkipped) return;
+      intro.classList.add('intro--slicing');
       fireSlash(slash1);
       bassHit();
       schedule(function () {
