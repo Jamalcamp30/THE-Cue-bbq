@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuTabsWrap = document.getElementById('menu-tabs-sticky');
 
   // Sticky tabs on scroll
+  // Sticky tabs on scroll (rootMargin offsets by nav bar height ~70px + 1px)
   if (menuTabsWrap) {
     const stickyObserver = new IntersectionObserver(([e]) => {
       menuTabsWrap.classList.toggle('is-stuck', e.intersectionRatio < 1);
