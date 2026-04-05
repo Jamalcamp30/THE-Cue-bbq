@@ -424,6 +424,12 @@
   display: block;
 }
 
+.hero__title-cycle {
+  color: var(--accent-primary);
+  display: block;
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
 .hero__subtitle {
   font-size: var(--text-xl);
   color: var(--text-muted);
@@ -1011,6 +1017,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--space-lg);
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
 }
 
 .menu-item {
