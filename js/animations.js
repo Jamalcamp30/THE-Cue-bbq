@@ -288,13 +288,13 @@
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <path class="smoke-divider__wave"
             d="M0,60 C120,100 240,20 360,60 C480,100 600,20 720,60 C840,100 960,20 1080,60 C1200,100 1320,20 1440,60 L1440,120 L0,120 Z"
-            fill="rgba(212,98,43,0.04)" />
+            fill="rgba(153,51,34,0.04)" />
           <path class="smoke-divider__wave"
             d="M0,80 C180,40 360,100 540,60 C720,20 900,90 1080,50 C1260,10 1350,80 1440,60 L1440,120 L0,120 Z"
-            fill="rgba(212,98,43,0.03)" />
+            fill="rgba(153,51,34,0.03)" />
           <path class="smoke-divider__wave"
             d="M0,50 C200,90 400,30 600,70 C800,110 1000,30 1200,70 C1300,90 1380,50 1440,70 L1440,120 L0,120 Z"
-            fill="rgba(212,98,43,0.02)" />
+            fill="rgba(153,51,34,0.02)" />
         </svg>
       `;
       return div;
@@ -574,7 +574,7 @@
           left: ${x}px;
           top: ${y}px;
           border-radius: 50%;
-          background: rgba(212,98,43,0.3);
+          background: rgba(153,51,34,0.3);
           transform: scale(0);
           animation: rippleExpand 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           pointer-events: none;

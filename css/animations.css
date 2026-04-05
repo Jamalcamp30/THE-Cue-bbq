@@ -19,7 +19,7 @@
    CINEMATIC SITE LOADER — Upgraded
    ═══════════════════════════════════════════ */
 .site-loader {
-  background: radial-gradient(ellipse at 50% 70%, #2a1a0e, #0d0908 60%, #000 100%);
+  background: radial-gradient(ellipse at 50% 70%, #1a0d0d, #080505 60%, #000 100%);
 }
 
 .site-loader .loader-grate {
@@ -228,8 +228,8 @@
   height: 6px;
   border-radius: 50%;
   background: radial-gradient(circle, var(--cue-ember-glow), var(--cue-ember));
-  box-shadow: 0 0 6px 2px rgba(212,98,43,0.4),
-              0 0 12px 4px rgba(212,98,43,0.15);
+  box-shadow: 0 0 6px 2px rgba(153,51,34,0.4),
+              0 0 12px 4px rgba(153,51,34,0.15);
   opacity: 0;
   transition: opacity 0.15s;
   animation: emberFloat 1.5s ease-out forwards;
@@ -312,7 +312,7 @@
   height: 40%;
   background: linear-gradient(
     to top,
-    rgba(212,98,43,0.06) 0%,
+    rgba(153,51,34,0.06) 0%,
     transparent 100%
   );
   animation: heatShimmer 4s ease-in-out infinite;
@@ -337,7 +337,7 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(ellipse at 50% 100%, rgba(212,98,43,0.04) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 100%, rgba(153,51,34,0.04) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.5s;
 }
@@ -372,7 +372,7 @@ body {
   position: absolute;
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle, rgba(212,98,43,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(153,51,34,0.15) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
@@ -410,7 +410,7 @@ body {
   background: linear-gradient(90deg, var(--cue-ember), var(--cue-ember-glow), var(--cue-gold));
   border-radius: 2px;
   transition: width 0.3s var(--anim-ease-smooth);
-  box-shadow: 0 0 10px rgba(212,98,43,0.5);
+  box-shadow: 0 0 10px rgba(153,51,34,0.5);
   position: relative;
 }
 
@@ -424,7 +424,7 @@ body {
   height: 10px;
   border-radius: 50%;
   background: var(--cue-ember-glow);
-  box-shadow: 0 0 15px rgba(240,133,58,0.8);
+  box-shadow: 0 0 15px rgba(181,61,46,0.8);
 }
 
 /* ═══════════════════════════════════════════
@@ -505,7 +505,7 @@ body {
 
 .gift-card-mockup:hover {
   transform: rotate(0deg) scale(1.03) rotateY(8deg) rotateX(-3deg) !important;
-  box-shadow: -20px 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(197,165,90,0.15);
+  box-shadow: -20px 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(139,115,85,0.15);
 }
 
 /* ═══════════════════════════════════════════
@@ -607,7 +607,7 @@ body {
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-  border: 1px solid rgba(212,98,43,0.3);
+  border: 1px solid rgba(153,51,34,0.3);
   animation: orbRipple 3s ease-out infinite;
 }
 
@@ -616,7 +616,7 @@ body {
   position: absolute;
   inset: -16px;
   border-radius: 50%;
-  border: 1px solid rgba(212,98,43,0.15);
+  border: 1px solid rgba(153,51,34,0.15);
   animation: orbRipple 3s ease-out 1s infinite;
 }
 
@@ -679,7 +679,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(212,98,43,0.04),
+    rgba(153,51,34,0.04),
     rgba(255,255,255,0.03),
     transparent
   );
@@ -718,7 +718,7 @@ body {
 
 .artist-card:hover .artist-card__avatar {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 20px rgba(212,98,43,0.3);
+  box-shadow: 0 0 20px rgba(153,51,34,0.3);
   transition: all 0.4s var(--anim-ease-elastic);
 }
 
@@ -730,8 +730,8 @@ body {
 }
 
 @keyframes featuredGlow {
-  from { box-shadow: 0 0 20px rgba(212,98,43,0.2); }
-  to { box-shadow: 0 0 40px rgba(212,98,43,0.4), 0 0 80px rgba(212,98,43,0.1); }
+  from { box-shadow: 0 0 20px rgba(153,51,34,0.2); }
+  to { box-shadow: 0 0 40px rgba(153,51,34,0.4), 0 0 80px rgba(153,51,34,0.1); }
 }
 
 /* ═══════════════════════════════════════════
@@ -741,11 +741,11 @@ body {
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(212,98,43,0.1) 10%,
-    rgba(240,133,58,0.5) 40%,
-    rgba(212,98,43,0.8) 50%,
-    rgba(240,133,58,0.5) 60%,
-    rgba(212,98,43,0.1) 90%,
+    rgba(153,51,34,0.1) 10%,
+    rgba(181,61,46,0.5) 40%,
+    rgba(153,51,34,0.8) 50%,
+    rgba(181,61,46,0.5) 60%,
+    rgba(153,51,34,0.1) 90%,
     transparent
   );
   filter: blur(0.5px);
@@ -762,7 +762,7 @@ body {
   height: 8px;
   border-radius: 50%;
   background: var(--cue-ember-glow);
-  box-shadow: 0 0 12px 4px rgba(240,133,58,0.6);
+  box-shadow: 0 0 12px 4px rgba(181,61,46,0.6);
   animation: trailEmber 1.5s ease-in-out infinite;
 }
 
@@ -787,7 +787,7 @@ body {
   background: linear-gradient(
     to top,
     var(--bg-primary) 0%,
-    rgba(26,23,20,0.8) 30%,
+    rgba(13,13,13,0.8) 30%,
     transparent 100%
   );
 }
@@ -802,8 +802,8 @@ body {
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
-  box-shadow: 0 0 0 3px rgba(212,98,43,0.15),
-              0 0 20px rgba(212,98,43,0.08);
+  box-shadow: 0 0 0 3px rgba(153,51,34,0.15),
+              0 0 20px rgba(153,51,34,0.08);
   transition: all 0.4s var(--anim-ease-expo);
 }
 
@@ -811,8 +811,8 @@ body {
    NEWSLETTER INPUT — Typing Glow
    ═══════════════════════════════════════════ */
 .newsletter__input:focus {
-  box-shadow: 0 0 0 3px rgba(212,98,43,0.15),
-              0 0 30px rgba(212,98,43,0.1);
+  box-shadow: 0 0 0 3px rgba(153,51,34,0.15),
+              0 0 30px rgba(153,51,34,0.1);
   border-color: var(--accent-primary);
   transition: all 0.4s var(--anim-ease-expo);
 }
@@ -845,7 +845,7 @@ body {
 
 .night-mode .mode-toggle__track {
   background: var(--cue-smoke);
-  box-shadow: inset 0 0 10px rgba(240,133,58,0.2);
+  box-shadow: inset 0 0 10px rgba(181,61,46,0.2);
 }
 
 /* ═══════════════════════════════════════════
@@ -973,6 +973,6 @@ body {
 }
 
 @keyframes hrGlowPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(212, 98, 43, 0.1); }
-  50% { box-shadow: 0 0 40px rgba(212, 98, 43, 0.25); }
+  0%, 100% { box-shadow: 0 0 20px rgba(153, 51, 34, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(153, 51, 34, 0.25); }
 }

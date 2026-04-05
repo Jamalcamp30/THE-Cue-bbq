@@ -55,7 +55,7 @@
           ctx.save();
           ctx.globalAlpha = this.opacity;
           const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-          gradient.addColorStop(0, 'rgba(212, 98, 43, 0.15)');
+          gradient.addColorStop(0, 'rgba(153, 51, 34, 0.15)');
           gradient.addColorStop(0.4, 'rgba(58, 50, 42, 0.1)');
           gradient.addColorStop(1, 'rgba(26, 23, 20, 0)');
           ctx.fillStyle = gradient;
@@ -109,7 +109,7 @@
       birthday: {
         label: 'Birthday Party',
         icon: '🎂',
-        lighting: 'linear-gradient(135deg, #3d1a2e 0%, #2a1520 40%, #1a1714 100%)',
+        lighting: 'linear-gradient(135deg, #3d1a2e 0%, #2a1520 40%, #0d0d0d 100%)',
         accent: '#e84ca0',
         glow: 'rgba(232, 76, 160, 0.15)',
         tables: 'round-scattered',
@@ -126,9 +126,8 @@
         label: 'Rehearsal Dinner',
         icon: '💒',
         lighting: 'linear-gradient(135deg, #2a2a1a 0%, #1a1a14 40%, #14120e 100%)',
-        accent: '#d4a84b',
-        glow: 'rgba(212, 168, 75, 0.15)',
-        tables: 'long-formal',
+        accent: '#a0845c',
+        glow: 'rgba(160, 132, 92, 0.15)',
         centerpiece: 'Low florals with taper candles',
         layout: 'Long family-style tables with head table',
         music: 'Soft jazz & acoustic strings',
@@ -190,8 +189,8 @@
         label: 'Team Building',
         icon: '👥',
         lighting: 'linear-gradient(135deg, #1a2520 0%, #14201a 40%, #0e1410 100%)',
-        accent: '#f0853a',
-        glow: 'rgba(240, 133, 58, 0.15)',
+        accent: '#b53d2e',
+        glow: 'rgba(181, 61, 46, 0.15)',
         tables: 'pods-cluster',
         centerpiece: 'Activity supplies & collaborative tools',
         layout: 'Team pods of 6–8 with central activity zone',
@@ -231,7 +230,7 @@
         // Room floor
         rctx.save();
         rctx.globalAlpha = progress;
-        rctx.fillStyle = '#1a1714';
+        rctx.fillStyle = '#0d0d0d';
         rctx.fillRect(0, 0, w, h);
 
         // Room border glow
@@ -698,8 +697,8 @@
       intimate: {
         label: 'Warm & Intimate',
         bg: 'linear-gradient(135deg, #2a1a0a 0%, #1a1208 50%, #0d0b06 100%)',
-        glow: 'rgba(212, 168, 75, 0.2)',
-        accent: '#d4a84b',
+        glow: 'rgba(160, 132, 92, 0.2)',
+        accent: '#a0845c',
         desc: 'Low candlelight, soft jazz, close tables. Every whisper carries warmth.',
         density: 'Close-set round tables, dim lighting, taper candles',
         sound: '♪ Soft jazz & acoustic'
@@ -707,8 +706,8 @@
       southern: {
         label: 'Southern Celebration',
         bg: 'linear-gradient(135deg, #2a1510 0%, #201008 50%, #140a05 100%)',
-        glow: 'rgba(212, 98, 43, 0.2)',
-        accent: '#d4622b',
+        glow: 'rgba(153, 51, 34, 0.2)',
+        accent: '#993322',
         desc: 'Big tables, warm laughter, comfort food abundance. The South at its best.',
         density: 'Long family tables, string lights, mason jar centerpieces',
         sound: '♪ Southern soul & country warmth'
@@ -812,14 +811,14 @@
         ectx.clearRect(0, 0, w, h);
 
         // Room outline
-        ectx.strokeStyle = 'rgba(212, 98, 43, 0.3)';
+        ectx.strokeStyle = 'rgba(153, 51, 34, 0.3)';
         ectx.lineWidth = 1.5;
         ectx.strokeRect(w * 0.05, h * 0.05, w * 0.9, h * 0.9);
 
         // Door
-        ectx.fillStyle = 'rgba(212, 98, 43, 0.5)';
+        ectx.fillStyle = 'rgba(153, 51, 34, 0.5)';
         ectx.fillRect(w * 0.43, h * 0.92, w * 0.14, h * 0.05);
-        ectx.fillStyle = 'rgba(212, 98, 43, 0.7)';
+        ectx.fillStyle = 'rgba(153, 51, 34, 0.7)';
         ectx.font = `${Math.max(9, w * 0.02)}px "Oswald", sans-serif`;
         ectx.textAlign = 'center';
         ectx.fillText('ENTRANCE', w * 0.5, h * 0.98);
@@ -843,15 +842,15 @@
             w * zone.x, h * zone.y, 0,
             w * zone.x, h * zone.y, radius
           );
-          gradient.addColorStop(0, `rgba(212, 98, 43, ${alpha})`);
-          gradient.addColorStop(1, 'rgba(212, 98, 43, 0)');
+          gradient.addColorStop(0, `rgba(153, 51, 34, ${alpha})`);
+          gradient.addColorStop(1, 'rgba(153, 51, 34, 0)');
           ectx.fillStyle = gradient;
           ectx.beginPath();
           ectx.arc(w * zone.x, h * zone.y, radius, 0, Math.PI * 2);
           ectx.fill();
 
           // Label
-          ectx.fillStyle = isHighlighted ? '#d4622b' : 'rgba(245, 239, 230, 0.5)';
+          ectx.fillStyle = isHighlighted ? '#993322' : 'rgba(255, 255, 255, 0.5)';
           ectx.font = `${isHighlighted ? 'bold' : 'normal'} ${Math.max(10, w * 0.022)}px "Oswald", sans-serif`;
           ectx.textAlign = 'center';
           ectx.fillText(zone.label.toUpperCase(), w * zone.x, h * zone.y + 4);
@@ -889,7 +888,7 @@
           const glow = Math.abs(x) < 0.2 && Math.abs(y) < 0.2 ? 0.4 : 0.15;
 
           frame.style.transform = `translate(${moveX}px, ${moveY}px)`;
-          frame.style.boxShadow = `0 0 ${20 + glow * 40}px rgba(212, 98, 43, ${glow})`;
+          frame.style.boxShadow = `0 0 ${20 + glow * 40}px rgba(153, 51, 34, ${glow})`;
         });
       });
 
