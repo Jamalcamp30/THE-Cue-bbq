@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cue Barbecue — Scratch-Made Barbecue Built for Gathering. Slow-smoked meats, live music, catering, and private events across Metro Atlanta.">
+  <meta name="theme-color" content="#1a1714">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cue Barbecue — Where Smoke, Music & Homemade Everything Meet">
+  <meta property="og:description" content="Metro Atlanta's scratch-made barbecue destination. Online ordering, catering, live music, and private events.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.cuebarbecue.com">
+
+  <title>Cue Barbecue — Scratch-Made Barbecue. Built for Gathering.</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       SITE LOADER — Glowing Coals
+       ═══════════════════════════════════════ -->
+  <div class="site-loader" aria-hidden="true">
+    <div class="loader-grate">
+      <div class="loader-coal"></div>
+      <div class="loader-coal"></div>
+      <div class="loader-coal"></div>
+      <div class="loader-coal"></div>
+      <div class="loader-grate-line"></div>
+      <div class="loader-grate-line"></div>
+      <div class="loader-grate-line"></div>
+    </div>
+    <span class="loader-text">Firing Up the Pit</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SMOKE SCROLL LINE
+       ═══════════════════════════════════════ -->
+  <div class="smoke-line" aria-hidden="true">
+    <div class="smoke-line__trail"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo">
+        <span class="nav__logo-icon">🔥</span>
+        CUE
+      </a>
+
+      <ul class="nav__links">
+        <li><a href="#menu" class="nav__link">Menu</a></li>
+        <li><a href="#locations" class="nav__link">Locations</a></li>
+        <li><a href="#catering" class="nav__link">Catering</a></li>
+        <li><a href="#music" class="nav__link">Live Music</a></li>
+        <li><a href="#hickory-room" class="nav__link">Hickory Room</a></li>
+        <li><a href="#gift-cards" class="nav__link">Gift Cards</a></li>
+        <li><a href="#story" class="nav__link">Our Story</a></li>
+      </ul>
+
+      <a href="#order" class="btn btn--primary btn--sm nav__order-btn">Order Now</a>
+
+      <button class="nav__toggle" aria-label="Open menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="nav__mobile-overlay" aria-hidden="true"></div>
+  <div class="nav__mobile" role="dialog" aria-label="Mobile navigation">
+    <a href="#hero" class="nav__mobile-link">Home</a>
+    <a href="#menu" class="nav__mobile-link">Menu</a>
+    <a href="#locations" class="nav__mobile-link">Locations</a>
+    <a href="#catering" class="nav__mobile-link">Catering</a>
+    <a href="#music" class="nav__mobile-link">Live Music</a>
+    <a href="#hickory-room" class="nav__mobile-link">Hickory Room</a>
+    <a href="#gift-cards" class="nav__mobile-link">Gift Cards</a>
+    <a href="#story" class="nav__mobile-link">Our Story</a>
+    <a href="#order" class="btn btn--primary btn--lg" style="margin-top: auto;">Order Now</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       HERO — Cinematic Full-Bleed
+       ═══════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <!-- Background placeholder using CSS gradient -->
+      <div class="hero__bg-image" style="background: linear-gradient(135deg, #2a1a0e 0%, #1a1714 30%, #0d0908 60%, #1a1714 100%); width:100%; height:100%;"></div>
+    </div>
+    <div class="hero__particles" aria-hidden="true"></div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">Metro Atlanta's Scratch-Made Barbecue Destination</p>
+      <h1 class="hero__title">
+        Where Smoke, Music &
+        <span>Homemade Everything</span>
+        Meet.
+      </h1>
+      <p class="hero__subtitle">
+        Slow-smoked meats. Scratch-made sides. Live music every weekend.
+        Three locations built for gathering.
+      </p>
+      <div class="hero__ctas">
+        <a href="#order" class="btn btn--primary btn--lg">🔥 Order Pickup / Delivery</a>
+        <a href="#menu" class="btn btn--secondary btn--lg">View Menu</a>
+        <a href="#catering" class="btn btn--ghost btn--lg">Book Catering</a>
+        <a href="#music" class="btn btn--ghost btn--lg">🎵 Live Music</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll-indicator">
+      <div class="hero__scroll-line"></div>
+      <span class="hero__scroll-text">Explore</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PROOF STRIP — "Why Cue"
+       ═══════════════════════════════════════ -->
+  <section class="proof-strip" aria-label="Why Cue">
+    <div class="container">
+      <div class="proof-strip__grid stagger">
+        <div class="proof-strip__item reveal">
+          <span class="proof-strip__icon">🔥</span>
+          <span class="proof-strip__label">Scratch-Made</span>
+          <span class="proof-strip__sublabel">Everything from scratch</span>
+        </div>
+        <div class="proof-strip__item reveal">
+          <span class="proof-strip__icon">💨</span>
+          <span class="proof-strip__label">Slow-Smoked</span>
+          <span class="proof-strip__sublabel">Low & slow all day</span>
+        </div>
+        <div class="proof-strip__item reveal">
+          <span class="proof-strip__icon">🍺</span>
+          <span class="proof-strip__label">Local Beer & Wine</span>
+          <span class="proof-strip__sublabel">Georgia's finest</span>
+        </div>
+        <div class="proof-strip__item reveal">
+          <span class="proof-strip__icon">🎸</span>
+          <span class="proof-strip__label">Live Music</span>
+          <span class="proof-strip__sublabel">Every Fri & Sat</span>
+        </div>
+        <div class="proof-strip__item reveal">
+          <span class="proof-strip__icon">🎉</span>
+          <span class="proof-strip__label">Catering & Events</span>
+          <span class="proof-strip__sublabel">10 to 1,000 guests</span>
+        </div>
+        <div class="proof-strip__item reveal">
+          <span class="proof-strip__icon">📍</span>
+          <span class="proof-strip__label">3 Locations</span>
+          <span class="proof-strip__sublabel">Metro Atlanta</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       LOCATION CHOOSER — "Choose Your Smokehouse"
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark locations-chooser" id="locations">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">Choose Your Smokehouse</span>
+        <h2 class="section-header__title">Three Locations. One Standard.</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">Each Cue location brings the same scratch-made commitment with its own neighborhood personality.</p>
+      </div>
+
+      <div class="location-cards stagger">
+        <!-- Milton -->
+        <div class="location-card reveal">
+          <div class="location-card__image-wrapper">
+            <div class="location-card__image" style="background: linear-gradient(135deg, #3d2a1a, #1a1714); height: 200px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🏠</div>
+            <span class="location-card__live-badge">🎸 Live Tonight</span>
+          </div>
+          <div class="location-card__body">
+            <h3 class="location-card__name">Cue Milton</h3>
+            <div class="location-card__hours">
+              <span class="location-card__hours-dot"></span>
+              Open Now · Closes 9 PM
+            </div>
+            <div class="location-card__meta">
+              <span class="location-card__tag">Dine In</span>
+              <span class="location-card__tag">Takeout</span>
+              <span class="location-card__tag">Live Music</span>
+              <span class="location-card__tag">Hickory Room</span>
+            </div>
+            <div class="location-card__ctas">
+              <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
+              <a href="#" class="btn btn--ghost btn--sm">Directions</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cumming -->
+        <div class="location-card reveal">
+          <div class="location-card__image-wrapper">
+            <div class="location-card__image" style="background: linear-gradient(135deg, #2d1f14, #1a1714); height: 200px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🏠</div>
+          </div>
+          <div class="location-card__body">
+            <h3 class="location-card__name">Cue Cumming</h3>
+            <div class="location-card__hours">
+              <span class="location-card__hours-dot"></span>
+              Open Now · Closes 9 PM
+            </div>
+            <div class="location-card__meta">
+              <span class="location-card__tag">Dine In</span>
+              <span class="location-card__tag">Takeout</span>
+              <span class="location-card__tag">Catering</span>
+            </div>
+            <div class="location-card__ctas">
+              <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
+              <a href="#" class="btn btn--ghost btn--sm">Directions</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Peachtree Corners -->
+        <div class="location-card reveal">
+          <div class="location-card__image-wrapper">
+            <div class="location-card__image" style="background: linear-gradient(135deg, #352517, #1a1714); height: 200px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🏠</div>
+          </div>
+          <div class="location-card__body">
+            <h3 class="location-card__name">Cue Peachtree Corners</h3>
+            <div class="location-card__hours">
+              <span class="location-card__hours-dot"></span>
+              Open Now · Closes 9 PM
+            </div>
+            <div class="location-card__meta">
+              <span class="location-card__tag">Dine In</span>
+              <span class="location-card__tag">Takeout</span>
+              <span class="location-card__tag">Private Events</span>
+            </div>
+            <div class="location-card__ctas">
+              <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
+              <a href="#" class="btn btn--ghost btn--sm">Directions</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       INTENT PATHS — "I'm Here To..."
+       ═══════════════════════════════════════ -->
+  <section class="section section--smoke intent-paths" id="order">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">How can we serve you?</span>
+        <h2 class="section-header__title">I'm Here To...</h2>
+        <hr class="section-header__rule">
+      </div>
+
+      <div class="intent-grid stagger">
+        <div class="intent-card reveal" onclick="window.location.hash='#menu'">
+          <span class="intent-card__icon">🍽️</span>
+          <h3 class="intent-card__title">Order Food</h3>
+          <p class="intent-card__desc">Pickup, delivery, or dine-in. Get your barbecue fix now.</p>
+        </div>
+        <div class="intent-card reveal" onclick="window.location.hash='#catering'">
+          <span class="intent-card__icon">🎪</span>
+          <h3 class="intent-card__title">Plan Catering</h3>
+          <p class="intent-card__desc">Feed 10 to 1,000. Office lunches, weddings, tailgates.</p>
+        </div>
+        <div class="intent-card reveal" onclick="window.location.hash='#hickory-room'">
+          <span class="intent-card__icon">🥂</span>
+          <h3 class="intent-card__title">Book a Group Event</h3>
+          <p class="intent-card__desc">Private dining in our Hickory Room for any occasion.</p>
+        </div>
+        <div class="intent-card reveal" onclick="window.location.hash='#music'">
+          <span class="intent-card__icon">🎵</span>
+          <h3 class="intent-card__title">Find Live Music</h3>
+          <p class="intent-card__desc">Every Friday &amp; Saturday. See who's playing tonight.</p>
+        </div>
+        <div class="intent-card reveal" onclick="window.location.hash='#locations'">
+          <span class="intent-card__icon">📍</span>
+          <h3 class="intent-card__title">Pick a Location</h3>
+          <p class="intent-card__desc">Milton, Cumming, or Peachtree Corners. We're nearby.</p>
+        </div>
+        <div class="intent-card reveal">
+          <span class="intent-card__icon">🏢</span>
+          <h3 class="intent-card__title">Explore Franchising</h3>
+          <p class="intent-card__desc">Bring Cue to your community. Learn about ownership.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SIGNATURE DISHES — Spotlight Reel
+       ═══════════════════════════════════════ -->
+  <section class="section section--smoke signature-dishes">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">The Headliners</span>
+        <h2 class="section-header__title">Signature Dishes</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">The dishes that made Cue famous. Scratch-made. Slow-smoked. Unforgettable.</p>
+      </div>
+    </div>
+
+    <div class="container-wide" style="padding: 0 var(--space-xl);">
+      <div class="dishes-scroll">
+        <!-- Brisket -->
+        <div class="dish-card reveal-scale">
+          <div class="dish-card__image-wrap">
+            <div class="dish-card__image" style="background: linear-gradient(135deg, #4a2810, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🥩</div>
+            <div class="dish-card__smoke-overlay"></div>
+            <span class="dish-card__badge">Fan Favorite</span>
+          </div>
+          <div class="dish-card__body">
+            <h3 class="dish-card__name">Slow-Smoked Brisket</h3>
+            <p class="dish-card__flavor">Smoky · Rich · Tender</p>
+            <p class="dish-card__desc">14 hours over hickory and oak. Hand-sliced to order. The centerpiece of every Cue table.</p>
+            <div class="dish-card__tags">
+              <span class="dish-card__tag">Best Seller</span>
+              <span class="dish-card__tag">Staff Pick</span>
+              <span class="dish-card__tag">Shareable</span>
+            </div>
+            <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
+          </div>
+        </div>
+
+        <!-- Ribs -->
+        <div class="dish-card reveal-scale">
+          <div class="dish-card__image-wrap">
+            <div class="dish-card__image" style="background: linear-gradient(135deg, #5a2010, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍖</div>
+            <div class="dish-card__smoke-overlay"></div>
+            <span class="dish-card__badge">Signature</span>
+          </div>
+          <div class="dish-card__body">
+            <h3 class="dish-card__name">St. Louis Ribs</h3>
+            <p class="dish-card__flavor">Sweet · Smoky · Fall-Off-Bone</p>
+            <p class="dish-card__desc">Dry-rubbed, slow-smoked, finished with our house glaze. Available by the half or full rack.</p>
+            <div class="dish-card__tags">
+              <span class="dish-card__tag">Signature</span>
+              <span class="dish-card__tag">Date Night</span>
+            </div>
+            <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
+          </div>
+        </div>
+
+        <!-- BBQ Nachos -->
+        <div class="dish-card reveal-scale">
+          <div class="dish-card__image-wrap">
+            <div class="dish-card__image" style="background: linear-gradient(135deg, #4a3510, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🧀</div>
+            <div class="dish-card__smoke-overlay"></div>
+            <span class="dish-card__badge">Crowd Pleaser</span>
+          </div>
+          <div class="dish-card__body">
+            <h3 class="dish-card__name">BBQ Nachos</h3>
+            <p class="dish-card__flavor">Loaded · Smoky · Crunchy</p>
+            <p class="dish-card__desc">Tortilla chips piled with pulled pork, queso, jalapeños, slaw, and house barbecue sauce.</p>
+            <div class="dish-card__tags">
+              <span class="dish-card__tag">Shareable</span>
+              <span class="dish-card__tag">Game Day</span>
+            </div>
+            <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
+          </div>
+        </div>
+
+        <!-- Smoked Wings -->
+        <div class="dish-card reveal-scale">
+          <div class="dish-card__image-wrap">
+            <div class="dish-card__image" style="background: linear-gradient(135deg, #3a2510, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍗</div>
+            <div class="dish-card__smoke-overlay"></div>
+            <span class="dish-card__badge">Must Try</span>
+          </div>
+          <div class="dish-card__body">
+            <h3 class="dish-card__name">Smoked Jumbo Wings</h3>
+            <p class="dish-card__flavor">Crispy · Smoky · Saucy</p>
+            <p class="dish-card__desc">Brined overnight, smoked low, then fried to golden perfection. Tossed in your choice of sauce.</p>
+            <div class="dish-card__tags">
+              <span class="dish-card__tag">First Timer</span>
+              <span class="dish-card__tag">Shareable</span>
+            </div>
+            <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
+          </div>
+        </div>
+
+        <!-- Mac Slammer -->
+        <div class="dish-card reveal-scale">
+          <div class="dish-card__image-wrap">
+            <div class="dish-card__image" style="background: linear-gradient(135deg, #4a3a10, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🧈</div>
+            <div class="dish-card__smoke-overlay"></div>
+            <span class="dish-card__badge">Legendary</span>
+          </div>
+          <div class="dish-card__body">
+            <h3 class="dish-card__name">Macaroni Slammer</h3>
+            <p class="dish-card__flavor">Creamy · Rich · Indulgent</p>
+            <p class="dish-card__desc">Five-cheese baked mac & cheese. A Cue original. You'll want a side and the whole tray.</p>
+            <div class="dish-card__tags">
+              <span class="dish-card__tag">Fan Favorite</span>
+              <span class="dish-card__tag">Kids Love It</span>
+            </div>
+            <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
+          </div>
+        </div>
+
+        <!-- Banana Pudding -->
+        <div class="dish-card reveal-scale">
+          <div class="dish-card__image-wrap">
+            <div class="dish-card__image" style="background: linear-gradient(135deg, #4a3815, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍌</div>
+            <div class="dish-card__smoke-overlay"></div>
+            <span class="dish-card__badge">Sweet Finish</span>
+          </div>
+          <div class="dish-card__body">
+            <h3 class="dish-card__name">Banana Pudding</h3>
+            <p class="dish-card__flavor">Sweet · Creamy · Southern</p>
+            <p class="dish-card__desc">House-made custard, fresh bananas, vanilla wafers. The only way to end a Cue meal.</p>
+            <div class="dish-card__tags">
+              <span class="dish-card__tag">Scratch-Made</span>
+              <span class="dish-card__tag">Dessert</span>
+            </div>
+            <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FIRE TO TABLE — Interactive Storytelling
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark fire-to-table">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">Our Process</span>
+        <h2 class="section-header__title">From Fire to Table</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">Every dish at Cue follows the same uncompromising path from raw ingredient to your plate.</p>
+      </div>
+    </div>
+
+    <div class="container-wide" style="padding: 0 var(--space-xl);">
+      <div class="ftt-stages">
+        <div class="ftt-stage">
+          <div class="ftt-stage__inner">
+            <div class="ftt-stage__number">01</div>
+            <span class="ftt-stage__icon">🧂</span>
+            <h3 class="ftt-stage__title">The Rub</h3>
+            <p class="ftt-stage__desc">Our proprietary spice blend is hand-mixed in-house. Each protein gets its own unique combination of heat, sweet, and savory.</p>
+          </div>
+          <div class="ftt-stage__connector"></div>
+        </div>
+        <div class="ftt-stage">
+          <div class="ftt-stage__inner">
+            <div class="ftt-stage__number">02</div>
+            <span class="ftt-stage__icon">💨</span>
+            <h3 class="ftt-stage__title">The Smoke</h3>
+            <p class="ftt-stage__desc">Hickory and oak logs. Low heat. Long hours. Our pitmasters tend fires through the night so your lunch is perfect.</p>
+          </div>
+          <div class="ftt-stage__connector"></div>
+        </div>
+        <div class="ftt-stage">
+          <div class="ftt-stage__inner">
+            <div class="ftt-stage__number">03</div>
+            <span class="ftt-stage__icon">🔪</span>
+            <h3 class="ftt-stage__title">The Slice</h3>
+            <p class="ftt-stage__desc">Every brisket is hand-sliced to order. Every rack is cut with care. We don't batch — we craft.</p>
+          </div>
+          <div class="ftt-stage__connector"></div>
+        </div>
+        <div class="ftt-stage">
+          <div class="ftt-stage__inner">
+            <div class="ftt-stage__number">04</div>
+            <span class="ftt-stage__icon">🫗</span>
+            <h3 class="ftt-stage__title">The Sauce</h3>
+            <p class="ftt-stage__desc">House-made sauces in multiple styles — tangy Carolina, sweet Kansas City, spicy Texas heat. Your choice, always.</p>
+          </div>
+          <div class="ftt-stage__connector"></div>
+        </div>
+        <div class="ftt-stage">
+          <div class="ftt-stage__inner">
+            <div class="ftt-stage__number">05</div>
+            <span class="ftt-stage__icon">🍽️</span>
+            <h3 class="ftt-stage__title">The Serve</h3>
+            <p class="ftt-stage__desc">Plated with pride, paired with scratch-made sides, and served with Southern hospitality. That's the Cue Standard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PREMIUM MENU EXPLORER
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark menu-explorer" id="menu">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">Homemade Everything, Y'all</span>
+        <h2 class="section-header__title">The Menu</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">Every item made from scratch. Every meat slow-smoked. Every side handcrafted. No shortcuts.</p>
+      </div>
+
+      <div class="menu-tabs reveal">
+        <button class="menu-tab active" data-tab="all">All</button>
+        <button class="menu-tab" data-tab="starters">Starters</button>
+        <button class="menu-tab" data-tab="platters">Platters</button>
+        <button class="menu-tab" data-tab="sandwiches">Sandwiches</button>
+        <button class="menu-tab" data-tab="sides">Sides</button>
+        <button class="menu-tab" data-tab="desserts">Desserts</button>
+        <button class="menu-tab" data-tab="drinks">Beer & Wine</button>
+        <button class="menu-tab" data-tab="kids">Kids</button>
+      </div>
+
+      <!-- Starters -->
+      <div class="menu-grid menu-panel" data-panel="starters">
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">BBQ Nachos</div>
+            <div class="menu-item__desc">Pulled pork, queso, jalapeños, slaw, house BBQ sauce over tortilla chips</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Shareable</span><span class="menu-item__badge">Best Seller</span></div>
+          </div>
+          <div class="menu-item__price">$14</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Smoked Jumbo Wings</div>
+            <div class="menu-item__desc">Brined, smoked, fried crispy. Choice of sauce: classic, hot, garlic parm, or dry rub</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Must Try</span></div>
+          </div>
+          <div class="menu-item__price">$15</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Pimento Cheese Dip</div>
+            <div class="menu-item__desc">House-made pimento cheese with cracklin' chips and pickled vegetables</div>
+          </div>
+          <div class="menu-item__price">$11</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Fried Pickles</div>
+            <div class="menu-item__desc">Hand-breaded dill pickle chips with ranch dipping sauce</div>
+          </div>
+          <div class="menu-item__price">$10</div>
+        </div>
+      </div>
+
+      <!-- Platters -->
+      <div class="menu-grid menu-panel" data-panel="platters">
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Brisket Platter</div>
+            <div class="menu-item__desc">14-hour slow-smoked brisket, hand-sliced. Two sides and Texas toast</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Fan Favorite</span></div>
+          </div>
+          <div class="menu-item__price">$22</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">St. Louis Ribs</div>
+            <div class="menu-item__desc">Dry-rubbed, slow-smoked, house glaze. Half or full rack with two sides</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Signature</span></div>
+          </div>
+          <div class="menu-item__price">$19 / $28</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Pulled Pork Platter</div>
+            <div class="menu-item__desc">Hand-pulled smoked pork shoulder with two sides and Texas toast</div>
+          </div>
+          <div class="menu-item__price">$17</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Hot Links Platter</div>
+            <div class="menu-item__desc">House-smoked spicy sausage with two sides and Texas toast</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">🌶️ Spicy</span></div>
+          </div>
+          <div class="menu-item__price">$18</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Smoked Turkey Platter</div>
+            <div class="menu-item__desc">Slow-smoked turkey breast, sliced thin. Two sides and Texas toast</div>
+          </div>
+          <div class="menu-item__price">$18</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">The Pitmaster Combo</div>
+            <div class="menu-item__desc">Choose any three meats with two sides. The full Cue experience</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Staff Pick</span></div>
+          </div>
+          <div class="menu-item__price">$29</div>
+        </div>
+      </div>
+
+      <!-- Sandwiches -->
+      <div class="menu-grid menu-panel" data-panel="sandwiches">
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Pulled Pork Sandwich</div>
+            <div class="menu-item__desc">Hand-pulled pork, house sauce, pickles on a brioche bun</div>
+          </div>
+          <div class="menu-item__price">$13</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Brisket Sandwich</div>
+            <div class="menu-item__desc">Sliced brisket, caramelized onions, pickles, house sauce on brioche</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Popular</span></div>
+          </div>
+          <div class="menu-item__price">$16</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Smoked Turkey Club</div>
+            <div class="menu-item__desc">Smoked turkey, bacon, lettuce, tomato, avocado, chipotle mayo</div>
+          </div>
+          <div class="menu-item__price">$14</div>
+        </div>
+      </div>
+
+      <!-- Sides -->
+      <div class="menu-grid menu-panel" data-panel="sides">
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Macaroni Slammer</div>
+            <div class="menu-item__desc">Five-cheese baked mac & cheese. A Cue legend</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Legendary</span></div>
+          </div>
+          <div class="menu-item__price">$6</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Bacon Baked Beans</div>
+            <div class="menu-item__desc">Slow-cooked with smoked bacon, molasses, and brown sugar</div>
+          </div>
+          <div class="menu-item__price">$5</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Collard Greens</div>
+            <div class="menu-item__desc">Slow-braised with smoked ham hocks and vinegar pot liquor</div>
+          </div>
+          <div class="menu-item__price">$5</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Hand-Cut Fries</div>
+            <div class="menu-item__desc">Thick-cut, double-fried, seasoned with our house blend</div>
+          </div>
+          <div class="menu-item__price">$5</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Fried Okra</div>
+            <div class="menu-item__desc">Cornmeal-crusted, served with buttermilk ranch</div>
+          </div>
+          <div class="menu-item__price">$5</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Grilled Pineapple</div>
+            <div class="menu-item__desc">Caramelized with cinnamon butter. Our wildcard side</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Unique</span></div>
+          </div>
+          <div class="menu-item__price">$5</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">House Pickles</div>
+            <div class="menu-item__desc">Made fresh daily with our secret brine recipe</div>
+          </div>
+          <div class="menu-item__price">$4</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Coleslaw</div>
+            <div class="menu-item__desc">Creamy & tangy, made fresh. Perfect with any meat</div>
+          </div>
+          <div class="menu-item__price">$4</div>
+        </div>
+      </div>
+
+      <!-- Desserts -->
+      <div class="menu-grid menu-panel" data-panel="desserts">
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Banana Pudding</div>
+            <div class="menu-item__desc">Scratch-made custard, fresh bananas, vanilla wafers. Southern classic</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Fan Favorite</span></div>
+          </div>
+          <div class="menu-item__price">$7</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Bananas Doster</div>
+            <div class="menu-item__desc">Warm bananas foster with caramel, brown sugar, and vanilla ice cream</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Must Try</span></div>
+          </div>
+          <div class="menu-item__price">$9</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Seasonal Cobbler</div>
+            <div class="menu-item__desc">Rotating seasonal fruit cobbler with vanilla ice cream. Ask your server!</div>
+            <div class="menu-item__badges"><span class="menu-item__badge">Seasonal</span></div>
+          </div>
+          <div class="menu-item__price">$8</div>
+        </div>
+      </div>
+
+      <!-- Beer & Wine -->
+      <div class="menu-grid menu-panel" data-panel="drinks">
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Local Craft Drafts</div>
+            <div class="menu-item__desc">Rotating selection of Georgia craft beers on tap</div>
+          </div>
+          <div class="menu-item__price">$6–$9</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Domestic & Import Bottles</div>
+            <div class="menu-item__desc">Full selection of your favorites, served cold</div>
+          </div>
+          <div class="menu-item__price">$4–$7</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">House Wines</div>
+            <div class="menu-item__desc">Red, white, and rosé by the glass or bottle</div>
+          </div>
+          <div class="menu-item__price">$8–$12</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Sweet Tea / Unsweet Tea</div>
+            <div class="menu-item__desc">Brewed fresh daily. Unlimited refills</div>
+          </div>
+          <div class="menu-item__price">$3</div>
+        </div>
+      </div>
+
+      <!-- Kids -->
+      <div class="menu-grid menu-panel" data-panel="kids">
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Kids Pulled Pork</div>
+            <div class="menu-item__desc">Pulled pork slider with one side and a drink</div>
+          </div>
+          <div class="menu-item__price">$8</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Kids Mac & Cheese</div>
+            <div class="menu-item__desc">Our famous Macaroni Slammer, kid-sized, with a drink</div>
+          </div>
+          <div class="menu-item__price">$7</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item__info">
+            <div class="menu-item__name">Kids Chicken Tenders</div>
+            <div class="menu-item__desc">Hand-breaded chicken tenders with fries and a drink</div>
+          </div>
+          <div class="menu-item__price">$8</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FLAVOR MAP — Interactive Discovery
+       ═══════════════════════════════════════ -->
+  <section class="section section--smoke flavor-map">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">Find Your Flavor</span>
+        <h2 class="section-header__title">The Flavor Map</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">Tell us what you crave and we'll tell you what to order.</p>
+      </div>
+
+      <div class="flavor-wheel reveal">
+        <button class="flavor-tag" data-flavor="smoky">🔥 Smoky</button>
+        <button class="flavor-tag" data-flavor="sweet">🍯 Sweet</button>
+        <button class="flavor-tag" data-flavor="tangy">🍋 Tangy</button>
+        <button class="flavor-tag" data-flavor="spicy">🌶️ Spicy</button>
+        <button class="flavor-tag" data-flavor="rich">🧈 Rich</button>
+        <button class="flavor-tag" data-flavor="crispy">🍟 Crispy</button>
+        <button class="flavor-tag" data-flavor="creamy">🍦 Creamy</button>
+        <button class="flavor-tag" data-flavor="savory">🥩 Savory</button>
+        <button class="flavor-tag" data-flavor="shareable">🤝 Shareable</button>
+      </div>
+
+      <div class="flavor-results">
+        <p style="text-align:center; color:var(--text-muted); grid-column:1/-1;">Select flavor profiles above to discover your perfect dish</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CATERING MICROSITE
+       ═══════════════════════════════════════ -->
+  <section class="section section--smoke catering" id="catering">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">Feed the Crowd</span>
+        <h2 class="section-header__title">Catering by Cue</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">From office lunches to wedding receptions, tailgates to corporate events. Scratch-made barbecue for 10 to 1,000.</p>
+      </div>
+
+      <div class="catering-packages stagger">
+        <!-- Essentials -->
+        <div class="catering-package reveal">
+          <h3 class="catering-package__name">The Essentials</h3>
+          <p class="catering-package__serves">Serves 10–25</p>
+          <ul class="catering-package__features">
+            <li class="catering-package__feature">Choice of 2 meats</li>
+            <li class="catering-package__feature">2 scratch-made sides</li>
+            <li class="catering-package__feature">Texas toast</li>
+            <li class="catering-package__feature">House sauces &amp; pickles</li>
+            <li class="catering-package__feature">Plates, napkins, utensils</li>
+          </ul>
+          <a href="#quote" class="btn btn--secondary">Get a Quote</a>
+        </div>
+
+        <!-- Pitmaster (Featured) -->
+        <div class="catering-package catering-package--featured reveal">
+          <h3 class="catering-package__name">The Pitmaster</h3>
+          <p class="catering-package__serves">Serves 25–75</p>
+          <ul class="catering-package__features">
+            <li class="catering-package__feature">Choice of 3 meats</li>
+            <li class="catering-package__feature">3 scratch-made sides</li>
+            <li class="catering-package__feature">Texas toast &amp; rolls</li>
+            <li class="catering-package__feature">All house sauces</li>
+            <li class="catering-package__feature">Banana pudding dessert tray</li>
+            <li class="catering-package__feature">Sweet tea &amp; lemonade</li>
+            <li class="catering-package__feature">Full setup &amp; serving</li>
+          </ul>
+          <a href="#quote" class="btn btn--primary">Get a Quote</a>
+        </div>
+
+        <!-- Full Smokehouse -->
+        <div class="catering-package reveal">
+          <h3 class="catering-package__name">Full Smokehouse</h3>
+          <p class="catering-package__serves">Serves 75–1,000</p>
+          <ul class="catering-package__features">
+            <li class="catering-package__feature">Full meat selection</li>
+            <li class="catering-package__feature">4+ scratch-made sides</li>
+            <li class="catering-package__feature">All breads &amp; fixings</li>
+            <li class="catering-package__feature">Dessert platters</li>
+            <li class="catering-package__feature">Beverage service</li>
+            <li class="catering-package__feature">On-site pitmaster &amp; staff</li>
+            <li class="catering-package__feature">Custom menu planning</li>
+            <li class="catering-package__feature">Equipment &amp; full breakdown</li>
+          </ul>
+          <a href="#quote" class="btn btn--secondary">Get a Quote</a>
+        </div>
+      </div>
+
+      <!-- Quote Form -->
+      <div id="quote" class="reveal">
+        <div class="section-header" style="margin-top: var(--space-3xl);">
+          <span class="section-header__eyebrow">Get Your Quote in 60 Seconds</span>
+          <h3 class="section-header__title" style="font-size: var(--text-2xl);">Request a Catering Quote</h3>
+          <hr class="section-header__rule">
+        </div>
+
+        <form class="quote-form" action="#" method="post">
+          <div class="quote-form__grid">
+            <div class="form-group">
+              <label class="form-label" for="catering-name">Your Name</label>
+              <input class="form-input" type="text" id="catering-name" required placeholder="Full name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="catering-email">Email</label>
+              <input class="form-input" type="email" id="catering-email" required placeholder="you@email.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="catering-phone">Phone</label>
+              <input class="form-input" type="tel" id="catering-phone" placeholder="(770) 555-0000">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="catering-guests">Guest Count</label>
+              <select class="form-select" id="catering-guests">
+                <option>10–25 guests</option>
+                <option>25–50 guests</option>
+                <option>50–100 guests</option>
+                <option>100–250 guests</option>
+                <option>250–500 guests</option>
+                <option>500+ guests</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="catering-type">Event Type</label>
+              <select class="form-select" id="catering-type">
+                <option>Office Lunch</option>
+                <option>Wedding / Reception</option>
+                <option>Birthday Party</option>
+                <option>Corporate Event</option>
+                <option>Tailgate / Watch Party</option>
+                <option>Graduation</option>
+                <option>Holiday Party</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="catering-date">Preferred Date</label>
+              <input class="form-input" type="date" id="catering-date">
+            </div>
+            <div class="form-group form-group--full">
+              <label class="form-label" for="catering-details">Tell Us More</label>
+              <textarea class="form-textarea" id="catering-details" placeholder="Dietary needs, special requests, budget range, pickup vs. delivery vs. full service..."></textarea>
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn--primary btn--lg">🔥 Get My Quote</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       LIVE MUSIC — Culture Page
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark live-music" id="music">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">Smoke. Soul. Sound.</span>
+        <h2 class="section-header__title">Live Music at Cue</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">Every Friday and Saturday night, Cue comes alive with the best local artists, cold beer, and the warmest atmosphere in Metro Atlanta.</p>
+      </div>
+
+      <div class="music-featured reveal">
+        <div class="music-featured__visual">
+          <div class="music-featured__image" style="background: linear-gradient(135deg, #2a1505 0%, #0d0908 100%); display:flex; align-items:center; justify-content:center; font-size:5rem; border-radius: var(--border-radius-lg);">🎸</div>
+          <span class="music-tonight-badge">🔴 Live Tonight</span>
+        </div>
+        <div class="music-featured__info">
+          <span class="section-header__eyebrow">Tonight at Cue Milton</span>
+          <h3>Jake Williams Band</h3>
+          <p>Country rock meets Southern blues. Jake and his band bring the house down every time they hit the Cue stage. Don't miss this one.</p>
+          <p style="color: var(--accent-primary); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em;">Friday · 7:00 PM – 10:00 PM</p>
+          <div style="display:flex; gap: var(--space-md); margin-top: var(--space-lg);">
+            <a href="#locations" class="btn btn--primary">Reserve Your Spot</a>
+            <a href="#" class="btn btn--ghost">Full Calendar</a>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="text-center reveal" style="margin-bottom: var(--space-2xl); color: var(--text-muted);">Coming Up This Month</h4>
+
+      <div class="artist-grid stagger">
+        <div class="artist-card reveal">
+          <div class="artist-card__avatar">🎤</div>
+          <h5 class="artist-card__name">Sarah Mitchell</h5>
+          <p class="artist-card__genre">Acoustic Soul</p>
+          <p class="artist-card__date">Sat, Apr 11 · Milton</p>
+          <div class="equalizer">
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+          </div>
+        </div>
+        <div class="artist-card reveal">
+          <div class="artist-card__avatar">🎹</div>
+          <h5 class="artist-card__name">The Porch Sitters</h5>
+          <p class="artist-card__genre">Bluegrass / Folk</p>
+          <p class="artist-card__date">Fri, Apr 17 · Milton</p>
+          <div class="equalizer">
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+          </div>
+        </div>
+        <div class="artist-card reveal">
+          <div class="artist-card__avatar">🎷</div>
+          <h5 class="artist-card__name">Marcus Cole Trio</h5>
+          <p class="artist-card__genre">Jazz / Blues</p>
+          <p class="artist-card__date">Sat, Apr 18 · Milton</p>
+          <div class="equalizer">
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+          </div>
+        </div>
+        <div class="artist-card reveal">
+          <div class="artist-card__avatar">🎸</div>
+          <h5 class="artist-card__name">Red Clay Revival</h5>
+          <p class="artist-card__genre">Southern Rock</p>
+          <p class="artist-card__date">Fri, Apr 24 · Milton</p>
+          <div class="equalizer">
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+            <div class="equalizer__bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       HICKORY ROOM — Private Events
+       ═══════════════════════════════════════ -->
+  <section class="section section--smoke hickory-room" id="hickory-room">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">Private Dining</span>
+        <h2 class="section-header__title">The Hickory Room</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">Our private event space for celebrations, corporate gatherings, and milestone moments. Scratch-made barbecue with exclusive service.</p>
+      </div>
+
+      <div class="hickory-room__hero reveal">
+        <div class="hickory-room__gallery">
+          <div class="hickory-room__gallery-img" style="background: linear-gradient(135deg, #3d2a1a, #1a1714); display:flex; align-items:center; justify-content:center; font-size:3rem;">🏛️</div>
+          <div class="hickory-room__gallery-img" style="background: linear-gradient(135deg, #2a2015, #1a1714); aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:2rem;">🍽️</div>
+          <div class="hickory-room__gallery-img" style="background: linear-gradient(135deg, #352517, #1a1714); aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:2rem;">🥂</div>
+        </div>
+
+        <div>
+          <span class="section-header__eyebrow">Your Event, Our Space</span>
+          <h3 style="margin-bottom: var(--space-lg);">Where Memorable Moments Are Made</h3>
+          <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg);">
+            The Hickory Room accommodates 20 to 80 guests with flexible layouts, dedicated staff, custom menus, and the full Cue atmosphere. From rehearsal dinners to corporate retreats, we make every gathering unforgettable.
+          </p>
+
+          <div class="event-types">
+            <div class="event-type">🎂 Birthday Parties</div>
+            <div class="event-type">💒 Rehearsal Dinners</div>
+            <div class="event-type">🏢 Corporate Events</div>
+            <div class="event-type">🎓 Graduation Parties</div>
+            <div class="event-type">🎄 Holiday Celebrations</div>
+            <div class="event-type">👥 Team Building</div>
+          </div>
+
+          <div style="display:flex; gap: var(--space-md); margin-top: var(--space-2xl);">
+            <a href="#quote" class="btn btn--primary btn--lg">Inquire About Booking</a>
+            <a href="#" class="btn btn--ghost btn--lg">Download Event Kit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       "WHAT SHOULD I ORDER?" QUIZ
+       ═══════════════════════════════════════ -->
+  <section class="section section--smoke quiz">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">First Time?</span>
+        <h2 class="section-header__title">What Should I Order?</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">Take our 30-second quiz and we'll match you with your perfect Cue meal.</p>
+      </div>
+
+      <div class="quiz-container reveal">
+        <!-- Question 1 -->
+        <div class="quiz-question active" data-step="0">
+          <p class="quiz-question__text">How do you like your flavors?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="bold">🔥 Bold & Intense</button>
+            <button class="quiz-option" data-value="mild">🌿 Mellow & Balanced</button>
+            <button class="quiz-option" data-value="adventurous">🌶️ Surprise Me</button>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-question" data-step="1">
+          <p class="quiz-question__text">How hungry are you?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="big">🍖 Feed Me Everything</button>
+            <button class="quiz-option" data-value="light">🥗 Keep It Reasonable</button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="quiz-result">
+          <p class="section-header__eyebrow">Your Perfect Order</p>
+          <h3 class="quiz-result__dish">Loading...</h3>
+          <p class="quiz-result__why">Finding your match...</p>
+          <div style="display:flex; gap: var(--space-md); justify-content:center; margin-top: var(--space-xl);">
+            <a href="#order" class="btn btn--primary">Order This Now</a>
+            <button class="btn btn--ghost quiz-restart">Try Again</button>
+          </div>
+        </div>
+
+        <div class="quiz-progress">
+          <span class="quiz-dot"></span>
+          <span class="quiz-dot"></span>
+          <span class="quiz-dot"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       GIFT CARDS
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark gift-cards" id="gift-cards">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">Give the Gift of Smoke</span>
+        <h2 class="section-header__title">Gift Cards</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">Know someone who deserves great barbecue? Send them a Cue gift card. E-gift or physical, they'll love you for it.</p>
+      </div>
+
+      <div class="gift-card-display reveal">
+        <div class="gift-card-visual">
+          <div class="gift-card-mockup">
+            <div>
+              <div class="gift-card-mockup__logo">CUE BARBECUE</div>
+              <div class="gift-card-mockup__tagline">Homemade Everything, Y'all</div>
+            </div>
+            <div class="gift-card-mockup__amount">$50</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom: var(--space-md);">Dinner's on You</h3>
+          <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg);">
+            Whether it's a birthday, thank you, holiday, or just because — a Cue gift card is always the right move. Redeemable at all three locations.
+          </p>
+
+          <p style="color: var(--text-muted); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em; font-size: var(--text-sm); margin-bottom: var(--space-sm);">Choose an Amount</p>
+
+          <div class="gift-amounts">
+            <button class="gift-amount">$25</button>
+            <button class="gift-amount active">$50</button>
+            <button class="gift-amount">$75</button>
+            <button class="gift-amount">$100</button>
+            <button class="gift-amount">$150</button>
+            <button class="gift-amount">$250</button>
+          </div>
+
+          <div style="display:flex; gap: var(--space-md); margin-top: var(--space-xl);">
+            <a href="#" class="btn btn--primary btn--lg">Send E-Gift Card</a>
+            <a href="#" class="btn btn--secondary btn--lg">Buy Physical Card</a>
+          </div>
+
+          <p style="font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-lg);">
+            💼 <strong>Corporate gifting?</strong> Contact us for bulk orders and custom branding options.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CUE STANDARD — Craftsmanship Wall
+       ═══════════════════════════════════════ -->
+  <section class="section cue-standard">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">The Way We Do Things</span>
+        <h2 class="section-header__title">The Cue Standard</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">Every detail matters. From fire to fork, this is what sets Cue apart.</p>
+      </div>
+
+      <div class="standard-grid stagger">
+        <div class="standard-item reveal">
+          <span class="standard-item__icon">🔥</span>
+          <h4 class="standard-item__title">Real Fire. Real Smoke.</h4>
+          <p class="standard-item__desc">No gas shortcuts. We burn hickory and oak logs to create authentic smoke flavor you can taste in every bite.</p>
+        </div>
+        <div class="standard-item reveal">
+          <span class="standard-item__icon">🧂</span>
+          <h4 class="standard-item__title">Scratch-Made Sides</h4>
+          <p class="standard-item__desc">Every side dish is made from scratch in our kitchen. Mac & cheese, baked beans, collard greens — the real deal.</p>
+        </div>
+        <div class="standard-item reveal">
+          <span class="standard-item__icon">🥒</span>
+          <h4 class="standard-item__title">House Pickles</h4>
+          <p class="standard-item__desc">Brined and pickled in-house daily. Because even the smallest details should be made with care.</p>
+        </div>
+        <div class="standard-item reveal">
+          <span class="standard-item__icon">🍟</span>
+          <h4 class="standard-item__title">Hand-Cut Fries</h4>
+          <p class="standard-item__desc">Cut from whole potatoes, double-fried for crunch, seasoned with our house blend. Never frozen.</p>
+        </div>
+        <div class="standard-item reveal">
+          <span class="standard-item__icon">🍺</span>
+          <h4 class="standard-item__title">Local Beer & Wine</h4>
+          <p class="standard-item__desc">We partner with Georgia breweries and vineyards to bring you the best local pours alongside your meal.</p>
+        </div>
+        <div class="standard-item reveal">
+          <span class="standard-item__icon">🤝</span>
+          <h4 class="standard-item__title">Community First</h4>
+          <p class="standard-item__desc">Three neighborhoods. Three smokehouse families. We don't just serve our communities — we're part of them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       OUR STORY
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark story" id="story">
+    <div class="container">
+      <div class="story__layout reveal">
+        <div class="story__image-stack">
+          <div class="story__image-main" style="background: linear-gradient(135deg, #3d2a1a, #1a1714); display:flex; align-items:center; justify-content:center; font-size:4rem;">🔥</div>
+          <div class="story__image-accent" style="background: linear-gradient(135deg, #4a3520, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🍖</div>
+        </div>
+
+        <div class="story__content">
+          <span class="section-header__eyebrow">Our Story</span>
+          <h3>Built on Fire.<br>Made to Gather.</h3>
+          <p>
+            Cue started with a simple belief: barbecue should be made the hard way. No shortcuts. No pre-made anything. Every rub mixed by hand. Every meat smoked low and slow over real wood. Every side made from scratch, every single day.
+          </p>
+          <p>
+            What began as a single smokehouse has grown into three Metro Atlanta locations — Milton, Cumming, and Peachtree Corners — each with the same commitment to craft, community, and the kind of gathering that only happens around great food and live music.
+          </p>
+          <p>
+            We're not trying to be the biggest. We're trying to be the best your neighborhood has ever tasted.
+          </p>
+
+          <div class="story__stats">
+            <div>
+              <span class="story__stat-number" data-count="3" data-suffix="+">0+</span>
+              <span class="story__stat-label">Atlanta Locations</span>
+            </div>
+            <div>
+              <span class="story__stat-number" data-count="14" data-suffix=" hrs">0 hrs</span>
+              <span class="story__stat-label">Average Smoke Time</span>
+            </div>
+            <div>
+              <span class="story__stat-number" data-count="100" data-suffix="%">0%</span>
+              <span class="story__stat-label">Scratch-Made</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       LOCATIONS MAP
+       ═══════════════════════════════════════ -->
+  <section class="section section--smoke locations-map">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">Find Your Cue</span>
+        <h2 class="section-header__title">Our Locations</h2>
+        <hr class="section-header__rule">
+      </div>
+
+      <div class="locations-map__layout reveal">
+        <div class="map-placeholder">
+          <div style="text-align:center;">
+            <span style="font-size:4rem; display:block; margin-bottom: var(--space-md);">🗺️</span>
+            <p>Interactive Map</p>
+            <p style="font-size: var(--text-sm);">Milton · Cumming · Peachtree Corners</p>
+          </div>
+        </div>
+
+        <div class="locations-list">
+          <div class="location-mini">
+            <span class="location-mini__icon">📍</span>
+            <div>
+              <h4 class="location-mini__name">Cue Milton</h4>
+              <p class="location-mini__address">12635 Crabapple Rd, Milton, GA 30004</p>
+              <p style="font-size: var(--text-xs); color: var(--accent-primary); margin-bottom: var(--space-sm);">Mon–Sun 11AM–9PM · Live Music Fri & Sat</p>
+              <div class="location-mini__ctas">
+                <a href="#" class="btn btn--primary btn--sm">Order</a>
+                <a href="#" class="btn btn--ghost btn--sm">Directions</a>
+                <a href="#" class="btn btn--ghost btn--sm">Call</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="location-mini">
+            <span class="location-mini__icon">📍</span>
+            <div>
+              <h4 class="location-mini__name">Cue Cumming</h4>
+              <p class="location-mini__address">410 Peachtree Pkwy, Cumming, GA 30041</p>
+              <p style="font-size: var(--text-xs); color: var(--accent-primary); margin-bottom: var(--space-sm);">Mon–Sun 11AM–9PM</p>
+              <div class="location-mini__ctas">
+                <a href="#" class="btn btn--primary btn--sm">Order</a>
+                <a href="#" class="btn btn--ghost btn--sm">Directions</a>
+                <a href="#" class="btn btn--ghost btn--sm">Call</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="location-mini">
+            <span class="location-mini__icon">📍</span>
+            <div>
+              <h4 class="location-mini__name">Cue Peachtree Corners</h4>
+              <p class="location-mini__address">5270 Peachtree Pkwy, Peachtree Corners, GA 30092</p>
+              <p style="font-size: var(--text-xs); color: var(--accent-primary); margin-bottom: var(--space-sm);">Mon–Sun 11AM–9PM</p>
+              <div class="location-mini__ctas">
+                <a href="#" class="btn btn--primary btn--sm">Order</a>
+                <a href="#" class="btn btn--ghost btn--sm">Directions</a>
+                <a href="#" class="btn btn--ghost btn--sm">Call</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       NEWSLETTER / LOYALTY
+       ═══════════════════════════════════════ -->
+  <section class="section newsletter">
+    <div class="container">
+      <div class="newsletter__inner reveal">
+        <span class="section-header__eyebrow">Stay in the Smoke</span>
+        <h2 style="font-size: var(--text-3xl); margin-bottom: var(--space-md);">Join the Pit Crew</h2>
+        <p style="color: var(--text-muted); font-size: var(--text-lg);">
+          Get exclusive deals, be the first to hear about live music lineups, seasonal specials, and new menu drops. No spam — just smoke signals.
+        </p>
+        <form class="newsletter__form" action="#" method="post">
+          <input class="newsletter__input" type="email" placeholder="Enter your email" required aria-label="Email address">
+          <button type="submit" class="btn btn--primary">Join the Pit Crew</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__brand-name">🔥 Cue Barbecue</h3>
+          <p class="footer__brand-desc">Scratch-made barbecue. Live music. Southern hospitality. Metro Atlanta's smokehouse built for gathering.</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Facebook">📘</a>
+            <a href="#" class="footer__social-link" aria-label="Instagram">📷</a>
+            <a href="#" class="footer__social-link" aria-label="Twitter">🐦</a>
+            <a href="#" class="footer__social-link" aria-label="TikTok">🎵</a>
+            <a href="#" class="footer__social-link" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Explore</h4>
+          <ul class="footer__links">
+            <li><a href="#menu" class="footer__link">Menu</a></li>
+            <li><a href="#locations" class="footer__link">Locations</a></li>
+            <li><a href="#catering" class="footer__link">Catering</a></li>
+            <li><a href="#music" class="footer__link">Live Music</a></li>
+            <li><a href="#hickory-room" class="footer__link">Hickory Room</a></li>
+            <li><a href="#gift-cards" class="footer__link">Gift Cards</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Company</h4>
+          <ul class="footer__links">
+            <li><a href="#story" class="footer__link">Our Story</a></li>
+            <li><a href="#" class="footer__link">Franchising</a></li>
+            <li><a href="#" class="footer__link">Careers</a></li>
+            <li><a href="#" class="footer__link">Press</a></li>
+            <li><a href="#" class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Order Now</h4>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Cue Milton</a></li>
+            <li><a href="#" class="footer__link">Cue Cumming</a></li>
+            <li><a href="#" class="footer__link">Cue Peachtree Corners</a></li>
+            <li><a href="#" class="footer__link">Catering Orders</a></li>
+            <li><a href="#" class="footer__link">Download Our App</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 Cue Barbecue. All rights reserved. Homemade Everything, Y'all.&trade;</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Allergen Information</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       SMOKEHOUSE MODE TOGGLE
+       ═══════════════════════════════════════ -->
+  <div class="mode-toggle" aria-label="Toggle Smokehouse Mode">
+    <div class="mode-toggle__track">
+      <div class="mode-toggle__thumb"></div>
+    </div>
+    <span class="mode-toggle__label">Day Mode</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       STICKY ORDER ORB
+       ═══════════════════════════════════════ -->
+  <a href="#order" class="order-orb" aria-label="Order Now">🔥</a>
+
+  <!-- Scripts -->
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
