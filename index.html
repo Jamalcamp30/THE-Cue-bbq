@@ -1034,46 +1034,517 @@
   </section>
 
   <!-- ═══════════════════════════════════════
-       HICKORY ROOM — Private Events
+       THE HICKORY ROOM — Experience Builder
+       Premium Interactive Private Event Experience
        ═══════════════════════════════════════ -->
   <section class="section section--smoke hickory-room" id="hickory-room">
+
+    <!-- ── Smoke Reveal Canvas ── -->
+    <div class="hr-smoke-layer" aria-hidden="true">
+      <canvas id="hickory-smoke-canvas"></canvas>
+    </div>
+
     <div class="container">
+
+      <!-- ── Section Header ── -->
       <div class="section-header reveal">
-        <span class="section-header__eyebrow">Private Dining</span>
+        <span class="section-header__eyebrow">Step Inside Before You Book</span>
         <h2 class="section-header__title">The Hickory Room</h2>
         <hr class="section-header__rule">
-        <p class="section-header__desc">Our private event space for celebrations, corporate gatherings, and milestone moments. Scratch-made barbecue with exclusive service.</p>
+        <p class="section-header__desc">Not just a private event space. An experience you shape, preview, and feel — before you ever walk through the door.</p>
       </div>
 
-      <div class="hickory-room__hero reveal">
-        <div class="hickory-room__gallery">
-          <div class="hickory-room__gallery-img" style="background: linear-gradient(135deg, #3d2a1a, #1a1714); display:flex; align-items:center; justify-content:center; font-size:3rem;">🏛️</div>
-          <div class="hickory-room__gallery-img" style="background: linear-gradient(135deg, #2a2015, #1a1714); aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:2rem;">🍽️</div>
-          <div class="hickory-room__gallery-img" style="background: linear-gradient(135deg, #352517, #1a1714); aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:2rem;">🥂</div>
+      <!-- ═══════════════════════════════════
+           1. LIVE ROOM TRANSFORMATION
+           ═══════════════════════════════════ -->
+      <div class="hr-transformer reveal" id="hr-transformer">
+        <div class="hr-transformer__header">
+          <span class="section-header__eyebrow">The Room Transforms</span>
+          <h3 class="hr-transformer__title">Choose Your Occasion — Watch the Room Become It</h3>
         </div>
 
-        <div>
-          <span class="section-header__eyebrow">Your Event, Our Space</span>
-          <h3 style="margin-bottom: var(--space-lg);">Where Memorable Moments Are Made</h3>
-          <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg);">
-            The Hickory Room accommodates 20 to 80 guests with flexible layouts, dedicated staff, custom menus, and the full Cue atmosphere. From rehearsal dinners to corporate retreats, we make every gathering unforgettable.
-          </p>
+        <div class="hr-event-selector">
+          <button class="hr-event-btn active" data-event="birthday" aria-label="Birthday Party">
+            <span class="hr-event-btn__icon">🎂</span>
+            <span class="hr-event-btn__label">Birthday</span>
+          </button>
+          <button class="hr-event-btn" data-event="rehearsal" aria-label="Rehearsal Dinner">
+            <span class="hr-event-btn__icon">💒</span>
+            <span class="hr-event-btn__label">Rehearsal</span>
+          </button>
+          <button class="hr-event-btn" data-event="corporate" aria-label="Corporate Event">
+            <span class="hr-event-btn__icon">🏢</span>
+            <span class="hr-event-btn__label">Corporate</span>
+          </button>
+          <button class="hr-event-btn" data-event="graduation" aria-label="Graduation Party">
+            <span class="hr-event-btn__icon">🎓</span>
+            <span class="hr-event-btn__label">Graduation</span>
+          </button>
+          <button class="hr-event-btn" data-event="holiday" aria-label="Holiday Celebration">
+            <span class="hr-event-btn__icon">🎄</span>
+            <span class="hr-event-btn__label">Holiday</span>
+          </button>
+          <button class="hr-event-btn" data-event="teambuilding" aria-label="Team Building">
+            <span class="hr-event-btn__icon">👥</span>
+            <span class="hr-event-btn__label">Team&nbsp;Building</span>
+          </button>
+        </div>
 
-          <div class="event-types">
-            <div class="event-type">🎂 Birthday Parties</div>
-            <div class="event-type">💒 Rehearsal Dinners</div>
-            <div class="event-type">🏢 Corporate Events</div>
-            <div class="event-type">🎓 Graduation Parties</div>
-            <div class="event-type">🎄 Holiday Celebrations</div>
-            <div class="event-type">👥 Team Building</div>
+        <div class="hr-room-preview" style="background: linear-gradient(135deg, #3d1a2e 0%, #2a1520 40%, #1a1714 100%);">
+          <div class="hr-room-canvas-wrap">
+            <canvas id="hickory-room-canvas" aria-label="Interactive room layout visualization"></canvas>
+          </div>
+          <div class="hr-room-details">
+            <div class="hr-vibe-badge" style="border-color: #e84ca0; color: #e84ca0;">Joyful, colorful, high-energy</div>
+            <div class="hr-detail-row">
+              <div class="hr-detail-card">
+                <div class="hr-detail-label">🪑 Layout</div>
+                <div class="hr-detail-value">Round tables with dance floor center</div>
+              </div>
+              <div class="hr-detail-card">
+                <div class="hr-detail-label">🕯️ Centerpieces</div>
+                <div class="hr-detail-value">Candles & floral arrangements</div>
+              </div>
+            </div>
+            <div class="hr-detail-row">
+              <div class="hr-detail-card">
+                <div class="hr-detail-label">🎵 Music</div>
+                <div class="hr-detail-value">Upbeat playlist & celebration anthems</div>
+              </div>
+              <div class="hr-detail-card">
+                <div class="hr-detail-label">🍖 Menu</div>
+                <div class="hr-detail-value">Shared platters with custom cake station</div>
+              </div>
+            </div>
+            <div class="hr-detail-row">
+              <div class="hr-detail-card">
+                <div class="hr-detail-label">🎨 Walls</div>
+                <div class="hr-detail-value">Festive string lights & balloon garland wall</div>
+              </div>
+              <div class="hr-detail-card">
+                <div class="hr-detail-label">👥 Capacity</div>
+                <div class="hr-detail-value">20–60 guests</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════
+           2. BUILD MY NIGHT SIMULATOR
+           ═══════════════════════════════════ -->
+      <div class="hr-simulator reveal" id="hr-simulator">
+        <div class="hr-simulator__header">
+          <span class="section-header__eyebrow">Build My Night</span>
+          <h3 class="hr-simulator__title">Design Your Evening — We'll Show You What It Looks Like</h3>
+        </div>
+
+        <div class="hr-sim-progress">
+          <div class="hr-sim-dot active" data-step="0"></div>
+          <div class="hr-sim-dot" data-step="1"></div>
+          <div class="hr-sim-dot" data-step="2"></div>
+          <div class="hr-sim-dot" data-step="3"></div>
+          <div class="hr-sim-dot" data-step="4"></div>
+        </div>
+
+        <div class="hr-sim-content">
+          <!-- Step 1: Guest Count -->
+          <div class="hr-sim-step active" data-step="0">
+            <h4 class="hr-sim-step__title">How many guests?</h4>
+            <p class="hr-sim-step__desc">The Hickory Room accommodates 20 to 80 guests.</p>
+            <div class="hr-sim-slider-wrap">
+              <input type="range" class="hr-guest-slider" min="20" max="80" value="40" step="5">
+              <div class="hr-sim-slider-labels">
+                <span>20</span>
+                <span class="hr-guest-count">40</span>
+                <span>80</span>
+              </div>
+            </div>
           </div>
 
-          <div style="display:flex; gap: var(--space-md); margin-top: var(--space-2xl);">
-            <a href="#quote" class="btn btn--primary btn--lg">Inquire About Booking</a>
+          <!-- Step 2: Event Style -->
+          <div class="hr-sim-step" data-step="1">
+            <h4 class="hr-sim-step__title">What's the vibe?</h4>
+            <p class="hr-sim-step__desc">Choose the mood that fits your evening.</p>
+            <div class="hr-sim-options">
+              <button class="hr-sim-option selected" data-field="eventStyle" data-value="celebration">🎉 Celebration</button>
+              <button class="hr-sim-option" data-field="eventStyle" data-value="formal">🥂 Formal Elegance</button>
+              <button class="hr-sim-option" data-field="eventStyle" data-value="executive">💼 Executive</button>
+              <button class="hr-sim-option" data-field="eventStyle" data-value="casual">🤝 Casual & Relaxed</button>
+              <button class="hr-sim-option" data-field="eventStyle" data-value="social">🎶 Social & Lively</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Food Style -->
+          <div class="hr-sim-step" data-step="2">
+            <h4 class="hr-sim-step__title">How should the food flow?</h4>
+            <p class="hr-sim-step__desc">Every style has its own rhythm.</p>
+            <div class="hr-sim-options">
+              <button class="hr-sim-option selected" data-field="foodStyle" data-value="family">🍖 Family-Style Platters</button>
+              <button class="hr-sim-option" data-field="foodStyle" data-value="plated">🍽️ Plated Service</button>
+              <button class="hr-sim-option" data-field="foodStyle" data-value="buffet">🥘 BBQ Buffet</button>
+              <button class="hr-sim-option" data-field="foodStyle" data-value="stations">🧑‍🍳 Interactive Stations</button>
+              <button class="hr-sim-option" data-field="foodStyle" data-value="passed">🍢 Passed Appetizers</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Service Style -->
+          <div class="hr-sim-step" data-step="3">
+            <h4 class="hr-sim-step__title">What level of service?</h4>
+            <p class="hr-sim-step__desc">From hands-off to white-glove — we match your needs.</p>
+            <div class="hr-sim-options">
+              <button class="hr-sim-option selected" data-field="serviceStyle" data-value="dedicated">👤 Dedicated Event Captain</button>
+              <button class="hr-sim-option" data-field="serviceStyle" data-value="full">🤵 Full Wait Staff</button>
+              <button class="hr-sim-option" data-field="serviceStyle" data-value="premium">⭐ Premium Concierge</button>
+              <button class="hr-sim-option" data-field="serviceStyle" data-value="selfserve">🙌 Casual Self-Serve</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Seating Format -->
+          <div class="hr-sim-step" data-step="4">
+            <h4 class="hr-sim-step__title">How should guests sit?</h4>
+            <p class="hr-sim-step__desc">The seating shapes the energy of the entire evening.</p>
+            <div class="hr-sim-options">
+              <button class="hr-sim-option selected" data-field="seating" data-value="rounds">⭕ Round Tables</button>
+              <button class="hr-sim-option" data-field="seating" data-value="long">📏 Long Banquet Tables</button>
+              <button class="hr-sim-option" data-field="seating" data-value="mixed">🔀 Mixed Format</button>
+              <button class="hr-sim-option" data-field="seating" data-value="theater">🎭 Theater Style</button>
+              <button class="hr-sim-option" data-field="seating" data-value="cocktail">🍸 Cocktail Standing</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr-sim-nav">
+          <button class="btn btn--ghost hr-sim-prev" style="visibility: hidden;">← Back</button>
+          <button class="btn btn--primary hr-sim-next">Next Step →</button>
+        </div>
+
+        <div class="hr-sim-results" aria-live="polite"></div>
+      </div>
+
+      <!-- ═══════════════════════════════════
+           3. HOST POV CINEMATIC WALKTHROUGH
+           ═══════════════════════════════════ -->
+      <div class="hr-walkthrough reveal" id="hr-walkthrough">
+        <div class="hr-walkthrough__header">
+          <span class="section-header__eyebrow">Host Point of View</span>
+          <h3 class="hr-walkthrough__title">Your Night, Scene by Scene</h3>
+          <p class="hr-walkthrough__desc">Step into the evening before it happens. This is what hosting at The Hickory Room feels like.</p>
+        </div>
+
+        <div class="hr-wt-stage">
+          <div class="hr-wt-step active">
+            <div class="hr-wt-step__visual" style="background: linear-gradient(135deg, #2a1a0e, #1a1208);">
+              <span class="hr-wt-step__icon">🚪</span>
+            </div>
+            <div class="hr-wt-step__content">
+              <span class="hr-wt-step__number">01</span>
+              <h4 class="hr-wt-step__title">The Arrival</h4>
+              <p class="hr-wt-step__text">Your guests step through the entrance into warm amber light. The aroma of hickory smoke and slow-cooked brisket greets them before anyone says a word. The room is set. The night is yours.</p>
+            </div>
+          </div>
+
+          <div class="hr-wt-step">
+            <div class="hr-wt-step__visual" style="background: linear-gradient(135deg, #2a1f0e, #1a1508);">
+              <span class="hr-wt-step__icon">🥂</span>
+            </div>
+            <div class="hr-wt-step__content">
+              <span class="hr-wt-step__number">02</span>
+              <h4 class="hr-wt-step__title">Welcome Cocktails</h4>
+              <p class="hr-wt-step__text">Craft cocktails and conversation flow. A welcome table with passed bites sets the tone — relaxed, social, already memorable. Guests start to feel it: this is going to be a great night.</p>
+            </div>
+          </div>
+
+          <div class="hr-wt-step">
+            <div class="hr-wt-step__visual" style="background: linear-gradient(135deg, #2a150a, #1a0e06);">
+              <span class="hr-wt-step__icon">🍖</span>
+            </div>
+            <div class="hr-wt-step__content">
+              <span class="hr-wt-step__number">03</span>
+              <h4 class="hr-wt-step__title">The Feast Begins</h4>
+              <p class="hr-wt-step__text">Brisket boards land on the table. Sides arrive in cast iron. The pitmaster's work takes center stage. Plates are full, the room hums with the sound of people enjoying something real.</p>
+            </div>
+          </div>
+
+          <div class="hr-wt-step">
+            <div class="hr-wt-step__visual" style="background: linear-gradient(135deg, #201a10, #14120a);">
+              <span class="hr-wt-step__icon">💬</span>
+            </div>
+            <div class="hr-wt-step__content">
+              <span class="hr-wt-step__number">04</span>
+              <h4 class="hr-wt-step__title">The Toast</h4>
+              <p class="hr-wt-step__text">Someone stands up. The room quiets. Words that matter fill the space. Glasses raised. A moment that locks into memory — the kind people talk about years later.</p>
+            </div>
+          </div>
+
+          <div class="hr-wt-step">
+            <div class="hr-wt-step__visual" style="background: linear-gradient(135deg, #1a1a1e, #101014);">
+              <span class="hr-wt-step__icon">🍰</span>
+            </div>
+            <div class="hr-wt-step__content">
+              <span class="hr-wt-step__number">05</span>
+              <h4 class="hr-wt-step__title">Sweet Finish</h4>
+              <p class="hr-wt-step__text">Banana pudding shooters. Peach cobbler. Coffee and bourbon nightcaps. The music softens. Conversations deepen. The best part of the night is often the last hour.</p>
+            </div>
+          </div>
+
+          <div class="hr-wt-step">
+            <div class="hr-wt-step__visual" style="background: linear-gradient(135deg, #1a140e, #0e0a06);">
+              <span class="hr-wt-step__icon">✨</span>
+            </div>
+            <div class="hr-wt-step__content">
+              <span class="hr-wt-step__number">06</span>
+              <h4 class="hr-wt-step__title">The Afterglow</h4>
+              <p class="hr-wt-step__text">Goodbyes at the door. Hugs that linger. "That was incredible." You didn't just host a dinner — you gave people a night they'll carry with them. That's the Hickory Room.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr-wt-nav">
+          <button class="hr-wt-nav-dot active" aria-label="Step 1: Arrival"></button>
+          <button class="hr-wt-nav-dot" aria-label="Step 2: Cocktails"></button>
+          <button class="hr-wt-nav-dot" aria-label="Step 3: Dinner"></button>
+          <button class="hr-wt-nav-dot" aria-label="Step 4: Toast"></button>
+          <button class="hr-wt-nav-dot" aria-label="Step 5: Dessert"></button>
+          <button class="hr-wt-nav-dot" aria-label="Step 6: Afterglow"></button>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════
+           4. MOOD ARCHITECTURE
+           ═══════════════════════════════════ -->
+      <div class="hr-mood reveal" id="hr-mood">
+        <div class="hr-mood__header">
+          <span class="section-header__eyebrow">Mood Architecture</span>
+          <h3 class="hr-mood__title">Feel the Room Before You Book It</h3>
+        </div>
+
+        <div class="hr-mood-controls">
+          <button class="hr-mood-btn active" data-mood="intimate">🕯️ Warm &amp; Intimate</button>
+          <button class="hr-mood-btn" data-mood="southern">🔥 Southern Celebration</button>
+          <button class="hr-mood-btn" data-mood="executive">💎 Executive Dinner</button>
+          <button class="hr-mood-btn" data-mood="livemusic">🎸 Live-Music Social</button>
+          <button class="hr-mood-btn" data-mood="holiday">✨ Holiday Glow</button>
+        </div>
+
+        <div class="hr-mood-preview" style="background: linear-gradient(135deg, #2a1a0a 0%, #1a1208 50%, #0d0b06 100%); box-shadow: inset 0 0 100px rgba(212, 168, 75, 0.2);">
+          <div class="hr-mood-accent-bar" style="background: #d4a84b;"></div>
+          <div class="hr-mood-content">
+            <p class="hr-mood-desc">Low candlelight, soft jazz, close tables. Every whisper carries warmth.</p>
+            <div class="hr-mood-meta">
+              <div class="hr-mood-meta-item">
+                <span class="hr-mood-meta-label">Setting</span>
+                <span class="hr-mood-density">Close-set round tables, dim lighting, taper candles</span>
+              </div>
+              <div class="hr-mood-meta-item">
+                <span class="hr-mood-meta-label">Soundtrack</span>
+                <span class="hr-mood-sound">♪ Soft jazz & acoustic</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════
+           5. TABLE-LEVEL FOOD VISUALIZATION
+           ═══════════════════════════════════ -->
+      <div class="hr-food reveal" id="hr-food">
+        <div class="hr-food__header">
+          <span class="section-header__eyebrow">The Table</span>
+          <h3 class="hr-food__title">See What Lands on the Table</h3>
+        </div>
+
+        <div class="hr-food-controls">
+          <button class="hr-food-btn active" data-food="passed">🍢 Passed Apps</button>
+          <button class="hr-food-btn" data-food="family">🍖 Family Style</button>
+          <button class="hr-food-btn" data-food="buffet">🥘 Buffet</button>
+          <button class="hr-food-btn" data-food="plated">🍽️ Plated</button>
+          <button class="hr-food-btn" data-food="dessert">🍰 Dessert</button>
+        </div>
+
+        <div class="hr-food-preview">
+          <div class="hr-food-visual">🍢</div>
+          <div class="hr-food-info">
+            <ul class="hr-food-items">
+              <li>Mini brisket sliders</li>
+              <li>Smoked pimento cheese bites</li>
+              <li>BBQ shrimp skewers</li>
+              <li>Cornbread muffins with honey butter</li>
+            </ul>
+            <div class="hr-food-detail">
+              <span class="hr-food-detail-label">Service Flow</span>
+              <span class="hr-food-density">Light, flowing service — trays circulate every 4–5 minutes</span>
+            </div>
+            <div class="hr-food-detail">
+              <span class="hr-food-detail-label">Drink Pairing</span>
+              <span class="hr-food-pairing">Craft cocktails & chilled beer flights</span>
+            </div>
+            <div class="hr-food-detail">
+              <span class="hr-food-detail-label">The Feel</span>
+              <span class="hr-food-feel">Elegant mingling — guests move freely while bites come to them</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════
+           6. ENERGY MAP
+           ═══════════════════════════════════ -->
+      <div class="hr-energy reveal" id="hr-energy">
+        <div class="hr-energy__header">
+          <span class="section-header__eyebrow">Energy Map</span>
+          <h3 class="hr-energy__title">Every Zone Has a Purpose</h3>
+          <p class="hr-energy__desc">Hover over each zone to see how the room is intentionally designed — not just available.</p>
+        </div>
+
+        <div class="hr-energy-map">
+          <canvas id="hickory-energy-canvas" aria-label="Interactive room energy zone map"></canvas>
+          <div class="hr-energy-zones">
+            <button class="hr-energy-zone" data-zone="welcome">
+              <span class="hr-energy-zone__icon">🚪</span>
+              <span class="hr-energy-zone__label">Welcome Zone</span>
+              <span class="hr-energy-zone__desc">First impression — warm greeting & coat check</span>
+            </button>
+            <button class="hr-energy-zone" data-zone="photo">
+              <span class="hr-energy-zone__icon">📸</span>
+              <span class="hr-energy-zone__label">Photo Moment</span>
+              <span class="hr-energy-zone__desc">Curated backdrop for group shots & candids</span>
+            </button>
+            <button class="hr-energy-zone" data-zone="toast">
+              <span class="hr-energy-zone__icon">🥂</span>
+              <span class="hr-energy-zone__label">Toast Zone</span>
+              <span class="hr-energy-zone__desc">Center stage for speeches & special moments</span>
+            </button>
+            <button class="hr-energy-zone" data-zone="buffet">
+              <span class="hr-energy-zone__icon">🍖</span>
+              <span class="hr-energy-zone__label">Buffet Flow</span>
+              <span class="hr-energy-zone__desc">Designed for smooth traffic & live carving</span>
+            </button>
+            <button class="hr-energy-zone" data-zone="mingle">
+              <span class="hr-energy-zone__icon">💬</span>
+              <span class="hr-energy-zone__label">Mingling Zone</span>
+              <span class="hr-energy-zone__desc">Cocktail tables & conversation nooks</span>
+            </button>
+            <button class="hr-energy-zone" data-zone="music">
+              <span class="hr-energy-zone__icon">🎵</span>
+              <span class="hr-energy-zone__label">Stage / Music</span>
+              <span class="hr-energy-zone__desc">Live music, DJ booth, or speaker podium</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════
+           7. MEMORY WALL
+           ═══════════════════════════════════ -->
+      <div class="hr-memories reveal" id="hr-memories">
+        <div class="hr-memories__header">
+          <span class="section-header__eyebrow">The Afterglow</span>
+          <h3 class="hr-memories__title">Moments That Stay</h3>
+        </div>
+
+        <div class="hr-memory-wall">
+          <div class="hr-memory-frame">
+            <div class="hr-memory-frame__quote">"Our rehearsal dinner was absolutely perfect. The brisket, the service, the warmth of that room — our families still talk about it."</div>
+            <div class="hr-memory-frame__author">— The Carters, Rehearsal Dinner</div>
+          </div>
+          <div class="hr-memory-frame">
+            <div class="hr-memory-frame__quote">"We booked The Hickory Room for our annual team dinner and it blew everyone away. The food was incredible and the space felt like it was built just for us."</div>
+            <div class="hr-memory-frame__author">— Marcus T., Corporate Event</div>
+          </div>
+          <div class="hr-memory-frame">
+            <div class="hr-memory-frame__quote">"Mom turned 70 and we wanted something special, not stuffy. The Hickory Room nailed it — Southern, soulful, and so much love in the room."</div>
+            <div class="hr-memory-frame__author">— Denise W., Birthday Celebration</div>
+          </div>
+          <div class="hr-memory-frame">
+            <div class="hr-memory-frame__quote">"The team building event exceeded expectations. Great BBQ, great energy, and the staff made everything seamless. We'll be back every quarter."</div>
+            <div class="hr-memory-frame__author">— Allison K., Team Building</div>
+          </div>
+          <div class="hr-memory-frame">
+            <div class="hr-memory-frame__quote">"Our holiday party at The Hickory Room has become our new tradition. The ambiance, the food, the whole experience — it's what the holidays should feel like."</div>
+            <div class="hr-memory-frame__author">— James & Robyn, Holiday Celebration</div>
+          </div>
+          <div class="hr-memory-frame">
+            <div class="hr-memory-frame__quote">"My daughter's graduation dinner was the proudest night of my life. The Hickory Room made it feel as important as it was."</div>
+            <div class="hr-memory-frame__author">— Patricia G., Graduation Party</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════
+           8. SIGNATURE HICKORY MOMENT
+           ═══════════════════════════════════ -->
+      <div class="hr-signature reveal" id="hr-signature">
+        <div class="hr-signature__inner">
+          <button class="hr-signature-bell" aria-label="Ring the dinner bell">
+            <span class="hr-signature-bell__icon">🔔</span>
+            <span class="hr-signature-bell__text">Ring the Dinner Bell</span>
+          </button>
+          <div class="hr-signature-display">Welcome to Your Evening at The Hickory Room</div>
+          <div class="hr-signature-input-wrap">
+            <label class="hr-signature-label" for="hr-event-name">Name your event:</label>
+            <input type="text" class="hr-signature-input" id="hr-event-name" placeholder="e.g. Carter Rehearsal Dinner" maxlength="60" autocomplete="off">
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════
+           9. INQUIRY FORM — Integrated CTA
+           ═══════════════════════════════════ -->
+      <div class="hr-inquiry reveal" id="hickory-inquiry">
+        <div class="hr-inquiry__header">
+          <span class="section-header__eyebrow">Ready to Book?</span>
+          <h3 class="hr-inquiry__title">Let's Shape Your Night</h3>
+          <p class="hr-inquiry__desc">Tell us about your event and we'll start building your Hickory Room experience.</p>
+        </div>
+
+        <form class="hr-inquiry-form" novalidate>
+          <div class="hr-inquiry-grid">
+            <div class="hr-inquiry-field">
+              <label for="hr-name">Your Name</label>
+              <input type="text" id="hr-name" name="name" required placeholder="Full name" autocomplete="name">
+            </div>
+            <div class="hr-inquiry-field">
+              <label for="hr-email">Email</label>
+              <input type="email" id="hr-email" name="email" required placeholder="you@email.com" autocomplete="email">
+            </div>
+            <div class="hr-inquiry-field">
+              <label for="hr-phone">Phone</label>
+              <input type="tel" id="hr-phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
+            </div>
+            <div class="hr-inquiry-field">
+              <label for="hr-event-type">Event Type</label>
+              <select id="hr-event-type" name="event_type">
+                <option value="">Select one...</option>
+                <option value="birthday">Birthday Party</option>
+                <option value="rehearsal">Rehearsal Dinner</option>
+                <option value="corporate">Corporate Event</option>
+                <option value="graduation">Graduation Party</option>
+                <option value="holiday">Holiday Celebration</option>
+                <option value="teambuilding">Team Building</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="hr-inquiry-field">
+              <label for="hr-date">Preferred Date</label>
+              <input type="date" id="hr-date" name="date">
+            </div>
+            <div class="hr-inquiry-field">
+              <label for="hr-guests">Guest Count</label>
+              <input type="number" id="hr-guests" name="guests" min="20" max="80" placeholder="20–80">
+            </div>
+            <div class="hr-inquiry-field hr-inquiry-field--full">
+              <label for="hr-details">Tell Us About Your Night</label>
+              <textarea id="hr-details" name="details" rows="4" placeholder="What's the occasion? Any special requests or vision for the evening?"></textarea>
+            </div>
+          </div>
+          <div class="hr-inquiry-submit">
+            <button type="submit" class="btn btn--primary btn--lg">Send My Inquiry</button>
             <a href="#" class="btn btn--ghost btn--lg">Download Event Kit</a>
           </div>
-        </div>
+        </form>
       </div>
+
     </div>
   </section>
 
@@ -1442,5 +1913,6 @@
   <script src="js/particles.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/hickory.js"></script>
 </body>
 </html>
