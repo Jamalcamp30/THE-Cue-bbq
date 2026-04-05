@@ -134,15 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ═══════════════════════════════════════════
-  // SMOKE SCROLL LINE
+  // SMOKE SCROLL LINE — handled by animations.js with smooth lerp
   // ═══════════════════════════════════════════
-  const smokeTrail = document.querySelector('.smoke-line__trail');
-  if (smokeTrail) {
-    window.addEventListener('scroll', () => {
-      const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-      smokeTrail.style.height = scrollPercent + '%';
-    });
-  }
 
   // ═══════════════════════════════════════════
   // MENU TABS
@@ -308,19 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ═══════════════════════════════════════════
-  // SMOOTH SCROLL
+  // SMOOTH SCROLL — handled by animations.js with enhanced momentum
   // ═══════════════════════════════════════════
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        const offset = 80;
-        const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-      }
-    });
-  });
 
   // ═══════════════════════════════════════════
   // FIRE-TO-TABLE HORIZONTAL SCROLL SYNC
@@ -350,48 +332,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ═══════════════════════════════════════════
-  // COUNTER ANIMATION (for stats)
+  // COUNTER ANIMATION — handled by animations.js with spring physics
   // ═══════════════════════════════════════════
-  const counters = document.querySelectorAll('[data-count]');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.count, 10);
-        const suffix = el.dataset.suffix || '';
-        const prefix = el.dataset.prefix || '';
-        let current = 0;
-        const increment = target / 60;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          el.textContent = prefix + Math.round(current) + suffix;
-        }, 20);
-        counterObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(c => counterObserver.observe(c));
 
   // ═══════════════════════════════════════════
-  // PARALLAX EFFECTS
+  // PARALLAX EFFECTS — handled by animations.js with smooth depth system
   // ═══════════════════════════════════════════
-  const parallaxElements = document.querySelectorAll('[data-parallax]');
-  if (parallaxElements.length > 0) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      parallaxElements.forEach(el => {
-        const speed = parseFloat(el.dataset.parallax) || 0.5;
-        const rect = el.getBoundingClientRect();
-        const offset = (rect.top + scrollY) * speed;
-        el.style.transform = `translateY(${scrollY * speed * -0.2}px)`;
-      });
-    });
-  }
 
   // ═══════════════════════════════════════════
   // CATERING FORM HANDLING

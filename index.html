@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
@@ -39,6 +40,9 @@
     </div>
     <span class="loader-text">Firing Up the Pit</span>
   </div>
+
+  <!-- Scroll Glow Layer -->
+  <div class="scroll-glow-layer" aria-hidden="true"></div>
 
   <!-- ═══════════════════════════════════════
        SMOKE SCROLL LINE
@@ -106,7 +110,7 @@
       <p class="hero__eyebrow">Metro Atlanta's Scratch-Made Barbecue Destination</p>
       <h1 class="hero__title">
         Where Smoke, Music &
-        <span>Homemade Everything</span>
+        <span class="hero__title-cycle">Homemade Everything</span>
         Meet.
       </h1>
       <p class="hero__subtitle">
@@ -114,10 +118,10 @@
         Three locations built for gathering.
       </p>
       <div class="hero__ctas">
-        <a href="#order" class="btn btn--primary btn--lg">🔥 Order Pickup / Delivery</a>
-        <a href="#menu" class="btn btn--secondary btn--lg">View Menu</a>
-        <a href="#catering" class="btn btn--ghost btn--lg">Book Catering</a>
-        <a href="#music" class="btn btn--ghost btn--lg">🎵 Live Music</a>
+        <a href="#order" class="btn btn--primary btn--lg" data-magnetic="0.3">🔥 Order Pickup / Delivery</a>
+        <a href="#menu" class="btn btn--secondary btn--lg" data-magnetic="0.2">View Menu</a>
+        <a href="#catering" class="btn btn--ghost btn--lg" data-magnetic="0.2">Book Catering</a>
+        <a href="#music" class="btn btn--ghost btn--lg" data-magnetic="0.2">🎵 Live Music</a>
       </div>
     </div>
 
@@ -181,7 +185,7 @@
 
       <div class="location-cards stagger">
         <!-- Milton -->
-        <div class="location-card reveal">
+        <div class="location-card reveal" data-tilt="6">
           <div class="location-card__image-wrapper">
             <div class="location-card__image" style="background: linear-gradient(135deg, #3d2a1a, #1a1714); height: 200px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🏠</div>
             <span class="location-card__live-badge">🎸 Live Tonight</span>
@@ -206,7 +210,7 @@
         </div>
 
         <!-- Cumming -->
-        <div class="location-card reveal">
+        <div class="location-card reveal" data-tilt="6">
           <div class="location-card__image-wrapper">
             <div class="location-card__image" style="background: linear-gradient(135deg, #2d1f14, #1a1714); height: 200px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🏠</div>
           </div>
@@ -229,7 +233,7 @@
         </div>
 
         <!-- Peachtree Corners -->
-        <div class="location-card reveal">
+        <div class="location-card reveal" data-tilt="6">
           <div class="location-card__image-wrapper">
             <div class="location-card__image" style="background: linear-gradient(135deg, #352517, #1a1714); height: 200px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🏠</div>
           </div>
@@ -266,32 +270,38 @@
       </div>
 
       <div class="intent-grid stagger">
-        <div class="intent-card reveal" onclick="window.location.hash='#menu'">
+        <div class="intent-card reveal glow-hover" onclick="window.location.hash='#menu'">
+          <div class="glow-hover__spot"></div>
           <span class="intent-card__icon">🍽️</span>
           <h3 class="intent-card__title">Order Food</h3>
           <p class="intent-card__desc">Pickup, delivery, or dine-in. Get your barbecue fix now.</p>
         </div>
-        <div class="intent-card reveal" onclick="window.location.hash='#catering'">
+        <div class="intent-card reveal glow-hover" onclick="window.location.hash='#catering'">
+          <div class="glow-hover__spot"></div>
           <span class="intent-card__icon">🎪</span>
           <h3 class="intent-card__title">Plan Catering</h3>
           <p class="intent-card__desc">Feed 10 to 1,000. Office lunches, weddings, tailgates.</p>
         </div>
-        <div class="intent-card reveal" onclick="window.location.hash='#hickory-room'">
+        <div class="intent-card reveal glow-hover" onclick="window.location.hash='#hickory-room'">
+          <div class="glow-hover__spot"></div>
           <span class="intent-card__icon">🥂</span>
           <h3 class="intent-card__title">Book a Group Event</h3>
           <p class="intent-card__desc">Private dining in our Hickory Room for any occasion.</p>
         </div>
-        <div class="intent-card reveal" onclick="window.location.hash='#music'">
+        <div class="intent-card reveal glow-hover" onclick="window.location.hash='#music'">
+          <div class="glow-hover__spot"></div>
           <span class="intent-card__icon">🎵</span>
           <h3 class="intent-card__title">Find Live Music</h3>
           <p class="intent-card__desc">Every Friday &amp; Saturday. See who's playing tonight.</p>
         </div>
-        <div class="intent-card reveal" onclick="window.location.hash='#locations'">
+        <div class="intent-card reveal glow-hover" onclick="window.location.hash='#locations'">
+          <div class="glow-hover__spot"></div>
           <span class="intent-card__icon">📍</span>
           <h3 class="intent-card__title">Pick a Location</h3>
           <p class="intent-card__desc">Milton, Cumming, or Peachtree Corners. We're nearby.</p>
         </div>
-        <div class="intent-card reveal">
+        <div class="intent-card reveal glow-hover">
+          <div class="glow-hover__spot"></div>
           <span class="intent-card__icon">🏢</span>
           <h3 class="intent-card__title">Explore Franchising</h3>
           <p class="intent-card__desc">Bring Cue to your community. Learn about ownership.</p>
@@ -316,7 +326,7 @@
     <div class="container-wide" style="padding: 0 var(--space-xl);">
       <div class="dishes-scroll">
         <!-- Brisket -->
-        <div class="dish-card reveal-scale">
+        <div class="dish-card reveal-scale" data-tilt="5">
           <div class="dish-card__image-wrap">
             <div class="dish-card__image" style="background: linear-gradient(135deg, #4a2810, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🥩</div>
             <div class="dish-card__smoke-overlay"></div>
@@ -336,7 +346,7 @@
         </div>
 
         <!-- Ribs -->
-        <div class="dish-card reveal-scale">
+        <div class="dish-card reveal-scale" data-tilt="5">
           <div class="dish-card__image-wrap">
             <div class="dish-card__image" style="background: linear-gradient(135deg, #5a2010, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍖</div>
             <div class="dish-card__smoke-overlay"></div>
@@ -355,7 +365,7 @@
         </div>
 
         <!-- BBQ Nachos -->
-        <div class="dish-card reveal-scale">
+        <div class="dish-card reveal-scale" data-tilt="5">
           <div class="dish-card__image-wrap">
             <div class="dish-card__image" style="background: linear-gradient(135deg, #4a3510, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🧀</div>
             <div class="dish-card__smoke-overlay"></div>
@@ -374,7 +384,7 @@
         </div>
 
         <!-- Smoked Wings -->
-        <div class="dish-card reveal-scale">
+        <div class="dish-card reveal-scale" data-tilt="5">
           <div class="dish-card__image-wrap">
             <div class="dish-card__image" style="background: linear-gradient(135deg, #3a2510, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍗</div>
             <div class="dish-card__smoke-overlay"></div>
@@ -393,7 +403,7 @@
         </div>
 
         <!-- Mac Slammer -->
-        <div class="dish-card reveal-scale">
+        <div class="dish-card reveal-scale" data-tilt="5">
           <div class="dish-card__image-wrap">
             <div class="dish-card__image" style="background: linear-gradient(135deg, #4a3a10, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🧈</div>
             <div class="dish-card__smoke-overlay"></div>
@@ -412,7 +422,7 @@
         </div>
 
         <!-- Banana Pudding -->
-        <div class="dish-card reveal-scale">
+        <div class="dish-card reveal-scale" data-tilt="5">
           <div class="dish-card__image-wrap">
             <div class="dish-card__image" style="background: linear-gradient(135deg, #4a3815, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:4rem;">🍌</div>
             <div class="dish-card__smoke-overlay"></div>
@@ -492,6 +502,9 @@
             <p class="ftt-stage__desc">Plated with pride, paired with scratch-made sides, and served with Southern hospitality. That's the Cue Standard.</p>
           </div>
         </div>
+      </div>
+      <div class="ftt-progress" aria-hidden="true">
+        <div class="ftt-progress__bar"></div>
       </div>
     </div>
   </section>
@@ -1223,8 +1236,8 @@
     <div class="container">
       <div class="story__layout reveal">
         <div class="story__image-stack">
-          <div class="story__image-main" style="background: linear-gradient(135deg, #3d2a1a, #1a1714); display:flex; align-items:center; justify-content:center; font-size:4rem;">🔥</div>
-          <div class="story__image-accent" style="background: linear-gradient(135deg, #4a3520, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🍖</div>
+          <div class="story__image-main" data-depth="1" style="background: linear-gradient(135deg, #3d2a1a, #1a1714); display:flex; align-items:center; justify-content:center; font-size:4rem;">🔥</div>
+          <div class="story__image-accent" data-depth="2" style="background: linear-gradient(135deg, #4a3520, #2a1a0e); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🍖</div>
         </div>
 
         <div class="story__content">
@@ -1428,5 +1441,6 @@
   <!-- Scripts -->
   <script src="js/particles.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
 </body>
 </html>
