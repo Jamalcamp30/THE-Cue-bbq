@@ -5,10 +5,18 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ═══════════════════════════════════════════
-  // SITE LOADER
+  // SITE LOADER (fallback when cinematic intro handles transition)
   // ═══════════════════════════════════════════
+  const cueIntro = document.querySelector('.cue-intro');
   const loader = document.querySelector('.site-loader');
-  if (loader) {
+
+  if (cueIntro) {
+    // Cinematic intro handles site-ready; just hide the old loader
+    if (loader) {
+      loader.classList.add('loaded');
+    }
+  } else if (loader) {
+    // No intro present — use original loader behavior
     window.addEventListener('load', () => {
       setTimeout(() => {
         loader.classList.add('loaded');
