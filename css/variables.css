@@ -1,0 +1,118 @@
+/* ============================================
+   CUE BARBECUE — Premium Design System
+   "Live-Fire Luxury + Southern Soul + Modern Hospitality Tech"
+   ============================================ */
+
+:root {
+  /* ── Core Palette ── */
+  --cue-charcoal:       #1a1714;
+  --cue-smoke:          #2a2520;
+  --cue-ash:            #3d3630;
+  --cue-ember:          #d4622b;
+  --cue-ember-glow:     #f0853a;
+  --cue-flame:          #e8442a;
+  --cue-brass:          #c5a55a;
+  --cue-copper:         #b87333;
+  --cue-bone:           #f5efe6;
+  --cue-parchment:      #ece4d4;
+  --cue-cream:          #faf7f2;
+  --cue-warm-white:     #fff8ef;
+  --cue-gold:           #d4a84b;
+  --cue-deep-red:       #8b2500;
+  --cue-forest:         #2d4a2e;
+
+  /* ── Semantic Colors ── */
+  --bg-primary:         var(--cue-charcoal);
+  --bg-secondary:       var(--cue-smoke);
+  --bg-elevated:        var(--cue-ash);
+  --bg-light:           var(--cue-cream);
+  --bg-warm:            var(--cue-warm-white);
+  --text-primary:       var(--cue-bone);
+  --text-secondary:     var(--cue-parchment);
+  --text-muted:         #9a8e80;
+  --text-dark:          var(--cue-charcoal);
+  --accent-primary:     var(--cue-ember);
+  --accent-secondary:   var(--cue-brass);
+  --accent-glow:        var(--cue-ember-glow);
+
+  /* ── Typography ── */
+  --font-display:       'Playfair Display', Georgia, serif;
+  --font-heading:       'Oswald', 'Bebas Neue', sans-serif;
+  --font-body:          'Lato', 'Helvetica Neue', sans-serif;
+  --font-accent:        'Cormorant Garamond', Georgia, serif;
+  --font-mono:          'JetBrains Mono', monospace;
+
+  /* ── Type Scale ── */
+  --text-xs:            clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+  --text-sm:            clamp(0.8rem, 0.75rem + 0.3vw, 0.95rem);
+  --text-base:          clamp(0.95rem, 0.85rem + 0.4vw, 1.1rem);
+  --text-lg:            clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+  --text-xl:            clamp(1.3rem, 1.1rem + 0.8vw, 1.75rem);
+  --text-2xl:           clamp(1.6rem, 1.3rem + 1.2vw, 2.5rem);
+  --text-3xl:           clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  --text-4xl:           clamp(2.5rem, 1.8rem + 3vw, 5rem);
+  --text-hero:          clamp(3rem, 2rem + 4vw, 7rem);
+
+  /* ── Spacing ── */
+  --space-xs:           0.25rem;
+  --space-sm:           0.5rem;
+  --space-md:           1rem;
+  --space-lg:           1.5rem;
+  --space-xl:           2rem;
+  --space-2xl:          3rem;
+  --space-3xl:          4rem;
+  --space-4xl:          6rem;
+  --space-5xl:          8rem;
+  --section-padding:    clamp(4rem, 6vw, 8rem);
+
+  /* ── Layout ── */
+  --max-width:          1400px;
+  --max-width-narrow:   960px;
+  --max-width-wide:     1600px;
+  --border-radius-sm:   4px;
+  --border-radius-md:   8px;
+  --border-radius-lg:   16px;
+  --border-radius-xl:   24px;
+  --border-radius-full: 9999px;
+
+  /* ── Motion ── */
+  --ease-out:           cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:        cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring:        cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:        cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:      150ms;
+  --duration-normal:    300ms;
+  --duration-slow:      500ms;
+  --duration-slower:    800ms;
+  --duration-slowest:   1200ms;
+
+  /* ── Shadows & Glow ── */
+  --shadow-sm:          0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md:          0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg:          0 8px 30px rgba(0,0,0,0.5);
+  --shadow-xl:          0 16px 50px rgba(0,0,0,0.6);
+  --shadow-glow:        0 0 30px rgba(212,98,43,0.3);
+  --shadow-ember:       0 0 60px rgba(212,98,43,0.15);
+  --shadow-inner-glow:  inset 0 0 40px rgba(212,98,43,0.08);
+
+  /* ── Z-Index ── */
+  --z-base:             1;
+  --z-elevated:         10;
+  --z-sticky:           100;
+  --z-overlay:          500;
+  --z-modal:            1000;
+  --z-toast:            1500;
+
+  /* ── Night Mode Overrides (toggled via .night-mode class) ── */
+  --night-bg:           #0d0b09;
+  --night-accent:       #f0853a;
+  --night-text:         #e8dfd2;
+}
+
+/* ── Night Mode ── */
+.night-mode {
+  --bg-primary:       var(--night-bg);
+  --bg-secondary:     #151210;
+  --accent-primary:   var(--night-accent);
+  --text-primary:     var(--night-text);
+}
