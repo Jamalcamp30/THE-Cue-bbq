@@ -783,4 +783,52 @@ document.addEventListener('DOMContentLoaded', () => {
   updateLiveMusic();
   setInterval(updateLiveMusic, 60000);
 
+  // ═══════════════════════════════════════════
+  // DIETARY FILTER SYSTEM — Menu Intelligence
+  // ═══════════════════════════════════════════
+  const filterBtns = document.querySelectorAll('.menu-filter-btn');
+  const clearFilterBtn = document.querySelector('.menu-filter-btn--clear');
+  const allMenuItems = document.querySelectorAll('.menu-item');
+  let activeMenuFilters = new Set();
+
+  function applyDietaryFilters() {
+    if (activeMenuFilters.size === 0) {
+      allMenuItems.forEach(item => item.classList.remove('filtered-out'));
+      if (clearFilterBtn) clearFilterBtn.style.display = 'none';
+      return;
+    }
+
+    if (clearFilterBtn) clearFilterBtn.style.display = '';
+
+    allMenuItems.forEach(item => {
+      const itemDietary = (item.dataset.dietary || '').split(' ').filter(Boolean);
+      const hasMatch = [...activeMenuFilters].some(f => itemDietary.includes(f));
+      item.classList.toggle('filtered-out', !hasMatch);
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      if (filter === 'clear') {
+        activeMenuFilters.clear();
+        filterBtns.forEach(b => b.setAttribute('aria-pressed', 'false'));
+        applyDietaryFilters();
+        return;
+      }
+
+      const isActive = btn.getAttribute('aria-pressed') === 'true';
+      btn.setAttribute('aria-pressed', isActive ? 'false' : 'true');
+
+      if (isActive) {
+        activeMenuFilters.delete(filter);
+      } else {
+        activeMenuFilters.add(filter);
+      }
+
+      applyDietaryFilters();
+    });
+  });
+
 });
