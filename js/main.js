@@ -648,4 +648,187 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ═══════════════════════════════════════════
+  // DYNAMIC HOURS — Real-Time Open/Closed Status
+  // ═══════════════════════════════════════════
+  function updateLocationHours() {
+    const now = new Date();
+    const hour = now.getHours();
+    const day = now.getDay(); // 0=Sun, 6=Sat
+    
+    // Cue hours: Mon-Sun 11AM-9PM
+    const openHour = 11;
+    const closeHour = 21; // 9 PM
+    const isOpen = hour >= openHour && hour < closeHour;
+    
+    document.querySelectorAll('.location-card__hours').forEach(el => {
+      const dot = el.querySelector('.location-card__hours-dot');
+      if (isOpen) {
+        el.innerHTML = '';
+        const dotEl = document.createElement('span');
+        dotEl.className = 'location-card__hours-dot location-card__hours-dot--open';
+        el.appendChild(dotEl);
+        el.appendChild(document.createTextNode(' Open Now · Closes 9 PM'));
+      } else {
+        el.innerHTML = '';
+        const dotEl = document.createElement('span');
+        dotEl.className = 'location-card__hours-dot location-card__hours-dot--closed';
+        el.appendChild(dotEl);
+        el.appendChild(document.createTextNode(' Closed · Opens 11 AM'));
+      }
+    });
+    
+    // Also update location-mini hours in the map section
+    document.querySelectorAll('.location-mini').forEach(el => {
+      const hoursP = el.querySelector('p[style*="accent-primary"]');
+      if (hoursP) {
+        const statusText = isOpen ? '✓ Open Now' : 'Closed · Opens 11 AM';
+        const originalText = hoursP.textContent;
+        // Keep the schedule but prepend status
+        if (originalText.includes('Live Music')) {
+          hoursP.innerHTML = `${statusText} · Mon–Sun 11AM–9PM · <span style="color:var(--cue-ember)">Live Music Fri &amp; Sat</span>`;
+        } else {
+          hoursP.textContent = `${statusText} · Mon–Sun 11AM–9PM`;
+        }
+      }
+    });
+  }
+  
+  updateLocationHours();
+  // Refresh every minute
+  setInterval(updateLocationHours, 60000);
+
+  // ═══════════════════════════════════════════
+  // DYNAMIC LIVE MUSIC — Day-Aware Logic
+  // ═══════════════════════════════════════════
+  function updateLiveMusic() {
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun, 6=Sat
+    const hour = now.getHours();
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    
+    // Live music schedule: Friday & Saturday 7 PM - 10 PM
+    const isMusicDay = (day === 5 || day === 6); // Fri or Sat
+    const isMusicLive = isMusicDay && hour >= 19 && hour < 22;
+    const isMusicTonight = isMusicDay && hour < 22;
+    
+    // Find next music day
+    let nextMusicDay, daysUntilMusic;
+    if (day === 5 && hour < 22) {
+      nextMusicDay = 'Tonight';
+      daysUntilMusic = 0;
+    } else if (day === 5 && hour >= 22) {
+      nextMusicDay = 'Tomorrow';
+      daysUntilMusic = 1;
+    } else if (day === 6 && hour < 22) {
+      nextMusicDay = 'Tonight';
+      daysUntilMusic = 0;
+    } else {
+      // Calculate days until next Friday
+      daysUntilMusic = (5 - day + 7) % 7;
+      if (daysUntilMusic === 0) daysUntilMusic = 7;
+      nextMusicDay = 'This Friday';
+    }
+    
+    // Update "Live Tonight" badges on location cards
+    document.querySelectorAll('.location-card__live-badge').forEach(badge => {
+      if (isMusicTonight) {
+        badge.style.display = '';
+        badge.textContent = isMusicLive ? '🎸 Live Now!' : '🎸 Live Tonight';
+      } else {
+        badge.textContent = `🎸 Live ${nextMusicDay}`;
+        badge.style.display = '';
+      }
+    });
+    
+    // Update featured artist section badge
+    const tonightBadge = document.querySelector('.music-tonight-badge');
+    if (tonightBadge) {
+      if (isMusicLive) {
+        tonightBadge.textContent = '🔴 Live Now!';
+        tonightBadge.classList.add('music-tonight-badge--live');
+      } else if (isMusicTonight) {
+        tonightBadge.textContent = '🔴 Live Tonight';
+        tonightBadge.classList.remove('music-tonight-badge--live');
+      } else {
+        tonightBadge.textContent = `🎸 ${nextMusicDay}`;
+        tonightBadge.classList.remove('music-tonight-badge--live');
+      }
+    }
+    
+    // Update the "Tonight at Cue Milton" eyebrow text
+    const musicEyebrow = document.querySelector('.music-featured__info .section-header__eyebrow');
+    if (musicEyebrow) {
+      if (isMusicTonight) {
+        musicEyebrow.textContent = 'Tonight at Cue Milton';
+      } else {
+        musicEyebrow.textContent = `${nextMusicDay} at Cue Milton`;
+      }
+    }
+    
+    // Update the "Friday · 7:00 PM – 10:00 PM" line
+    const musicTime = document.querySelector('.music-featured__info p[style*="accent-primary"]');
+    if (musicTime) {
+      if (isMusicTonight && day === 5) {
+        musicTime.textContent = 'Friday · 7:00 PM – 10:00 PM';
+      } else if (isMusicTonight && day === 6) {
+        musicTime.textContent = 'Saturday · 7:00 PM – 10:00 PM';
+      } else {
+        // Show the next scheduled performance
+        musicTime.textContent = `${nextMusicDay} · Friday · 7:00 PM – 10:00 PM`;
+      }
+    }
+  }
+  
+  updateLiveMusic();
+  setInterval(updateLiveMusic, 60000);
+
+  // ═══════════════════════════════════════════
+  // DIETARY FILTER SYSTEM — Menu Intelligence
+  // ═══════════════════════════════════════════
+  const filterBtns = document.querySelectorAll('.menu-filter-btn');
+  const clearFilterBtn = document.querySelector('.menu-filter-btn--clear');
+  const allMenuItems = document.querySelectorAll('.menu-item');
+  let activeMenuFilters = new Set();
+
+  function applyDietaryFilters() {
+    if (activeMenuFilters.size === 0) {
+      allMenuItems.forEach(item => item.classList.remove('filtered-out'));
+      if (clearFilterBtn) clearFilterBtn.style.display = 'none';
+      return;
+    }
+
+    if (clearFilterBtn) clearFilterBtn.style.display = '';
+
+    allMenuItems.forEach(item => {
+      const itemDietary = (item.dataset.dietary || '').split(' ').filter(Boolean);
+      const hasMatch = [...activeMenuFilters].some(f => itemDietary.includes(f));
+      item.classList.toggle('filtered-out', !hasMatch);
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      if (filter === 'clear') {
+        activeMenuFilters.clear();
+        filterBtns.forEach(b => b.setAttribute('aria-pressed', 'false'));
+        applyDietaryFilters();
+        return;
+      }
+
+      const isActive = btn.getAttribute('aria-pressed') === 'true';
+      btn.setAttribute('aria-pressed', isActive ? 'false' : 'true');
+
+      if (isActive) {
+        activeMenuFilters.delete(filter);
+      } else {
+        activeMenuFilters.add(filter);
+      }
+
+      applyDietaryFilters();
+    });
+  });
+
 });
