@@ -24,6 +24,105 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+
+  <!-- Structured Data — Local SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Cue Barbecue",
+    "description": "Scratch-made barbecue destination with slow-smoked meats, live music, catering, and private events across Metro Atlanta.",
+    "url": "https://www.cuebarbecue.com",
+    "logo": "https://www.cuebarbecue.com/logo.png",
+    "image": "https://github.com/user-attachments/assets/b6d9f771-5844-413b-a26a-7b9cac675dc1",
+    "servesCuisine": ["Barbecue", "Southern", "American"],
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "2400",
+      "bestRating": "5"
+    },
+    "hasMenu": {
+      "@type": "Menu",
+      "url": "https://www.cuebarbecue.com/#menu"
+    },
+    "department": [
+      {
+        "@type": "Restaurant",
+        "name": "Cue Milton",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "12635 Crabapple Rd",
+          "addressLocality": "Milton",
+          "addressRegion": "GA",
+          "postalCode": "30004",
+          "addressCountry": "US"
+        },
+        "telephone": "+1-470-300-1050",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "34.0751",
+          "longitude": "-84.3004"
+        }
+      },
+      {
+        "@type": "Restaurant",
+        "name": "Cue Cumming",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "410 Peachtree Pkwy",
+          "addressLocality": "Cumming",
+          "addressRegion": "GA",
+          "postalCode": "30041",
+          "addressCountry": "US"
+        },
+        "telephone": "+1-470-300-1051",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "34.1913",
+          "longitude": "-84.1381"
+        }
+      },
+      {
+        "@type": "Restaurant",
+        "name": "Cue Peachtree Corners",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "5270 Peachtree Pkwy",
+          "addressLocality": "Peachtree Corners",
+          "addressRegion": "GA",
+          "postalCode": "30092",
+          "addressCountry": "US"
+        },
+        "telephone": "+1-470-300-1052",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "11:00",
+          "closes": "21:00"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "33.9693",
+          "longitude": "-84.2199"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -217,6 +316,8 @@
           </div>
           <div class="location-card__body">
             <h3 class="location-card__name">Cue Milton</h3>
+            <p class="location-card__address">12635 Crabapple Rd, Milton, GA 30004</p>
+            <p class="location-card__phone"><a href="tel:+14703001050" class="location-card__phone-link">📞 (470) 300-1050</a></p>
             <div class="location-card__hours">
               <span class="location-card__hours-dot"></span>
               Open Now · Closes 9 PM
@@ -227,9 +328,13 @@
               <span class="location-card__tag">Live Music</span>
               <span class="location-card__tag">Hickory Room</span>
             </div>
+            <div class="location-card__details">
+              <span class="location-card__detail">🅿️ Free parking lot</span>
+              <span class="location-card__detail">🛍️ Curbside pickup available</span>
+            </div>
             <div class="location-card__ctas">
               <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
-              <a href="#" class="btn btn--ghost btn--sm">Directions</a>
+              <a href="https://maps.google.com/?q=12635+Crabapple+Rd+Milton+GA+30004" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">📍 Directions</a>
             </div>
           </div>
         </div>
@@ -241,6 +346,8 @@
           </div>
           <div class="location-card__body">
             <h3 class="location-card__name">Cue Cumming</h3>
+            <p class="location-card__address">410 Peachtree Pkwy, Cumming, GA 30041</p>
+            <p class="location-card__phone"><a href="tel:+14703001051" class="location-card__phone-link">📞 (470) 300-1051</a></p>
             <div class="location-card__hours">
               <span class="location-card__hours-dot"></span>
               Open Now · Closes 9 PM
@@ -250,9 +357,13 @@
               <span class="location-card__tag">Takeout</span>
               <span class="location-card__tag">Catering</span>
             </div>
+            <div class="location-card__details">
+              <span class="location-card__detail">🅿️ Free parking lot</span>
+              <span class="location-card__detail">🛍️ Curbside pickup available</span>
+            </div>
             <div class="location-card__ctas">
               <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
-              <a href="#" class="btn btn--ghost btn--sm">Directions</a>
+              <a href="https://maps.google.com/?q=410+Peachtree+Pkwy+Cumming+GA+30041" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">📍 Directions</a>
             </div>
           </div>
         </div>
@@ -264,6 +375,8 @@
           </div>
           <div class="location-card__body">
             <h3 class="location-card__name">Cue Peachtree Corners</h3>
+            <p class="location-card__address">5270 Peachtree Pkwy, Peachtree Corners, GA 30092</p>
+            <p class="location-card__phone"><a href="tel:+14703001052" class="location-card__phone-link">📞 (470) 300-1052</a></p>
             <div class="location-card__hours">
               <span class="location-card__hours-dot"></span>
               Open Now · Closes 9 PM
@@ -273,9 +386,13 @@
               <span class="location-card__tag">Takeout</span>
               <span class="location-card__tag">Private Events</span>
             </div>
+            <div class="location-card__details">
+              <span class="location-card__detail">🅿️ Free parking lot</span>
+              <span class="location-card__detail">🛍️ Curbside pickup available</span>
+            </div>
             <div class="location-card__ctas">
               <a href="#order" class="btn btn--primary btn--sm">Order Now</a>
-              <a href="#" class="btn btn--ghost btn--sm">Directions</a>
+              <a href="https://maps.google.com/?q=5270+Peachtree+Pkwy+Peachtree+Corners+GA+30092" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">📍 Directions</a>
             </div>
           </div>
         </div>
@@ -708,9 +825,20 @@
         </div>
       </div>
 
+      <!-- Dietary & Flavor Filters -->
+      <div class="menu-filters reveal">
+        <span class="menu-filters__label">Filter:</span>
+        <button class="menu-filter-btn" data-filter="gf" aria-pressed="false">🌾 Gluten-Free</button>
+        <button class="menu-filter-btn" data-filter="spicy" aria-pressed="false">🌶️ Spicy</button>
+        <button class="menu-filter-btn" data-filter="vegetarian" aria-pressed="false">🥬 Vegetarian</button>
+        <button class="menu-filter-btn" data-filter="lighter" aria-pressed="false">🥗 Lighter Pick</button>
+        <button class="menu-filter-btn" data-filter="shareable" aria-pressed="false">👥 Shareable</button>
+        <button class="menu-filter-btn menu-filter-btn--clear" data-filter="clear" style="display:none;">✕ Clear</button>
+      </div>
+
       <!-- Starters -->
       <div class="menu-grid menu-panel" data-panel="starters">
-        <div class="menu-item menu-item--hero">
+        <div class="menu-item menu-item--hero" data-dietary="shareable">
           <span class="menu-item__emoji">🧀</span>
           <div class="menu-item__info">
             <div class="menu-item__name">BBQ Nachos</div>
@@ -726,7 +854,7 @@
             <button class="menu-item__add" aria-label="Add BBQ Nachos">+ Add</button>
           </div>
         </div>
-        <div class="menu-item menu-item--hero">
+        <div class="menu-item menu-item--hero" data-dietary="spicy">
           <span class="menu-item__emoji">🍗</span>
           <div class="menu-item__info">
             <div class="menu-item__name">Smoked Jumbo Wings</div>
@@ -741,7 +869,7 @@
             <button class="menu-item__add" aria-label="Add Smoked Jumbo Wings">+ Add</button>
           </div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" data-dietary="gf">
           <span class="menu-item__emoji">🧡</span>
           <div class="menu-item__info">
             <div class="menu-item__name">Pimento Cheese Dip</div>
@@ -753,7 +881,7 @@
             <button class="menu-item__add" aria-label="Add Pimento Cheese Dip">+ Add</button>
           </div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" data-dietary="shareable">
           <span class="menu-item__emoji">🥒</span>
           <div class="menu-item__info">
             <div class="menu-item__name">Fried Pickles</div>
@@ -778,6 +906,10 @@
               <span class="menu-item__badge menu-item__badge--bestseller">🏆 #1 Most Ordered</span>
               <span class="menu-item__badge">Fan Favorite</span>
             </div>
+              <div class="menu-item__indicators">
+                <span class="menu-item__smoke-level" title="Smoke level: Heavy">🔥🔥🔥 Heavy Smoke</span>
+                <span class="menu-item__portion" title="Portion size">👤 Serves 1 · 2 sides included</span>
+              </div>
             <div class="menu-item__proof">Guests love this · ★★★★★</div>
           </div>
           <div class="menu-item__right">
@@ -793,6 +925,10 @@
             <div class="menu-item__badges">
               <span class="menu-item__badge menu-item__badge--bestseller">✨ Signature</span>
             </div>
+              <div class="menu-item__indicators">
+                <span class="menu-item__smoke-level" title="Smoke level: Medium">🔥🔥 Medium Smoke</span>
+                <span class="menu-item__portion" title="Portion size">👤 Half rack serves 1 · Full rack serves 2</span>
+              </div>
             <div class="menu-item__proof">Featured on weekends</div>
           </div>
           <div class="menu-item__right">
@@ -811,7 +947,7 @@
             <button class="menu-item__add" aria-label="Add Pulled Pork Platter">+ Add</button>
           </div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" data-dietary="spicy">
           <span class="menu-item__emoji">🌶️</span>
           <div class="menu-item__info">
             <div class="menu-item__name">Hot Links Platter</div>
@@ -825,7 +961,7 @@
             <button class="menu-item__add" aria-label="Add Hot Links Platter">+ Add</button>
           </div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" data-dietary="lighter">
           <span class="menu-item__emoji">🦃</span>
           <div class="menu-item__info">
             <div class="menu-item__name">Smoked Turkey Platter</div>
@@ -846,6 +982,10 @@
               <span class="menu-item__badge menu-item__badge--bestseller">👨‍🍳 Staff Pick</span>
               <span class="menu-item__badge">Best Value</span>
             </div>
+              <div class="menu-item__indicators">
+                <span class="menu-item__smoke-level" title="Smoke level: Heavy">🔥🔥🔥 Heavy Smoke</span>
+                <span class="menu-item__portion" title="Portion size">👤👤 Shareable · Serves 1–2</span>
+              </div>
           </div>
           <div class="menu-item__right">
             <div class="menu-item__price">$29</div>
@@ -879,7 +1019,7 @@
             <button class="menu-item__add" aria-label="Add Brisket Sandwich">+ Add</button>
           </div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" data-dietary="lighter">
           <span class="menu-item__emoji">🦃</span>
           <div class="menu-item__info">
             <div class="menu-item__name">Smoked Turkey Club</div>
@@ -911,7 +1051,7 @@
             <button class="menu-item__add" aria-label="Add Macaroni Slammer">+ Add</button>
           </div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" data-dietary="gf">
           <span class="menu-item__emoji">🫘</span>
           <div class="menu-item__info">
             <div class="menu-item__name">Bacon Baked Beans</div>
@@ -947,7 +1087,7 @@
             <button class="menu-item__add" aria-label="Add Hand-Cut Fries">+ Add</button>
           </div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" data-dietary="vegetarian">
           <span class="menu-item__emoji">🫒</span>
           <div class="menu-item__info">
             <div class="menu-item__name">Fried Okra</div>
@@ -959,7 +1099,7 @@
             <button class="menu-item__add" aria-label="Add Fried Okra">+ Add</button>
           </div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" data-dietary="gf vegetarian">
           <span class="menu-item__emoji">🍍</span>
           <div class="menu-item__info">
             <div class="menu-item__name">Grilled Pineapple</div>
@@ -974,7 +1114,7 @@
             <button class="menu-item__add" aria-label="Add Grilled Pineapple">+ Add</button>
           </div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" data-dietary="gf vegetarian">
           <span class="menu-item__emoji">🥒</span>
           <div class="menu-item__info">
             <div class="menu-item__name">House Pickles</div>
@@ -986,7 +1126,7 @@
             <button class="menu-item__add" aria-label="Add House Pickles">+ Add</button>
           </div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" data-dietary="gf">
           <span class="menu-item__emoji">🥗</span>
           <div class="menu-item__info">
             <div class="menu-item__name">Coleslaw</div>
@@ -1155,6 +1295,11 @@
         <hr class="section-header__rule">
         <p class="section-header__desc">Three steps between you and the best meal of your life.</p>
       </div>
+      <button class="drawer-toggle reveal" aria-expanded="false" aria-controls="flavor-engine-drawer" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false'?'true':'false'); document.getElementById('flavor-engine-drawer').classList.toggle('drawer--open');">
+        <span class="drawer-toggle__text">Explore the Flavor Engine</span>
+        <span class="drawer-toggle__icon">▼</span>
+      </button>
+      <div class="drawer" id="flavor-engine-drawer">
 
       <!-- Step Indicator -->
       <div class="fe-steps reveal">
@@ -1308,6 +1453,7 @@
           <span class="fe-order-cta__subtext">Pickup or delivery from your nearest Cue</span>
         </div>
       </div>
+      </div><!-- /.drawer -->
 
     </div>
   </section>
@@ -2123,6 +2269,11 @@
         <hr class="section-header__rule">
         <p class="section-header__desc">Take our 30-second quiz and we'll match you with your perfect Cue meal.</p>
       </div>
+      <button class="drawer-toggle reveal" aria-expanded="false" aria-controls="quiz-drawer" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false'?'true':'false'); document.getElementById('quiz-drawer').classList.toggle('drawer--open');">
+        <span class="drawer-toggle__text">Take the Quiz</span>
+        <span class="drawer-toggle__icon">▼</span>
+      </button>
+      <div class="drawer" id="quiz-drawer">
 
       <div class="quiz-container reveal">
         <!-- Question 1 -->
@@ -2161,6 +2312,7 @@
           <span class="quiz-dot"></span>
         </div>
       </div>
+      </div><!-- /.drawer -->
     </div>
   </section>
 
@@ -2308,7 +2460,96 @@
   </section>
 
   <!-- ═══════════════════════════════════════
-       LOCATIONS MAP
+       SOCIAL PROOF — Press & Reviews
+       ═══════════════════════════════════════ -->
+  <section class="section section--smoke social-proof" id="social-proof">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">What People Are Saying</span>
+        <h2 class="section-header__title">Don't Take Our Word For It</h2>
+        <hr class="section-header__rule">
+      </div>
+
+      <!-- Press Logos Strip -->
+      <div class="press-strip reveal">
+        <div class="press-strip__item">
+          <span class="press-strip__source">AJC</span>
+          <span class="press-strip__quote">"Best BBQ in Metro Atlanta"</span>
+        </div>
+        <div class="press-strip__divider"></div>
+        <div class="press-strip__item">
+          <span class="press-strip__source">Eater Atlanta</span>
+          <span class="press-strip__quote">"A smokehouse that gets everything right"</span>
+        </div>
+        <div class="press-strip__divider"></div>
+        <div class="press-strip__item">
+          <span class="press-strip__source">Atlanta Magazine</span>
+          <span class="press-strip__quote">"The gold standard for Georgia barbecue"</span>
+        </div>
+      </div>
+
+      <!-- Customer Reviews -->
+      <div class="reviews-grid stagger">
+        <div class="review-card reveal">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"The brisket is unreal. 14 hours of smoking and you can taste every minute. Best barbecue I've had outside of Texas."</p>
+          <div class="review-card__author">
+            <span class="review-card__name">Marcus T.</span>
+            <span class="review-card__location">Milton · Google Review</span>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"We had our rehearsal dinner in the Hickory Room and it was absolutely perfect. The food, the ambiance, the service — all 10/10."</p>
+          <div class="review-card__author">
+            <span class="review-card__name">Jennifer & Kyle R.</span>
+            <span class="review-card__location">Cumming · Yelp</span>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"Friday night live music with ribs and a local craft beer? There's no better way to spend a weekend in Atlanta."</p>
+          <div class="review-card__author">
+            <span class="review-card__name">David L.</span>
+            <span class="review-card__location">Peachtree Corners · TripAdvisor</span>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"The mac and cheese slammer is legendary for a reason. My kids won't eat mac and cheese anywhere else now."</p>
+          <div class="review-card__author">
+            <span class="review-card__name">Sarah K.</span>
+            <span class="review-card__location">Milton · Google Review</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social CTA -->
+      <div class="social-cta reveal">
+        <p class="social-cta__text">Follow the smoke. See what's cooking.</p>
+        <div class="social-cta__links">
+          <a href="https://instagram.com/cuebarbecue" target="_blank" rel="noopener" class="social-cta__link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <span>@cuebarbecue</span>
+          </a>
+          <a href="https://facebook.com/cuebarbecue" target="_blank" rel="noopener" class="social-cta__link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span>Cue Barbecue</span>
+          </a>
+          <a href="https://tiktok.com/@cuebarbecue" target="_blank" rel="noopener" class="social-cta__link" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            <span>@cuebarbecue</span>
+          </a>
+          <a href="https://youtube.com/@cuebarbecue" target="_blank" rel="noopener" class="social-cta__link" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <span>Cue Barbecue</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
        ═══════════════════════════════════════ -->
   <section class="section section--smoke locations-map">
     <div class="container">
@@ -2333,6 +2574,7 @@
             <div>
               <h4 class="location-mini__name">Cue Milton</h4>
               <p class="location-mini__address">12635 Crabapple Rd, Milton, GA 30004</p>
+              <p class="location-mini__phone"><a href="tel:+14703001050">📞 (470) 300-1050</a></p>
               <p style="font-size: var(--text-xs); color: var(--accent-primary); margin-bottom: var(--space-sm);">Mon–Sun 11AM–9PM · Live Music Fri & Sat</p>
               <div class="location-mini__ctas">
                 <a href="#" class="btn btn--primary btn--sm">Order</a>
@@ -2347,6 +2589,7 @@
             <div>
               <h4 class="location-mini__name">Cue Cumming</h4>
               <p class="location-mini__address">410 Peachtree Pkwy, Cumming, GA 30041</p>
+              <p class="location-mini__phone"><a href="tel:+14703001051">📞 (470) 300-1051</a></p>
               <p style="font-size: var(--text-xs); color: var(--accent-primary); margin-bottom: var(--space-sm);">Mon–Sun 11AM–9PM</p>
               <div class="location-mini__ctas">
                 <a href="#" class="btn btn--primary btn--sm">Order</a>
@@ -2361,6 +2604,7 @@
             <div>
               <h4 class="location-mini__name">Cue Peachtree Corners</h4>
               <p class="location-mini__address">5270 Peachtree Pkwy, Peachtree Corners, GA 30092</p>
+              <p class="location-mini__phone"><a href="tel:+14703001052">📞 (470) 300-1052</a></p>
               <p style="font-size: var(--text-xs); color: var(--accent-primary); margin-bottom: var(--space-sm);">Mon–Sun 11AM–9PM</p>
               <div class="location-mini__ctas">
                 <a href="#" class="btn btn--primary btn--sm">Order</a>
@@ -2403,11 +2647,18 @@
           <h3 class="footer__brand-name">🔥 Cue Barbecue</h3>
           <p class="footer__brand-desc">Scratch-made barbecue. Live music. Southern hospitality. Metro Atlanta's smokehouse built for gathering.</p>
           <div class="footer__social">
-            <a href="#" class="footer__social-link" aria-label="Facebook">📘</a>
-            <a href="#" class="footer__social-link" aria-label="Instagram">📷</a>
-            <a href="#" class="footer__social-link" aria-label="Twitter">🐦</a>
-            <a href="#" class="footer__social-link" aria-label="TikTok">🎵</a>
-            <a href="#" class="footer__social-link" aria-label="YouTube">▶️</a>
+            <a href="https://facebook.com/cuebarbecue" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://instagram.com/cuebarbecue" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://tiktok.com/@cuebarbecue" class="footer__social-link" aria-label="TikTok" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+            <a href="https://youtube.com/@cuebarbecue" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
           </div>
         </div>
 
