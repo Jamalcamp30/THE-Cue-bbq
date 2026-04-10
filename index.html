@@ -247,11 +247,44 @@
         <a href="#catering" class="btn btn--ghost btn--lg" data-magnetic="0.2">Book Catering</a>
         <a href="#music" class="btn btn--ghost btn--lg" data-magnetic="0.2">🎵 Live Music</a>
       </div>
+      <div class="hero-live-signals reveal-blur" id="hero-live-signals" aria-live="polite" tabindex="0">
+        <div class="hero-live-signals__label">Today at Cue</div>
+        <div class="hero-live-signals__item" id="hero-live-signal-text">🔥 Smoked today: Brisket, Ribs, Wings</div>
+      </div>
     </div>
 
     <div class="hero__scroll-indicator">
       <div class="hero__scroll-line"></div>
       <span class="hero__scroll-text">Explore</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       TODAY AT CUE — Live Conversion Module
+       ═══════════════════════════════════════ -->
+  <section class="section section--smoke today-cue reveal" id="today-cue">
+    <div class="container">
+      <div class="today-cue__head">
+        <span class="section-header__eyebrow">Live Right Now</span>
+        <h2 class="section-header__title">Today at Cue</h2>
+      </div>
+      <div class="today-cue__grid">
+        <article class="today-cue__card">
+          <h3 class="today-cue__title">Pit Status</h3>
+          <p class="today-cue__value" id="today-smoked">Brisket · Ribs · Wings</p>
+          <p class="today-cue__meta">Fresh off the pit and available now.</p>
+        </article>
+        <article class="today-cue__card">
+          <h3 class="today-cue__title">Pickup Wait</h3>
+          <p class="today-cue__value"><span id="today-wait">14</span> min</p>
+          <p class="today-cue__meta">Estimated average at your selected location.</p>
+        </article>
+        <article class="today-cue__card">
+          <h3 class="today-cue__title">Tonight's Stage</h3>
+          <p class="today-cue__value" id="today-music">Soul Pit Sessions · 7:30 PM</p>
+          <p class="today-cue__meta">Live music starts after dinner rush.</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -597,8 +630,26 @@
           <svg class="menu-bundles__icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4z" fill="currentColor"/></svg>
           Ready-Made Combos — Better Together
         </h3>
+        <div class="bundle-reco" id="bundle-reco">
+          <div class="bundle-reco__controls">
+            <label class="bundle-reco__label" for="bundle-party-size">Party size</label>
+            <select class="bundle-reco__select" id="bundle-party-size">
+              <option value="1-2">1–2</option>
+              <option value="3-4">3–4</option>
+              <option value="5-7">5–7</option>
+            </select>
+            <label class="bundle-reco__label" for="bundle-mood">Mood</label>
+            <select class="bundle-reco__select" id="bundle-mood">
+              <option value="comfort">Comfort</option>
+              <option value="bold">Bold</option>
+              <option value="light">Light</option>
+              <option value="adventurous">Adventurous</option>
+            </select>
+          </div>
+          <p class="bundle-reco__result" id="bundle-reco-result">Recommended: The First Timer (best for first visit + comfort)</p>
+        </div>
         <div class="menu-bundles__grid">
-          <div class="menu-bundle">
+          <div class="menu-bundle" data-bundle-name="The First Timer" data-party="1-2" data-moods="comfort,light">
             <div class="menu-bundle__header">
               <span class="menu-bundle__emoji">🆕</span>
               <div>
@@ -611,7 +662,7 @@
             <div class="menu-bundle__savings">Save $3 vs ordering separate</div>
             <button class="menu-bundle__order btn btn--ember btn--sm">Add Bundle</button>
           </div>
-          <div class="menu-bundle">
+          <div class="menu-bundle" data-bundle-name="Game Day Pack" data-party="3-4,5-7" data-moods="bold,adventurous">
             <div class="menu-bundle__header">
               <span class="menu-bundle__emoji">🏈</span>
               <div>
@@ -624,7 +675,7 @@
             <div class="menu-bundle__savings">Save $7 vs ordering separate</div>
             <button class="menu-bundle__order btn btn--ember btn--sm">Add Bundle</button>
           </div>
-          <div class="menu-bundle">
+          <div class="menu-bundle" data-bundle-name="Date Night for Two" data-party="1-2" data-moods="light,bold">
             <div class="menu-bundle__header">
               <span class="menu-bundle__emoji">🕯️</span>
               <div>
@@ -637,7 +688,7 @@
             <div class="menu-bundle__savings">Save $8 vs ordering separate</div>
             <button class="menu-bundle__order btn btn--ember btn--sm">Add Bundle</button>
           </div>
-          <div class="menu-bundle">
+          <div class="menu-bundle" data-bundle-name="Family Smokehouse" data-party="5-7,3-4" data-moods="comfort,bold">
             <div class="menu-bundle__header">
               <span class="menu-bundle__emoji">👨‍👩‍👧‍👦</span>
               <div>
@@ -1119,9 +1170,10 @@
       <div class="menu-mobile-bar__inner">
         <div class="menu-mobile-bar__count">
           <span class="menu-mobile-bar__badge" id="mobile-cart-count">0</span>
-          items selected
+          <span id="mobile-cart-text">Ready to order</span>
+          <span class="menu-mobile-bar__meta" id="mobile-order-eta">ETA 20–30 min</span>
         </div>
-        <a href="#order" class="btn btn--ember btn--sm menu-mobile-bar__cta">View Order →</a>
+        <a href="#order" class="btn btn--ember btn--sm menu-mobile-bar__cta">Resume Order →</a>
       </div>
     </div>
   </section>

@@ -173,6 +173,32 @@
   will-change: transform;
 }
 
+.hero-live-signals__item {
+  animation: signalPulse 4.5s var(--anim-ease-smooth) infinite;
+}
+
+@keyframes signalPulse {
+  0%, 100% { opacity: 0.8; transform: translateY(0); }
+  12% { opacity: 1; transform: translateY(-1px); }
+  30% { opacity: 0.92; transform: translateY(0); }
+}
+
+.menu-mobile-bar.is-visible .menu-mobile-bar__badge {
+  animation: badgeNudge 1s var(--anim-ease-back) 2;
+}
+
+@keyframes badgeNudge {
+  0%, 100% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-live-signals__item,
+  .menu-mobile-bar.is-visible .menu-mobile-bar__badge {
+    animation: none !important;
+  }
+}
+
 /* ═══════════════════════════════════════════
    3D TILT CARD SYSTEM
    ═══════════════════════════════════════════ */

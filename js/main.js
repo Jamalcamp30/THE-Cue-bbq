@@ -126,6 +126,88 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const orderState = {
+    cartCount: 0,
+    cartSubtotal: 0,
+    etaFloor: 20,
+    location: 'milton'
+  };
+
+  function initLiveSignals() {
+    const signalText = document.getElementById('hero-live-signal-text');
+    const signalsWrap = document.getElementById('hero-live-signals');
+    const todaySmoked = document.getElementById('today-smoked');
+    const todayWait = document.getElementById('today-wait');
+    const todayMusic = document.getElementById('today-music');
+    if (!signalText) return;
+
+    const signalData = {
+      smoked_today: ['Brisket', 'Ribs', 'Wings'],
+      pickup_wait_min: 14,
+      now_playing: 'Soul Pit Sessions · 7:30 PM',
+      orders_last_hour: 128
+    };
+    const liveSignals = [
+      `🔥 Smoked today: ${signalData.smoked_today.join(', ')}`,
+      `⏱️ Average pickup wait at Milton: ${signalData.pickup_wait_min} min`,
+      `🎵 Now playing tonight: ${signalData.now_playing}`,
+      `📦 ${signalData.orders_last_hour} orders fired in the last hour`
+    ];
+    let signalIndex = 0;
+    let intervalId = null;
+
+    const rotateLiveSignals = () => {
+      signalIndex = (signalIndex + 1) % liveSignals.length;
+      signalText.textContent = liveSignals[signalIndex];
+    };
+    const stop = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    };
+    const start = () => {
+      if (intervalId) return;
+      intervalId = setInterval(rotateLiveSignals, 4500);
+    };
+
+    start();
+    if (signalsWrap) {
+      ['mouseenter', 'focusin'].forEach(ev => signalsWrap.addEventListener(ev, stop));
+      ['mouseleave', 'focusout'].forEach(ev => signalsWrap.addEventListener(ev, start));
+    }
+
+    if (todaySmoked) todaySmoked.textContent = signalData.smoked_today.join(' · ');
+    if (todayWait) todayWait.textContent = String(signalData.pickup_wait_min);
+    if (todayMusic) todayMusic.textContent = signalData.now_playing;
+  }
+
+  function initSmartBundles() {
+    const partySize = document.getElementById('bundle-party-size');
+    const mood = document.getElementById('bundle-mood');
+    const result = document.getElementById('bundle-reco-result');
+    const bundleCards = document.querySelectorAll('.menu-bundle[data-bundle-name]');
+    if (!partySize || !mood || !result || !bundleCards.length) return;
+
+    const pickBundle = () => {
+      const partyValue = partySize.value;
+      const moodValue = mood.value;
+      const firstMatch = [...bundleCards].find(card => {
+        const parties = (card.dataset.party || '').split(',').map(v => v.trim());
+        const moods = (card.dataset.moods || '').split(',').map(v => v.trim());
+        return parties.includes(partyValue) && moods.includes(moodValue);
+      }) || bundleCards[0];
+
+      bundleCards.forEach(card => card.classList.toggle('is-recommended', card === firstMatch));
+      const label = firstMatch.dataset.bundleName || 'The First Timer';
+      result.textContent = `Recommended: ${label} (best for ${partyValue} guests + ${moodValue} mood)`;
+    };
+
+    partySize.addEventListener('change', pickBundle);
+    mood.addEventListener('change', pickBundle);
+    pickBundle();
+  }
+
   // ═══════════════════════════════════════════
   // SCROLL REVEAL ANIMATIONS
   // ═══════════════════════════════════════════
@@ -187,31 +269,77 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       locationBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      orderState.location = btn.dataset.location || 'milton';
+      localStorage.setItem('cue_location_pref_v1', orderState.location);
+      persistOrderState();
+      updateMobileBar();
     });
   });
+
+  function initNearestLocation() {
+    const storageKey = 'cue_location_pref_v1';
+    const existingLocation = localStorage.getItem(storageKey);
+    const fallbackLocation = (Intl.DateTimeFormat().resolvedOptions().timeZone || '').includes('Atlanta')
+      ? 'milton'
+      : 'peachtree';
+    const location = existingLocation || fallbackLocation;
+    const matchingBtn = document.querySelector(`.menu-location-btn[data-location="${location}"]`);
+    if (matchingBtn) matchingBtn.click();
+    if (!existingLocation) localStorage.setItem(storageKey, location);
+  }
 
   // ═══════════════════════════════════════════
   // ADD TO ORDER — Item-Level CTA + Mobile Bar
   // ═══════════════════════════════════════════
-  let cartCount = 0;
   const mobileBar = document.getElementById('menu-mobile-bar');
   const mobileCartCount = document.getElementById('mobile-cart-count');
+  const mobileCartText = document.getElementById('mobile-cart-text');
+  const mobileOrderEta = document.getElementById('mobile-order-eta');
+
+  function persistOrderState() {
+    localStorage.setItem('cue_order_state_v1', JSON.stringify(orderState));
+  }
+
+  function hydrateOrderState() {
+    const raw = localStorage.getItem('cue_order_state_v1');
+    if (!raw) return;
+    try {
+      const parsed = JSON.parse(raw);
+      orderState.cartCount = Number(parsed.cartCount) || 0;
+      orderState.cartSubtotal = Number(parsed.cartSubtotal) || 0;
+      orderState.etaFloor = Number(parsed.etaFloor) || 20;
+      orderState.location = parsed.location || 'milton';
+    } catch (_) {
+      // Ignore corrupted local state and fallback to defaults.
+    }
+  }
 
   function updateMobileBar() {
     if (!mobileBar) return;
-    if (cartCount > 0) {
+    if (orderState.cartCount > 0) {
       mobileBar.classList.add('is-visible');
     } else {
       mobileBar.classList.remove('is-visible');
     }
-    if (mobileCartCount) mobileCartCount.textContent = cartCount;
+    if (mobileCartCount) mobileCartCount.textContent = orderState.cartCount;
+    if (mobileCartText) {
+      mobileCartText.textContent = orderState.cartCount > 0
+        ? `${orderState.cartCount} item${orderState.cartCount > 1 ? 's' : ''} in cart · $${orderState.cartSubtotal}`
+        : 'Ready to order';
+    }
+    if (mobileOrderEta) {
+      orderState.etaFloor = Math.max(15, 27 - Math.min(orderState.cartCount, 8));
+      mobileOrderEta.textContent = `ETA ${orderState.etaFloor}-${orderState.etaFloor + 10} min · ${orderState.location}`;
+    }
   }
 
   // Item-level add buttons
   document.querySelectorAll('.menu-item__add, .menu-pick-card__add, .menu-bundle__order').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      cartCount++;
+      orderState.cartCount++;
+      orderState.cartSubtotal += 14;
+      persistOrderState();
       updateMobileBar();
 
       // Visual feedback
@@ -224,6 +352,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1200);
     });
   });
+
+  initLiveSignals();
+  initSmartBundles();
+  hydrateOrderState();
+  initNearestLocation();
+  updateMobileBar();
 
   // Pick card click → also acts as add
   document.querySelectorAll('.menu-pick-card').forEach(card => {
