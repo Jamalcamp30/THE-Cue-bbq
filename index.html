@@ -231,7 +231,7 @@
     <div class="hero__overlay"></div>
 
     <div class="hero__content">
-      <p class="hero__eyebrow">Metro Atlanta's Scratch-Made Barbecue Destination</p>
+      <p class="hero__eyebrow" id="hero-daypart-eyebrow">Metro Atlanta's Scratch-Made Barbecue Destination</p>
       <h1 class="hero__title">
         Where Smoke, Music &
         <span class="hero__title-cycle" data-cycle-words="Homemade Everything,Smoke &amp; Soul,Southern Craft,Live-Fire Luxury">Homemade Everything</span>
@@ -241,12 +241,27 @@
         Slow-smoked meats. Scratch-made sides. Live music every weekend.
         Three locations built for gathering.
       </p>
+
+      <!-- Location-personalized CTA -->
+      <div class="hero__location-hint" id="hero-location-hint" aria-live="polite">
+        <span class="hero__location-dot"></span>
+        <span id="hero-location-text">You're closest to Milton — pickup in ~14 min</span>
+      </div>
+
       <div class="hero__ctas">
         <a href="#order" class="btn btn--primary btn--lg" data-magnetic="0.3">🔥 Order Pickup / Delivery</a>
         <a href="#menu" class="btn btn--secondary btn--lg" data-magnetic="0.2">View Menu</a>
         <a href="#catering" class="btn btn--ghost btn--lg" data-magnetic="0.2">Book Catering</a>
         <a href="#music" class="btn btn--ghost btn--lg" data-magnetic="0.2">🎵 Live Music</a>
       </div>
+
+      <!-- 1-Click Reorder Chip -->
+      <div class="hero__reorder" id="hero-reorder" style="display:none;" aria-label="Quick reorder">
+        <span class="hero__reorder-icon">🔁</span>
+        <span class="hero__reorder-text">Reorder your last meal</span>
+        <button class="hero__reorder-btn" id="hero-reorder-btn">1-Tap Reorder →</button>
+      </div>
+
       <div class="hero-live-signals reveal-blur" id="hero-live-signals" aria-live="polite" tabindex="0">
         <div class="hero-live-signals__label">Today at Cue</div>
         <div class="hero-live-signals__item" id="hero-live-signal-text">🔥 Smoked today: Brisket, Ribs, Wings</div>
@@ -284,6 +299,87 @@
           <p class="today-cue__value" id="today-music">Soul Pit Sessions · 7:30 PM</p>
           <p class="today-cue__meta">Live music starts after dinner rush.</p>
         </article>
+        <article class="today-cue__card today-cue__card--special" id="today-special-card">
+          <span class="today-cue__card-badge">⏰ Limited</span>
+          <h3 class="today-cue__title">Today's Special</h3>
+          <p class="today-cue__value" id="today-special">Smoked Brisket Burnt Ends</p>
+          <p class="today-cue__meta" id="today-special-desc">Limited batch — available while they last.</p>
+          <div class="sold-out-meter" id="sold-out-meter">
+            <div class="sold-out-meter__bar">
+              <div class="sold-out-meter__fill" id="sold-out-fill" style="width: 62%"></div>
+            </div>
+            <span class="sold-out-meter__label" id="sold-out-label">62% claimed</span>
+          </div>
+        </article>
+        <article class="today-cue__card today-cue__card--weather" id="weather-card">
+          <h3 class="today-cue__title">🌤️ Weather Pick</h3>
+          <p class="today-cue__value" id="weather-suggestion">Perfect patio day</p>
+          <p class="today-cue__meta" id="weather-desc">Try our smoked wings and a cold local draft on the patio.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PIT DROP — Limited Release Countdown
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark pit-drop" id="pit-drop">
+    <div class="container">
+      <div class="pit-drop__inner reveal">
+        <span class="pit-drop__eyebrow">🔥 Limited Pit Drop</span>
+        <h3 class="pit-drop__title" id="pit-drop-title">Smoked Wagyu Brisket</h3>
+        <p class="pit-drop__desc">A5 Wagyu, 16-hour smoke, hickory & cherry wood. Only 20 servings. Once they're gone, they're gone.</p>
+
+        <!-- Countdown Timer -->
+        <div class="pit-drop__countdown" id="pit-drop-countdown" aria-label="Time until pit drop">
+          <div class="pit-drop__time-block">
+            <span class="pit-drop__digits" id="pit-drop-hours">04</span>
+            <span class="pit-drop__unit">hrs</span>
+          </div>
+          <span class="pit-drop__separator">:</span>
+          <div class="pit-drop__time-block">
+            <span class="pit-drop__digits" id="pit-drop-mins">32</span>
+            <span class="pit-drop__unit">min</span>
+          </div>
+          <span class="pit-drop__separator">:</span>
+          <div class="pit-drop__time-block">
+            <span class="pit-drop__digits" id="pit-drop-secs">18</span>
+            <span class="pit-drop__unit">sec</span>
+          </div>
+        </div>
+
+        <div class="pit-drop__cta">
+          <button class="btn btn--ember btn--lg" id="pit-drop-notify">🔔 Notify Me When It Drops</button>
+          <span class="pit-drop__waitlist" id="pit-drop-waitlist">47 on the waitlist</span>
+        </div>
+      </div>
+
+      <!-- Provenance Cards -->
+      <div class="provenance-cards stagger">
+        <div class="provenance-card reveal">
+          <span class="provenance-card__icon">🪵</span>
+          <h4 class="provenance-card__title">Wood</h4>
+          <p class="provenance-card__detail">Georgia Hickory & Cherry</p>
+          <p class="provenance-card__meta">Sourced from North Georgia hardwood farms</p>
+        </div>
+        <div class="provenance-card reveal">
+          <span class="provenance-card__icon">🥩</span>
+          <h4 class="provenance-card__title">Source</h4>
+          <p class="provenance-card__detail">Heritage Black Angus</p>
+          <p class="provenance-card__meta">Family ranch, grass-fed, no antibiotics</p>
+        </div>
+        <div class="provenance-card reveal">
+          <span class="provenance-card__icon">⏱️</span>
+          <h4 class="provenance-card__title">Smoke Time</h4>
+          <p class="provenance-card__detail">14–16 Hours</p>
+          <p class="provenance-card__meta">Low & slow at 225°F until perfection</p>
+        </div>
+        <div class="provenance-card reveal">
+          <span class="provenance-card__icon">🌡️</span>
+          <h4 class="provenance-card__title">Rub</h4>
+          <p class="provenance-card__detail">House Blend</p>
+          <p class="provenance-card__meta">12-spice secret rub, applied 24 hours before smoke</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1207,6 +1303,75 @@
         </div>
       </div>
 
+      <!-- Proof Cards — Dynamic Social Proof -->
+      <div class="proof-cards reveal" id="proof-cards" aria-label="Trending at Cue">
+        <div class="proof-cards__card proof-cards__card--trending">
+          <span class="proof-cards__badge">🔥 Trending</span>
+          <h4 class="proof-cards__title">Most Ordered This Week</h4>
+          <div class="proof-cards__list" id="proof-most-ordered">
+            <div class="proof-cards__dish">
+              <span class="proof-cards__rank">1</span>
+              <span class="proof-cards__name">Brisket Platter</span>
+              <span class="proof-cards__orders">342 orders</span>
+            </div>
+            <div class="proof-cards__dish">
+              <span class="proof-cards__rank">2</span>
+              <span class="proof-cards__name">Half Rack Ribs</span>
+              <span class="proof-cards__orders">287 orders</span>
+            </div>
+            <div class="proof-cards__dish">
+              <span class="proof-cards__rank">3</span>
+              <span class="proof-cards__name">Mac & Cheese Slammer</span>
+              <span class="proof-cards__orders">263 orders</span>
+            </div>
+          </div>
+        </div>
+        <div class="proof-cards__card proof-cards__card--favorites">
+          <span class="proof-cards__badge">❤️ Fan Favorite</span>
+          <h4 class="proof-cards__title">Repeat Guest Favorites</h4>
+          <div class="proof-cards__list" id="proof-repeat-favs">
+            <div class="proof-cards__dish">
+              <span class="proof-cards__rank">🔁</span>
+              <span class="proof-cards__name">The Cue Sampler</span>
+              <span class="proof-cards__orders">78% reorder</span>
+            </div>
+            <div class="proof-cards__dish">
+              <span class="proof-cards__rank">🔁</span>
+              <span class="proof-cards__name">Banana Pudding</span>
+              <span class="proof-cards__orders">71% reorder</span>
+            </div>
+            <div class="proof-cards__dish">
+              <span class="proof-cards__rank">🔁</span>
+              <span class="proof-cards__name">Smoked Wings</span>
+              <span class="proof-cards__orders">65% reorder</span>
+            </div>
+          </div>
+        </div>
+        <div class="proof-cards__card proof-cards__card--rating">
+          <span class="proof-cards__badge">⭐ Top Rated</span>
+          <h4 class="proof-cards__title">Pitmaster's Pick</h4>
+          <div class="proof-cards__featured">
+            <div class="proof-cards__featured-dish">🥩</div>
+            <div class="proof-cards__featured-info">
+              <span class="proof-cards__featured-name" id="pitmaster-pick-name">Burnt Ends</span>
+              <span class="proof-cards__featured-desc" id="pitmaster-pick-desc">Crispy edges, melt-in-your-mouth center. Limited batch — pitmaster's favorite today.</span>
+              <div class="proof-cards__featured-rating">
+                <span class="proof-cards__featured-stars">★★★★★</span>
+                <span class="proof-cards__featured-count">4.9 · 180+ reviews</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rotating Review Carousel -->
+      <div class="review-carousel reveal" id="review-carousel" aria-live="polite">
+        <div class="review-carousel__track" id="review-carousel-track">
+          <!-- Reviews rotate via JS -->
+        </div>
+        <div class="review-carousel__dots" id="review-carousel-dots"></div>
+      </div>
+
       <!-- Customer Reviews -->
       <div class="reviews-grid stagger">
         <div class="review-card reveal">
@@ -1269,7 +1434,75 @@
   </section>
 
   <!-- ═══════════════════════════════════════
-       INTENT PATHS — "I'm Here To..."
+       CAUGHT AT CUE — UGC Photo Wall
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark ugc-wall" id="caught-at-cue">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-header__eyebrow">The Cue Community</span>
+        <h2 class="section-header__title">Caught at Cue</h2>
+        <hr class="section-header__rule">
+        <p class="section-header__desc">Real moments. Real smoke. Real people. Tag <strong>@cuebarbecue</strong> and see your photo on the wall.</p>
+      </div>
+
+      <div class="ugc-wall__grid stagger" id="ugc-grid">
+        <div class="ugc-wall__item reveal" data-tilt="4">
+          <div class="ugc-wall__photo" style="background: linear-gradient(135deg, #3a2010, #1a0d05); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🥩</div>
+          <div class="ugc-wall__overlay">
+            <span class="ugc-wall__user">@smokehouse_mike</span>
+            <span class="ugc-wall__caption">That bark is perfection 🔥</span>
+            <span class="ugc-wall__location">📍 Milton</span>
+          </div>
+        </div>
+        <div class="ugc-wall__item reveal" data-tilt="4">
+          <div class="ugc-wall__photo" style="background: linear-gradient(135deg, #2a1a0a, #0d0d0d); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🍖</div>
+          <div class="ugc-wall__overlay">
+            <span class="ugc-wall__user">@atl_foodie_jen</span>
+            <span class="ugc-wall__caption">Best ribs in Georgia, no debate</span>
+            <span class="ugc-wall__location">📍 Cumming</span>
+          </div>
+        </div>
+        <div class="ugc-wall__item reveal" data-tilt="4">
+          <div class="ugc-wall__photo" style="background: linear-gradient(135deg, #2e1a10, #0d0808); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🎸</div>
+          <div class="ugc-wall__overlay">
+            <span class="ugc-wall__user">@friday_vibes_atl</span>
+            <span class="ugc-wall__caption">Live music + brisket = heaven</span>
+            <span class="ugc-wall__location">📍 Peachtree Corners</span>
+          </div>
+        </div>
+        <div class="ugc-wall__item reveal" data-tilt="4">
+          <div class="ugc-wall__photo" style="background: linear-gradient(135deg, #331a0d, #1a0a05); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🍺</div>
+          <div class="ugc-wall__overlay">
+            <span class="ugc-wall__user">@crafts_and_meats</span>
+            <span class="ugc-wall__caption">Local beer + smoked wings 🤤</span>
+            <span class="ugc-wall__location">📍 Milton</span>
+          </div>
+        </div>
+        <div class="ugc-wall__item reveal" data-tilt="4">
+          <div class="ugc-wall__photo" style="background: linear-gradient(135deg, #2a1005, #0d0d0d); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🎂</div>
+          <div class="ugc-wall__overlay">
+            <span class="ugc-wall__user">@party_of_twelve</span>
+            <span class="ugc-wall__caption">Hickory Room birthday was incredible</span>
+            <span class="ugc-wall__location">📍 Cumming</span>
+          </div>
+        </div>
+        <div class="ugc-wall__item reveal" data-tilt="4">
+          <div class="ugc-wall__photo" style="background: linear-gradient(135deg, #3a1a0a, #1a0505); display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🌽</div>
+          <div class="ugc-wall__overlay">
+            <span class="ugc-wall__user">@side_dish_queen</span>
+            <span class="ugc-wall__caption">Mac slammer is life-changing</span>
+            <span class="ugc-wall__location">📍 Peachtree Corners</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ugc-wall__cta reveal">
+        <a href="https://instagram.com/cuebarbecue" target="_blank" rel="noopener" class="btn btn--ghost btn--lg">📸 Share Your Moment →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
        ═══════════════════════════════════════ -->
   <section class="section section--smoke intent-paths" id="order">
     <div class="container">
@@ -2673,7 +2906,7 @@
   <!-- ═══════════════════════════════════════
        NEWSLETTER / LOYALTY
        ═══════════════════════════════════════ -->
-  <section class="section newsletter">
+  <section class="section newsletter pit-crew" id="pit-crew">
     <div class="container">
       <div class="newsletter__inner reveal">
         <span class="section-header__eyebrow">Stay in the Smoke</span>
@@ -2681,6 +2914,62 @@
         <p style="color: var(--text-muted); font-size: var(--text-lg);">
           Get exclusive deals, be the first to hear about live music lineups, seasonal specials, and new menu drops. No spam — just smoke signals.
         </p>
+
+        <!-- Loyalty Perks -->
+        <div class="pit-crew__perks">
+          <div class="pit-crew__perk">
+            <span class="pit-crew__perk-icon">🏆</span>
+            <span class="pit-crew__perk-label">Earn Points</span>
+            <span class="pit-crew__perk-desc">1 point per $1 spent — redeem for free plates</span>
+          </div>
+          <div class="pit-crew__perk">
+            <span class="pit-crew__perk-icon">🔥</span>
+            <span class="pit-crew__perk-label">Streak Rewards</span>
+            <span class="pit-crew__perk-desc">Visit 3 weeks in a row → free side dish</span>
+          </div>
+          <div class="pit-crew__perk">
+            <span class="pit-crew__perk-icon">🎂</span>
+            <span class="pit-crew__perk-label">Birthday Bonus</span>
+            <span class="pit-crew__perk-desc">Free dessert on your birthday month</span>
+          </div>
+          <div class="pit-crew__perk">
+            <span class="pit-crew__perk-icon">⚡</span>
+            <span class="pit-crew__perk-label">VIP Early Access</span>
+            <span class="pit-crew__perk-desc">Limited drops and seasonal items before anyone</span>
+          </div>
+        </div>
+
+        <!-- Badge Gamification -->
+        <div class="pit-crew__badges">
+          <h4 class="pit-crew__badges-title">Unlock Your Badges</h4>
+          <div class="pit-crew__badges-grid">
+            <div class="pit-crew__badge" title="Order brisket 10 times">
+              <span class="pit-crew__badge-icon">🥩</span>
+              <span class="pit-crew__badge-name">Brisket Boss</span>
+            </div>
+            <div class="pit-crew__badge" title="Order ribs 10 times">
+              <span class="pit-crew__badge-icon">🍖</span>
+              <span class="pit-crew__badge-name">Rib Royalty</span>
+            </div>
+            <div class="pit-crew__badge" title="Try every side dish">
+              <span class="pit-crew__badge-icon">🥗</span>
+              <span class="pit-crew__badge-name">Side Sampler</span>
+            </div>
+            <div class="pit-crew__badge" title="Attend 5 live music nights">
+              <span class="pit-crew__badge-icon">🎸</span>
+              <span class="pit-crew__badge-name">Smoke & Strings</span>
+            </div>
+            <div class="pit-crew__badge" title="5 consecutive weekly visits">
+              <span class="pit-crew__badge-icon">🔥</span>
+              <span class="pit-crew__badge-name">Streak Master</span>
+            </div>
+            <div class="pit-crew__badge" title="Order from all 3 locations">
+              <span class="pit-crew__badge-icon">📍</span>
+              <span class="pit-crew__badge-name">Smoke Tourist</span>
+            </div>
+          </div>
+        </div>
+
         <form class="newsletter__form" action="#" method="post">
           <input class="newsletter__input" type="email" placeholder="Enter your email" required aria-label="Email address">
           <button type="submit" class="btn btn--primary">Join the Pit Crew</button>
@@ -2769,6 +3058,21 @@
       <div class="mode-toggle__thumb"></div>
     </div>
     <span class="mode-toggle__label">Day Mode</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       RESUME ORDER PILL — Sticky Conversion
+       ═══════════════════════════════════════ -->
+  <div class="resume-pill" id="resume-pill" aria-label="Resume your order" role="status">
+    <div class="resume-pill__inner">
+      <span class="resume-pill__icon">🔥</span>
+      <div class="resume-pill__info">
+        <span class="resume-pill__count" id="resume-pill-count">0 items</span>
+        <span class="resume-pill__meta" id="resume-pill-meta">ETA ~20 min · Milton</span>
+      </div>
+      <a href="#order" class="resume-pill__cta">Resume Order →</a>
+    </div>
+    <button class="resume-pill__close" aria-label="Dismiss order pill">&times;</button>
   </div>
 
   <!-- ═══════════════════════════════════════
