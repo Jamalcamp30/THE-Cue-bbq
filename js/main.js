@@ -1063,7 +1063,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       const order = JSON.parse(lastOrder);
-      if (order.items && order.items > 0) {
+      if (order.items > 0) {
         reorderEl.style.display = 'flex';
         reorderBtn.addEventListener('click', () => {
           orderState.cartCount = order.items;
@@ -1259,27 +1259,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ═══════════════════════════════════════════
-  // SAVE LAST ORDER — For 1-Click Reorder
+  // ORDER STATE HOOKS — Event-Driven Extensions
   // ═══════════════════════════════════════════
-  const origPersist = persistOrderState;
-  persistOrderState = function() {
-    origPersist();
-    if (orderState.cartCount > 0) {
-      localStorage.setItem('cue_last_order_v1', JSON.stringify({
-        items: orderState.cartCount,
-        subtotal: orderState.cartSubtotal,
-        location: orderState.location,
-        timestamp: Date.now()
-      }));
-    }
-  };
+  // Listen for cart changes to save last order and update resume pill
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.menu-item__add, .menu-pick-card__add, .menu-bundle__order');
+    if (!btn) return;
 
-  // Hook resume pill into existing add-to-cart flow
-  const origUpdateMobileBar = updateMobileBar;
-  updateMobileBar = function() {
-    origUpdateMobileBar();
-    if (window._cueUpdateResumePill) window._cueUpdateResumePill();
-  };
+    // After the existing click handler runs, save last order and update pill
+    requestAnimationFrame(() => {
+      if (orderState.cartCount > 0) {
+        localStorage.setItem('cue_last_order_v1', JSON.stringify({
+          items: orderState.cartCount,
+          subtotal: orderState.cartSubtotal,
+          location: orderState.location,
+          timestamp: Date.now()
+        }));
+      }
+      if (window._cueUpdateResumePill) window._cueUpdateResumePill();
+    });
+  });
 
   // ═══════════════════════════════════════════
   // INITIALIZE ALL NEW FEATURES
