@@ -965,4 +965,332 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ═══════════════════════════════════════════
+  // RESUME ORDER PILL — Persistent Conversion Widget
+  // ═══════════════════════════════════════════
+  function initResumePill() {
+    const pill = document.getElementById('resume-pill');
+    const pillCount = document.getElementById('resume-pill-count');
+    const pillMeta = document.getElementById('resume-pill-meta');
+    const closeBtn = pill ? pill.querySelector('.resume-pill__close') : null;
+    let dismissed = false;
+
+    function updatePill() {
+      if (!pill || dismissed) return;
+      if (orderState.cartCount > 0) {
+        pill.classList.add('is-visible');
+        if (pillCount) {
+          pillCount.textContent = `${orderState.cartCount} item${orderState.cartCount > 1 ? 's' : ''} · $${orderState.cartSubtotal}`;
+        }
+        if (pillMeta) {
+          const etaMin = orderState.etaFloor;
+          const loc = orderState.location.charAt(0).toUpperCase() + orderState.location.slice(1);
+          pillMeta.textContent = `ETA ~${etaMin} min · ${loc}`;
+        }
+      } else {
+        pill.classList.remove('is-visible');
+      }
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        dismissed = true;
+        pill.classList.remove('is-visible');
+      });
+    }
+
+    // Expose updater so add-to-cart can call it
+    window._cueUpdateResumePill = updatePill;
+    updatePill();
+  }
+
+  // ═══════════════════════════════════════════
+  // DAYPART-AWARE HERO — Dynamic Greeting
+  // ═══════════════════════════════════════════
+  function initDaypartHero() {
+    const eyebrow = document.getElementById('hero-daypart-eyebrow');
+    const heroSection = document.getElementById('hero');
+    if (!eyebrow) return;
+
+    const hour = new Date().getHours();
+    let greeting, mood;
+
+    if (hour >= 6 && hour < 11) {
+      greeting = 'Good Morning — Start Your Day with Smoke & Soul';
+      mood = 'morning';
+    } else if (hour >= 11 && hour < 14) {
+      greeting = 'Lunch Rush — Fresh Off the Pit Right Now';
+      mood = 'lunch';
+    } else if (hour >= 14 && hour < 17) {
+      greeting = 'Afternoon Smoke — The Pit Never Stops';
+      mood = 'afternoon';
+    } else if (hour >= 17 && hour < 21) {
+      greeting = 'Dinner Time — Live Music & Smoked Perfection Await';
+      mood = 'evening';
+    } else {
+      greeting = 'Late Night Cravings — Tomorrow\'s Smoke Starts Before Dawn';
+      mood = 'night';
+    }
+
+    eyebrow.textContent = greeting;
+    if (heroSection) heroSection.setAttribute('data-daypart', mood);
+  }
+
+  // ═══════════════════════════════════════════
+  // HERO LOCATION PERSONALIZATION
+  // ═══════════════════════════════════════════
+  function initHeroLocation() {
+    const locationText = document.getElementById('hero-location-text');
+    if (!locationText) return;
+
+    const loc = orderState.location;
+    const locationNames = { milton: 'Milton', cumming: 'Cumming', peachtree: 'Peachtree Corners' };
+    const name = locationNames[loc] || 'Milton';
+    const eta = orderState.etaFloor || 14;
+    locationText.textContent = `You're closest to ${name} — pickup in ~${eta} min`;
+  }
+
+  // ═══════════════════════════════════════════
+  // 1-CLICK REORDER — Returning User Chip
+  // ═══════════════════════════════════════════
+  function initReorderChip() {
+    const reorderEl = document.getElementById('hero-reorder');
+    const reorderBtn = document.getElementById('hero-reorder-btn');
+    if (!reorderEl || !reorderBtn) return;
+
+    const lastOrder = localStorage.getItem('cue_last_order_v1');
+    if (!lastOrder) return;
+
+    try {
+      const order = JSON.parse(lastOrder);
+      if (order.items && order.items > 0) {
+        reorderEl.style.display = 'flex';
+        reorderBtn.addEventListener('click', () => {
+          orderState.cartCount = order.items;
+          orderState.cartSubtotal = order.subtotal || order.items * 14;
+          persistOrderState();
+          updateMobileBar();
+          if (window._cueUpdateResumePill) window._cueUpdateResumePill();
+
+          reorderBtn.textContent = '✓ Added to Cart!';
+          setTimeout(() => { reorderBtn.textContent = '1-Tap Reorder →'; }, 2000);
+        });
+      }
+    } catch (_) {
+      // Ignore corrupted data
+    }
+  }
+
+  // ═══════════════════════════════════════════
+  // REVIEW CAROUSEL — Rotating Testimonials
+  // ═══════════════════════════════════════════
+  function initReviewCarousel() {
+    const track = document.getElementById('review-carousel-track');
+    const dotsContainer = document.getElementById('review-carousel-dots');
+    if (!track || !dotsContainer) return;
+
+    const reviews = [
+      { quote: '"The brisket changed my entire understanding of barbecue. Unbelievable."', author: 'Marcus T. · Milton · Google' },
+      { quote: '"Our rehearsal dinner in the Hickory Room was absolute perfection — 10/10."', author: 'Jennifer & Kyle R. · Cumming · Yelp' },
+      { quote: '"Friday night live music with ribs and a local craft beer? Best weekend spot."', author: 'David L. · Peachtree Corners · TripAdvisor' },
+      { quote: '"The mac and cheese slammer is legendary. My kids refuse to eat it anywhere else."', author: 'Sarah K. · Milton · Google' },
+      { quote: '"We drove 45 minutes just for the smoked wings. Worth every mile."', author: 'Andre C. · Cumming · Google' },
+      { quote: '"Best catering we\'ve ever had for a corporate event. Everyone was raving."', author: 'Lisa M. · Peachtree Corners · Yelp' }
+    ];
+
+    let currentSlide = 0;
+
+    reviews.forEach((r, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'review-carousel__slide';
+      slide.innerHTML = `
+        <p class="review-carousel__quote">${r.quote}</p>
+        <p class="review-carousel__author">${r.author}</p>
+      `;
+      track.appendChild(slide);
+
+      const dot = document.createElement('button');
+      dot.className = 'review-carousel__dot' + (i === 0 ? ' is-active' : '');
+      dot.setAttribute('aria-label', `Review ${i + 1}`);
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(index) {
+      currentSlide = index;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dotsContainer.querySelectorAll('.review-carousel__dot').forEach((d, i) => {
+        d.classList.toggle('is-active', i === currentSlide);
+      });
+    }
+
+    setInterval(() => {
+      goToSlide((currentSlide + 1) % reviews.length);
+    }, 6000);
+  }
+
+  // ═══════════════════════════════════════════
+  // DAILY SPECIALS — Time-Based Dynamic Content
+  // ═══════════════════════════════════════════
+  function initDailySpecials() {
+    const specialName = document.getElementById('today-special');
+    const specialDesc = document.getElementById('today-special-desc');
+    const soldOutFill = document.getElementById('sold-out-fill');
+    const soldOutLabel = document.getElementById('sold-out-label');
+    if (!specialName) return;
+
+    const day = new Date().getDay();
+    const specials = [
+      { name: 'Smoked Brisket Burnt Ends', desc: 'Limited batch — crispy, caramelized, incredible.', claimed: 72 },
+      { name: 'Hickory-Smoked Turkey Breast', desc: 'Sliced fresh this morning. Light & smoky.', claimed: 45 },
+      { name: 'Texas-Style Sausage Links', desc: 'House-made with jalapeño & cheddar.', claimed: 58 },
+      { name: 'Pulled Pork Loaded Fries', desc: 'Topped with cheese sauce, slaw, and pickles.', claimed: 67 },
+      { name: 'Pitmaster\'s Choice Sampler', desc: 'Three meats, three sides, one legendary plate.', claimed: 81 },
+      { name: 'Smoked Wagyu Beef Ribs', desc: 'Premium cut, 12-hour smoke. Only 15 servings.', claimed: 88 },
+      { name: 'Baby Back Ribs & Corn Bread', desc: 'Fall-off-the-bone perfection with honey butter cornbread.', claimed: 55 }
+    ];
+
+    const todaySpecial = specials[day];
+    specialName.textContent = todaySpecial.name;
+    if (specialDesc) specialDesc.textContent = todaySpecial.desc;
+    if (soldOutFill) soldOutFill.style.width = todaySpecial.claimed + '%';
+    if (soldOutLabel) soldOutLabel.textContent = todaySpecial.claimed + '% claimed';
+  }
+
+  // ═══════════════════════════════════════════
+  // WEATHER-AWARE SUGGESTIONS
+  // ═══════════════════════════════════════════
+  function initWeatherSuggestions() {
+    const suggestionEl = document.getElementById('weather-suggestion');
+    const descEl = document.getElementById('weather-desc');
+    if (!suggestionEl || !descEl) return;
+
+    const month = new Date().getMonth();
+    const hour = new Date().getHours();
+
+    let suggestion, desc;
+    if (month >= 5 && month <= 8) {
+      suggestion = 'Hot & sunny out there ☀️';
+      desc = 'Cool off with our Sweet Tea and smoked wings on the patio.';
+    } else if (month >= 11 || month <= 1) {
+      suggestion = 'Cold day comfort 🌧️';
+      desc = 'Warm up with our Brunswick Stew and a brisket platter.';
+    } else if (month >= 2 && month <= 4) {
+      suggestion = 'Perfect patio weather 🌤️';
+      desc = 'Great day for outdoor dining — try the ribs with a local craft draft.';
+    } else {
+      suggestion = 'Crisp fall vibes 🍂';
+      desc = 'Seasonal cobbler is back — pair it with our smoked chicken.';
+    }
+
+    if (hour >= 17) {
+      desc += ' Plus live music tonight!';
+    }
+
+    suggestionEl.textContent = suggestion;
+    descEl.textContent = desc;
+  }
+
+  // ═══════════════════════════════════════════
+  // PIT DROP COUNTDOWN TIMER
+  // ═══════════════════════════════════════════
+  function initPitDropCountdown() {
+    const hoursEl = document.getElementById('pit-drop-hours');
+    const minsEl = document.getElementById('pit-drop-mins');
+    const secsEl = document.getElementById('pit-drop-secs');
+    const notifyBtn = document.getElementById('pit-drop-notify');
+    const waitlistEl = document.getElementById('pit-drop-waitlist');
+    if (!hoursEl || !minsEl || !secsEl) return;
+
+    // Calculate next drop at 5 PM today or tomorrow
+    const now = new Date();
+    const dropTime = new Date(now);
+    dropTime.setHours(17, 0, 0, 0);
+    if (now >= dropTime) {
+      dropTime.setDate(dropTime.getDate() + 1);
+    }
+
+    function updateCountdown() {
+      const diff = dropTime - new Date();
+      if (diff <= 0) {
+        hoursEl.textContent = '00';
+        minsEl.textContent = '00';
+        secsEl.textContent = '00';
+        return;
+      }
+
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      const newH = String(h).padStart(2, '0');
+      const newM = String(m).padStart(2, '0');
+      const newS = String(s).padStart(2, '0');
+
+      if (secsEl.textContent !== newS) {
+        secsEl.classList.add('is-flipping');
+        setTimeout(() => secsEl.classList.remove('is-flipping'), 300);
+      }
+
+      hoursEl.textContent = newH;
+      minsEl.textContent = newM;
+      secsEl.textContent = newS;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    if (notifyBtn) {
+      notifyBtn.addEventListener('click', () => {
+        notifyBtn.textContent = '✓ You\'re on the list!';
+        notifyBtn.disabled = true;
+        if (waitlistEl) {
+          const currentCount = parseInt(waitlistEl.textContent) || 47;
+          waitlistEl.textContent = `${currentCount + 1} on the waitlist`;
+        }
+        localStorage.setItem('cue_pit_drop_notify', 'true');
+      });
+
+      if (localStorage.getItem('cue_pit_drop_notify') === 'true') {
+        notifyBtn.textContent = '✓ You\'re on the list!';
+        notifyBtn.disabled = true;
+      }
+    }
+  }
+
+  // ═══════════════════════════════════════════
+  // SAVE LAST ORDER — For 1-Click Reorder
+  // ═══════════════════════════════════════════
+  const origPersist = persistOrderState;
+  persistOrderState = function() {
+    origPersist();
+    if (orderState.cartCount > 0) {
+      localStorage.setItem('cue_last_order_v1', JSON.stringify({
+        items: orderState.cartCount,
+        subtotal: orderState.cartSubtotal,
+        location: orderState.location,
+        timestamp: Date.now()
+      }));
+    }
+  };
+
+  // Hook resume pill into existing add-to-cart flow
+  const origUpdateMobileBar = updateMobileBar;
+  updateMobileBar = function() {
+    origUpdateMobileBar();
+    if (window._cueUpdateResumePill) window._cueUpdateResumePill();
+  };
+
+  // ═══════════════════════════════════════════
+  // INITIALIZE ALL NEW FEATURES
+  // ═══════════════════════════════════════════
+  initResumePill();
+  initDaypartHero();
+  initHeroLocation();
+  initReorderChip();
+  initReviewCarousel();
+  initDailySpecials();
+  initWeatherSuggestions();
+  initPitDropCountdown();
+
 });

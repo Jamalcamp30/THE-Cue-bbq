@@ -231,7 +231,7 @@
     <div class="hero__overlay"></div>
 
     <div class="hero__content">
-      <p class="hero__eyebrow">Metro Atlanta's Scratch-Made Barbecue Destination</p>
+      <p class="hero__eyebrow" id="hero-daypart-eyebrow">Metro Atlanta's Scratch-Made Barbecue Destination</p>
       <h1 class="hero__title">
         Where Smoke, Music &
         <span class="hero__title-cycle" data-cycle-words="Homemade Everything,Smoke &amp; Soul,Southern Craft,Live-Fire Luxury">Homemade Everything</span>
@@ -241,12 +241,27 @@
         Slow-smoked meats. Scratch-made sides. Live music every weekend.
         Three locations built for gathering.
       </p>
+
+      <!-- Location-personalized CTA -->
+      <div class="hero__location-hint" id="hero-location-hint" aria-live="polite">
+        <span class="hero__location-dot"></span>
+        <span id="hero-location-text">You're closest to Milton — pickup in ~14 min</span>
+      </div>
+
       <div class="hero__ctas">
         <a href="#order" class="btn btn--primary btn--lg" data-magnetic="0.3">🔥 Order Pickup / Delivery</a>
         <a href="#menu" class="btn btn--secondary btn--lg" data-magnetic="0.2">View Menu</a>
         <a href="#catering" class="btn btn--ghost btn--lg" data-magnetic="0.2">Book Catering</a>
         <a href="#music" class="btn btn--ghost btn--lg" data-magnetic="0.2">🎵 Live Music</a>
       </div>
+
+      <!-- 1-Click Reorder Chip -->
+      <div class="hero__reorder" id="hero-reorder" style="display:none;" aria-label="Quick reorder">
+        <span class="hero__reorder-icon">🔁</span>
+        <span class="hero__reorder-text">Reorder your last meal</span>
+        <button class="hero__reorder-btn" id="hero-reorder-btn">1-Tap Reorder →</button>
+      </div>
+
       <div class="hero-live-signals reveal-blur" id="hero-live-signals" aria-live="polite" tabindex="0">
         <div class="hero-live-signals__label">Today at Cue</div>
         <div class="hero-live-signals__item" id="hero-live-signal-text">🔥 Smoked today: Brisket, Ribs, Wings</div>
@@ -301,6 +316,70 @@
           <p class="today-cue__value" id="weather-suggestion">Perfect patio day</p>
           <p class="today-cue__meta" id="weather-desc">Try our smoked wings and a cold local draft on the patio.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PIT DROP — Limited Release Countdown
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark pit-drop" id="pit-drop">
+    <div class="container">
+      <div class="pit-drop__inner reveal">
+        <span class="pit-drop__eyebrow">🔥 Limited Pit Drop</span>
+        <h3 class="pit-drop__title" id="pit-drop-title">Smoked Wagyu Brisket</h3>
+        <p class="pit-drop__desc">A5 Wagyu, 16-hour smoke, hickory & cherry wood. Only 20 servings. Once they're gone, they're gone.</p>
+
+        <!-- Countdown Timer -->
+        <div class="pit-drop__countdown" id="pit-drop-countdown" aria-label="Time until pit drop">
+          <div class="pit-drop__time-block">
+            <span class="pit-drop__digits" id="pit-drop-hours">04</span>
+            <span class="pit-drop__unit">hrs</span>
+          </div>
+          <span class="pit-drop__separator">:</span>
+          <div class="pit-drop__time-block">
+            <span class="pit-drop__digits" id="pit-drop-mins">32</span>
+            <span class="pit-drop__unit">min</span>
+          </div>
+          <span class="pit-drop__separator">:</span>
+          <div class="pit-drop__time-block">
+            <span class="pit-drop__digits" id="pit-drop-secs">18</span>
+            <span class="pit-drop__unit">sec</span>
+          </div>
+        </div>
+
+        <div class="pit-drop__cta">
+          <button class="btn btn--ember btn--lg" id="pit-drop-notify">🔔 Notify Me When It Drops</button>
+          <span class="pit-drop__waitlist" id="pit-drop-waitlist">47 on the waitlist</span>
+        </div>
+      </div>
+
+      <!-- Provenance Cards -->
+      <div class="provenance-cards stagger">
+        <div class="provenance-card reveal">
+          <span class="provenance-card__icon">🪵</span>
+          <h4 class="provenance-card__title">Wood</h4>
+          <p class="provenance-card__detail">Georgia Hickory & Cherry</p>
+          <p class="provenance-card__meta">Sourced from North Georgia hardwood farms</p>
+        </div>
+        <div class="provenance-card reveal">
+          <span class="provenance-card__icon">🥩</span>
+          <h4 class="provenance-card__title">Source</h4>
+          <p class="provenance-card__detail">Heritage Black Angus</p>
+          <p class="provenance-card__meta">Family ranch, grass-fed, no antibiotics</p>
+        </div>
+        <div class="provenance-card reveal">
+          <span class="provenance-card__icon">⏱️</span>
+          <h4 class="provenance-card__title">Smoke Time</h4>
+          <p class="provenance-card__detail">14–16 Hours</p>
+          <p class="provenance-card__meta">Low & slow at 225°F until perfection</p>
+        </div>
+        <div class="provenance-card reveal">
+          <span class="provenance-card__icon">🌡️</span>
+          <h4 class="provenance-card__title">Rub</h4>
+          <p class="provenance-card__detail">House Blend</p>
+          <p class="provenance-card__meta">12-spice secret rub, applied 24hrs before smoke</p>
+        </div>
       </div>
     </div>
   </section>
